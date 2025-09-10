@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>True or False - Millionaire Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play exciting true or false games! Test your knowledge with fun facts, trivia questions, and brain teasers. Challenge yourself with our free quiz collection.">
+  <link rel="stylesheet" href=""/>
+  <style>
+* {
+  box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', sans-serif;
+  height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 1.3em 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(70px);
+    z-index: -1;
+}
+.navbar a{
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5em;
+}
+#check{
+    display: none;
+}
+.logo img{
+    height: 2.5rem;
+    width: 3rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin: none;
+
+}
+
+.nav-icon{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+.close-icon{
+    display: none;
+}
+
+hr{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+/* Popup overlay */
+.popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+/* Game*/
+.game-container {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+  padding: 2rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  color: gold;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.question-box {
+  background: #222;
+  padding: 1.5rem;
+  border: 2px solid gold;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  min-height: 80px;
+  width: 100%;
+}
+
+.answers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background: #0044cc;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn:hover {
+  background: #0066ff;
+}
+
+.score-ladder {
+  margin-top: 1rem;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+.score-step {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid gold;
+  text-align: right;
+}
+
+.active-step {
+  color: gold;
+  font-weight: bold;
+}
+
+.game-over {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 📱 Mobile-specific tweaks */
+@media screen and (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .question-box {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+
+  .score-ladder {
+    font-size: 0.75rem;
+    max-height: 150px;
+  }
+}
+/*--BREAKPOINT--*/
+
+@media screen and (max-width: 64em){
+
+.nav-icon{
+    display: inline-flex;
+}
+#check:checked~.nav-icon .menu-icon{
+    display: none;
+
+}
+.nav-icon .close-icon{
+    display: none;
+}
+#check:checked~.nav-icon .close-icon{
+    display: block;
+
+}
+.navbar{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0,1);
+    overflow: hidden;
+    transition: .3s ease;
+}
+#check:checked~.navbar{
+    height: 17.7rem;
+
+}
+.navbar a{
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    transition: .3s ease;
+}
+#check:checked~.navbar a{
+    transform: translateY(0);
+
+}
+
+
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="header">
+    <a href="#" class="logo"><img src="Images/Main Logo.png"></a>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="nav-icon">
+        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg></span>
+        <span class="close-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg></span>
+    </label>
+    <nav class="navbar">
+      <a href="/index.html">Home</a>
+      <a href="">Shopping</a>
+      <a href="/index.html#design">Games</a>
+      <a href="/index.html#blog">Blogs</a>
+    </nav>
+</div>
+
+<br>
+<br>
+
+  <div class="game-container">
+    <div class="logo">🪙 True or False</div>
+    
+    <div class="question-box">
+      <div id="question">Loading...</div>
+    </div>
+    
+    <div class="answers">
+      <button class="btn" onclick="answer(true)">True</button>
+      <button class="btn" onclick="answer(false)">False</button>
+    </div>
+
+    <div class="score-ladder" id="ladder">
+      <!-- Score steps will be added dynamically -->
+    </div>
+
+    <div id="game-over" class="game-over hidden">
+      Game Over!<br>
+      You won: <span id="final-score">$0</span>
+      <br><button onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+
+
+    <!-- Popup container -->
+    <div id="popup" class="popup-overlay">
+      <div class="popup">
+        <img src="/Games/Images/Ture or False popup.png" alt="Popup Image" />
+      </div>
+    </div>
+
+  <script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    }); 
+
+ // Generate 200 random True/False questions
+ const questions = [
+  { question: "The sky is blue.", answer: true },
+  { question: "There are 8 planets in the solar system.", answer: true },
+  { question: "The capital of France is Berlin.", answer: false },
+  { question: "Lightning never strikes the same place twice.", answer: false },
+  { question: "Sharks are mammals.", answer: false },
+  { question: "The human body has four lungs.", answer: false },
+  { question: "Water boils at 100°C at sea level.", answer: true },
+  { question: "The Great Wall of China is visible from space.", answer: false },
+  { question: "Bananas grow on trees.", answer: false }, // (They grow on plants)
+  { question: "Gold is heavier than silver.", answer: true },
+  { question: "The capital of Australia is Sydney.", answer: false },
+{ question: "Lightning never strikes the same place twice.", answer: false },
+{ question: "Goldfish only have a memory of three seconds.", answer: false },
+{ question: "Bananas grow on plants, not trees.", answer: true },
+{ question: "The Great Wall of China is visible from space.", answer: false },
+{ question: "Octopuses have three hearts.", answer: true },
+{ question: "The unicorn is the national animal of Scotland.", answer: true },
+{ question: "There are 30 days in February.", answer: false },
+{ question: "Humans can distinguish over a trillion different smells.", answer: true },
+{ question: "Water conducts electricity.", answer: false },
+{ question: "Bats are blind.", answer: false },
+{ question: "Sharks are mammals.", answer: false },
+{ question: "Venus is the hottest planet in our solar system.", answer: true },
+{ question: "Penguins can fly.", answer: false },
+{ question: "Some turtles can breathe through their butts.", answer: true },
+{ question: "Sound travels faster than light.", answer: false },
+{ question: "An octopus has 8 tentacles.", answer: true },
+{ question: "A sneeze can travel up to 100 miles per hour.", answer: true },
+{ question: "Humans have more than five senses.", answer: true },
+{ question: "The inventor of the lightbulb was Thomas Edison.", answer: true },
+{ question: "Coffee is made from berries.", answer: true },
+{ question: "Sloths can hold their breath longer than dolphins.", answer: true },
+{ question: "A group of crows is called a murder.", answer: true },
+{ question: "Diamonds are made of compressed coal.", answer: false },
+{ question: "The Eiffel Tower can grow taller in summer.", answer: true },
+{ question: "The moon has its own light source.", answer: false },
+{ question: "Humans share about 60% of their DNA with bananas.", answer: true },
+{ question: "Spiders are insects.", answer: false },
+{ question: "The heart is located on the left side of the chest.", answer: false },
+{ question: "It snows in the Sahara Desert.", answer: true },
+{ question: "Hot water freezes faster than cold water.", answer: true },
+{ question: "A group of flamingos is called a flamboyance.", answer: true },
+{ question: "Elephants are the only mammals that can't jump.", answer: true },
+{ question: "All polar bears are left-handed.", answer: false },
+{ question: "Snakes have eyelids.", answer: false },
+{ question: "Cats always land on their feet.", answer: false },
+{ question: "The Statue of Liberty is in New Jersey.", answer: true },
+{ question: "You can hear a blue whale's heartbeat from 2 miles away.", answer: true },
+{ question: "Bees can recognize human faces.", answer: true },
+{ question: "A bolt of lightning is hotter than the surface of the sun.", answer: true },
+{ question: "Dogs sweat through their tongues.", answer: false },
+{ question: "The human nose never stops growing.", answer: true },
+{ question: "The average person walks the equivalent of five times around the world in their lifetime.", answer: true },
+{ question: "Tomatoes are vegetables.", answer: false },
+{ question: "A day on Venus is longer than a year on Venus.", answer: true },
+{ question: "Walt Disney was cryogenically frozen after his death.", answer: false },
+{ question: "There are more trees on Earth than stars in the Milky Way.", answer: true },
+{ question: "You can sneeze in your sleep.", answer: false },
+{ question: "Koalas sleep up to 22 hours a day.", answer: true },
+{ question: "Jellyfish have no brains.", answer: true },
+{ question: "Butterflies taste with their feet.", answer: true },
+{ question: "Camels store water in their humps.", answer: false },
+{ question: "The shortest war in history lasted less than 40 minutes.", answer: true },
+{ question: "Coca-Cola was originally green.", answer: false },
+{ question: "Peanuts are not nuts.", answer: true },
+{ question: "A crocodile can't stick its tongue out.", answer: true },
+{ question: "Shakespeare invented the word 'robot'.", answer: false },
+{ question: "The inventor of the microwave appliance received $2 million.", answer: false },
+{ question: "There is no sound in space.", answer: true },
+{ question: "The speed of light is faster than the speed of electricity.", answer: true },
+{ question: "Frogs drink through their skin.", answer: true },
+{ question: "A group of frogs is called an army.", answer: true },
+{ question: "You use only 10% of your brain.", answer: false },
+{ question: "A sneeze can stop your heart.", answer: false },
+{ question: "There’s a basketball court on the top floor of the U.S. Supreme Court building.", answer: true },
+{ question: "The longest hiccuping spree lasted 68 years.", answer: true },
+{ question: "Mosquitoes have teeth.", answer: false },
+{ question: "There are more fake flamingos in the world than real ones.", answer: true },
+{ question: "A snail can sleep for three years.", answer: true },
+{ question: "The word 'emoji' comes from Japanese.", answer: true },
+{ question: "Pineapples grow on trees.", answer: false },
+{ question: "You can’t hum while holding your nose.", answer: true },
+{ question: "Kangaroos can't walk backward.", answer: true },
+{ question: "Carrots were originally purple.", answer: true },
+{ question: "The moon is made of cheese.", answer: false },
+{ question: "Bubble wrap was originally invented as wallpaper.", answer: true },
+{ question: "Humans have four nostrils.", answer: false },
+{ question: "Apples give you more energy than coffee.", answer: true },
+{ question: "Humans can breathe and swallow at the same time.", answer: false },
+{ question: "Earth is the third planet from the Sun.", answer: true },
+{ question: "A group of pandas is called an embarrassment.", answer: true },
+{ question: "Chewing gum takes 7 years to digest.", answer: false },
+{ question: "Polar bears have black skin.", answer: true },
+{ question: "Some metals can be liquid near room temperature.", answer: true },
+{ question: "There is gravity on the International Space Station.", answer: true },
+{ question: "The Empire State Building has its own zip code.", answer: true },
+{ question: "Owls can rotate their heads 360 degrees.", answer: false },
+{ question: "The letter 'Q' is the only letter not used in U.S. state names.", answer: true },
+{ question: "A tomato is 94% water.", answer: true },
+{ question: "The average cloud weighs over a million pounds.", answer: true },
+{ question: "Mercury is the hottest planet in our solar system.", answer: false },
+{ question: "Chocolate was once used as currency.", answer: true },
+{ question: "Cows can walk down stairs but not up.", answer: false },
+{ question: "The longest recorded flight of a chicken is 13 seconds.", answer: true },
+{ question: "Some lizards can walk on water.", answer: true },
+{ question: "Antarctica is the driest continent on Earth.", answer: true },
+{ question: "Dolphins sleep with one eye open.", answer: true },
+{ question: "Crying makes you gain weight.", answer: false },
+{ question: "The first oranges weren’t orange.", answer: true },
+{ question: "The number zero was invented in India.", answer: true },
+
+// More questions
+
+{ question: "A group of owls is called a parliament.", answer: true },
+{ question: "Humans can live without a spleen.", answer: true },
+{ question: "Mount Kilimanjaro is the tallest mountain in the world.", answer: false },
+{ question: "The currency of Japan is the yen.", answer: true },
+{ question: "Sound travels faster through air than through water.", answer: false },
+{ question: "Spaghetti is traditionally eaten with a spoon and fork in Italy.", answer: false },
+{ question: "Napoleon was extremely short.", answer: false },
+{ question: "There are 206 bones in the adult human body.", answer: true },
+{ question: "Whales are fish.", answer: false },
+{ question: "The Sahara Desert is the largest desert in the world.", answer: false },
+{ question: "Neil Armstrong was the first person to walk on the moon.", answer: true },
+{ question: "Humans glow in the dark, but the light is too weak for the eye to detect.", answer: true },
+{ question: "There are five rings in the Olympic logo.", answer: true },
+{ question: "The cheetah is the fastest land animal.", answer: true },
+{ question: "Pluto is classified as a planet in our solar system.", answer: false },
+{ question: "Albert Einstein failed math in school.", answer: false },
+{ question: "Birds are dinosaurs.", answer: true },
+{ question: "Venus is the closest planet to the Sun.", answer: false },
+{ question: "The Nile is the longest river in the world.", answer: false },
+{ question: "A leap year has 366 days.", answer: true },
+{ question: "Sharks are older than trees.", answer: true },
+{ question: "There are 12 zodiac signs in Western astrology.", answer: true },
+{ question: "Hawaii is the only U.S. state that grows coffee commercially.", answer: true },
+{ question: "All snakes are venomous.", answer: false },
+{ question: "The Earth is closer to the Sun in summer.", answer: false },
+{ question: "The human brain is the heaviest organ in the body.", answer: false },
+{ question: "The sun is a star.", answer: true },
+{ question: "Owls are the only birds that can fly silently.", answer: true },
+{ question: "Mickey Mouse’s first appearance was in Steamboat Willie.", answer: true },
+{ question: "Rainbows are circular, but we usually only see half.", answer: true },
+{ question: "There are more kangaroos than humans in Australia.", answer: true },
+{ question: "The speed limit on the German Autobahn is 100 km/h.", answer: false },
+{ question: "Fire needs gravity to burn.", answer: false },
+{ question: "Mars is known as the Red Planet.", answer: true },
+{ question: "The Mona Lisa has no eyebrows.", answer: true },
+{ question: "Thomas Jefferson wrote the Declaration of Independence.", answer: true },
+{ question: "The Pacific Ocean is the largest ocean on Earth.", answer: true },
+{ question: "The tongue is the strongest muscle in the human body.", answer: false },
+{ question: "Butter comes from goats.", answer: false },
+{ question: "Lemons float, but limes sink in water.", answer: true },
+{ question: "Polar bears live in Antarctica.", answer: false },
+{ question: "Honey never spoils.", answer: true },
+{ question: "The Great Pyramid of Giza was built by aliens.", answer: false },
+{ question: "A human can go weeks without eating but only days without water.", answer: true },
+{ question: "Snakes can blink.", answer: false },
+{ question: "A blue whale's tongue can weigh as much as an elephant.", answer: true },
+{ question: "Some insects can survive being frozen.", answer: true },
+{ question: "Rabbits are born with their eyes open.", answer: false },
+{ question: "The Atlantic Ocean is saltier than the Pacific Ocean.", answer: true },
+{ question: "The word 'alphabet' comes from the first two Greek letters.", answer: true },
+{ question: "Camels have three sets of eyelids.", answer: true },
+{ question: "An emu can fly.", answer: false },
+{ question: "Sunflowers always face the sun.", answer: true },
+{ question: "The liver can regenerate itself.", answer: true },
+{ question: "The first video game was created in the 1980s.", answer: false },
+{ question: "Humans can survive in space without a suit for over 10 minutes.", answer: false },
+{ question: "Alligators live longer than crocodiles.", answer: false },
+{ question: "Some mushrooms glow in the dark.", answer: true },
+{ question: "The Amazon is the largest rainforest on Earth.", answer: true },
+{ question: "Humans can’t breathe and swallow at the same time.", answer: true },
+{ question: "Jupiter has rings.", answer: true },
+{ question: "All starfish have five arms.", answer: false },
+{ question: "The term 'emoji' means 'emotion icon'.", answer: false },
+{ question: "Sea otters hold hands when they sleep.", answer: true },
+{ question: "Flamingos are pink because of their diet.", answer: true },
+{ question: "The Atlantic Ocean is larger than the Pacific Ocean.", answer: false },
+{ question: "Tigers have striped skin as well as striped fur.", answer: true },
+{ question: "Bulls get angry when they see red.", answer: false },
+{ question: "Humans are born with more bones than they die with.", answer: true },
+{ question: "The shortest commercial flight in the world lasts under 2 minutes.", answer: true },
+{ question: "Giraffes have the same number of neck vertebrae as humans.", answer: true },
+{ question: "Watermelons are 50% water.", answer: false },
+{ question: "The longest bone in the human body is the femur.", answer: true },
+{ question: "Every snowflake is different.", answer: true },
+{ question: "Black holes are visible to the naked eye.", answer: false },
+{ question: "Your fingernails grow faster than your toenails.", answer: true },
+{ question: "The human body has 4 kidneys.", answer: false },
+{ question: "The average human heart beats over 100,000 times a day.", answer: true },
+{ question: "The pancreas is part of the digestive system.", answer: true },
+{ question: "An ostrich’s eye is bigger than its brain.", answer: true },
+{ question: "Bamboo is a type of tree.", answer: false },
+{ question: "The first iPhone was released in 2005.", answer: false },
+{ question: "A group of jellyfish is called a smack.", answer: true },
+{ question: "Earth has more water than land.", answer: true },
+{ question: "Fingernails and hair continue to grow after death.", answer: false },
+{ question: "Peacocks can fly short distances.", answer: true },
+{ question: "The human stomach changes its lining every 3–4 days.", answer: true },
+{ question: "Penguins can live in the North Pole.", answer: false },
+{ question: "A giraffe's tongue can be over 20 inches long.", answer: true },
+{ question: "Avocados are vegetables.", answer: false },
+{ question: "Wombat poop is cube-shaped.", answer: true },
+{ question: "Tomatoes were once believed to be poisonous.", answer: true },
+{ question: "Some cats are allergic to humans.", answer: true },
+{ question: "There are more stars in the universe than grains of sand on Earth.", answer: true },
+{ question: "Humans are the only animals that smile.", answer: false },
+{ question: "The tallest building in the world is in New York.", answer: false },
+{ question: "The word 'quiz' was invented as part of a bet.", answer: true },
+{ question: "The average person has 1 million hairs on their head.", answer: false }
+
+];
+
+// Shuffle function
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Ladder increases every 10 correct answers
+const prizeLadder = [
+  "$100", "$200", "$300", "$500", "$1,000",
+  "$2,000", "$4,000", "$8,000", "$16,000", "$32,000",
+  "$64,000", "$125,000", "$250,000", "$500,000", "$1,000,000",
+  "$2,000,000", "$4,000,000", "$8,000,000", "$16,000,000", "$32,000,000"
+];
+
+let currentQuestionIndex = 0;
+let correctAnswers = 0;
+
+const questionElement = document.getElementById('question');
+const ladderElement = document.getElementById('ladder');
+const gameOverScreen = document.getElementById('game-over');
+const finalScore = document.getElementById('final-score');
+
+function loadLadder() {
+  ladderElement.innerHTML = "";
+  for (let i = prizeLadder.length - 1; i >= 0; i--) {
+    const step = document.createElement("div");
+    step.className = "score-step";
+    step.id = `step-${i}`;
+    step.innerText = `${(i + 1) * 10}. ${prizeLadder[i]}`;
+    ladderElement.appendChild(step);
+  }
+}
+
+function highlightStep(correctCount) {
+  const level = Math.floor(correctCount / 10) - 1;
+  for (let i = 0; i < prizeLadder.length; i++) {
+    const step = document.getElementById(`step-${i}`);
+    step.classList.remove("active-step");
+  }
+  if (level >= 0 && level < prizeLadder.length) {
+    const active = document.getElementById(`step-${level}`);
+    if (active) active.classList.add("active-step");
+  }
+}
+
+function loadQuestion() {
+  if (currentQuestionIndex >= questions.length) {
+    endGame(true); // Win
+    return;
+  }
+
+  const current = questions[currentQuestionIndex];
+  questionElement.innerText = current.question;
+  highlightStep(correctAnswers);
+}
+
+function answer(choice) {
+  const current = questions[currentQuestionIndex];
+  if (choice === current.answer) {
+    correctAnswers++;
+    currentQuestionIndex++;
+    loadQuestion();
+  } else {
+    endGame(false); // Incorrect
+  }
+}
+
+function endGame(won) {
+  document.querySelector('.answers').style.display = 'none';
+  gameOverScreen.classList.remove('hidden');
+
+  let level = Math.floor(correctAnswers / 10) - (won ? 0 : 1);
+  if (level < 0) level = 0;
+  const prize = prizeLadder[level] || "$0";
+
+  questionElement.innerText = won ? "You completed all questions!" : "Wrong Answer!";
+  finalScore.innerText = prize;
+}
+
+function restartGame() {
+  correctAnswers = 0;
+  currentQuestionIndex = 0;
+  gameOverScreen.classList.add('hidden');
+  document.querySelector('.answers').style.display = 'flex';
+  shuffleArray(questions);
+  loadQuestion();
+  highlightStep(0);
+}
+
+shuffleArray(questions);
+loadLadder();
+loadQuestion();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Who Wants to Be a Millionaire</title>
+  <meta name="description" content="Wondering why your dog eats grass? Discover the possible reasons behind this common behavior, from instinct to digestive relief. Learn when grass-eating is normal, potential health risks, and how to manage it safely. Find out if your dog needs veterinary attention today!">
+  <link rel="stylesheet" href=""/>
+  <style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 1.3em 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(70px);
+    z-index: -1;
+}
+.navbar a{
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5em;
+}
+#check{
+    display: none;
+}
+.logo img{
+    height: 2.5rem;
+    width: 3rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin: none;
+
+}
+
+.nav-icon{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+.close-icon{
+    display: none;
+}
+
+hr{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+/* Popup overlay */
+.popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    /* Game */
+
+.game-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#question {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.correct {
+  background-color: #4caf50;
+  color: white;
+}
+
+.wrong {
+  background-color: #f44336;
+  color: white;
+}
+
+.next-btn {
+  margin-top: 20px;
+  display: none;
+  background-color: #2196f3;
+  color: white;
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+/*--BREAKPOINT--*/
+
+@media screen and (max-width: 64em){
+
+.nav-icon{
+    display: inline-flex;
+}
+#check:checked~.nav-icon .menu-icon{
+    display: none;
+
+}
+.nav-icon .close-icon{
+    display: none;
+}
+#check:checked~.nav-icon .close-icon{
+    display: block;
+
+}
+.navbar{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0,1);
+    overflow: hidden;
+    transition: .3s ease;
+}
+#check:checked~.navbar{
+    height: 17.7rem;
+
+}
+.navbar a{
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    transition: .3s ease;
+}
+#check:checked~.navbar a{
+    transform: translateY(0);
+
+}
+
+
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="header">
+    <a href="#" class="logo"><img src="Images/Main Logo.png"></a>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="nav-icon">
+        <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg></span>
+        <span class="close-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg></span>
+    </label>
+    <nav class="navbar">
+      <a href="/index.html">Home</a>
+      <a href="">Shopping</a>
+      <a href="/index.html#design">Games</a>
+      <a href="/index.html#blog">Blogs</a>
+    </nav>
+</div>
+
+<br>
+<br>
+
+  <div class="game-container">
+    <h1>Who Wants to Be a Millionaire Quiz</h1>
+    <div id="question-container">
+      <div id="question">Question will go here</div>
+      <div id="answer-buttons" class="btn-grid">
+        <!-- Buttons will be created here by JS -->
+      </div>
+    </div>
+    <button id="next-btn" class="next-btn btn">Next</button>
+    <div id="score"></div>
+  </div>
+
+    <!-- Popup container -->
+    <div id="popup" class="popup-overlay">
+      <div class="popup">
+        <img src="/Games/Images/Milllionaire quiz popup.png" alt="Popup Image" />
+      </div>
+    </div>
+
+  <script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    });
+
+const questions = [
+  {
+    question: "What is the capital of France?",
+    answers: [
+      { text: "Berlin", correct: false },
+      { text: "Madrid", correct: false },
+      { text: "Paris", correct: true },
+      { text: "Rome", correct: false }
+    ]
+  },
+  {
+    question: "Who painted the Mona Lisa?",
+    answers: [
+      { text: "Pablo Picasso", correct: false },
+      { text: "Leonardo da Vinci", correct: true },
+      { text: "Vincent Van Gogh", correct: false },
+      { text: "Claude Monet", correct: false }
+    ]
+  },
+  {
+    question: "What is the largest planet in our Solar System?",
+    answers: [
+      { text: "Earth", correct: false },
+      { text: "Jupiter", correct: true },
+      { text: "Mars", correct: false },
+      { text: "Saturn", correct: false }
+    ]
+  },
+  {
+    question: "Which language is used to style web pages?",
+    answers: [
+      { text: "HTML", correct: false },
+      { text: "Java", correct: false },
+      { text: "CSS", correct: true },
+      { text: "Python", correct: false }
+    ]
+  },
+  {
+  question: "Which planet is known as the Red Planet?",
+  answers: [
+    { text: "Venus", correct: false },
+    { text: "Mars", correct: true },
+    { text: "Jupiter", correct: false },
+    { text: "Saturn", correct: false }
+  ]
+},
+{
+  question: "What is the largest mammal in the world?",
+  answers: [
+    { text: "African Elephant", correct: false },
+    { text: "Blue Whale", correct: true },
+    { text: "Giraffe", correct: false },
+    { text: "Hippopotamus", correct: false }
+  ]
+},
+{
+  question: "In which continent is the Amazon rainforest primarily located?",
+  answers: [
+    { text: "Africa", correct: false },
+    { text: "South America", correct: true },
+    { text: "Asia", correct: false },
+    { text: "Europe", correct: false }
+  ]
+},
+{
+  question: "Who wrote the play 'Romeo and Juliet'?",
+  answers: [
+    { text: "Oscar Wilde", correct: false },
+    { text: "William Shakespeare", correct: true },
+    { text: "George Bernard Shaw", correct: false },
+    { text: "Jane Austen", correct: false }
+  ]
+},
+{
+  question: "What is the chemical symbol for water?",
+  answers: [
+    { text: "O2", correct: false },
+    { text: "H2O", correct: true },
+    { text: "CO2", correct: false },
+    { text: "HO", correct: false }
+  ]
+},
+{
+  question: "Who painted the Mona Lisa?",
+  answers: [
+    { text: "Vincent van Gogh", correct: false },
+    { text: "Pablo Picasso", correct: false },
+    { text: "Leonardo da Vinci", correct: true },
+    { text: "Michelangelo", correct: false }
+  ]
+},
+{
+  question: "Which gas do plants absorb from the atmosphere during photosynthesis?",
+  answers: [
+    { text: "Oxygen", correct: false },
+    { text: "Carbon Dioxide", correct: true },
+    { text: "Nitrogen", correct: false },
+    { text: "Hydrogen", correct: false }
+  ]
+},
+{
+  question: "In which country would you find the Great Barrier Reef?",
+  answers: [
+    { text: "Australia", correct: true },
+    { text: "USA", correct: false },
+    { text: "South Africa", correct: false },
+    { text: "India", correct: false }
+  ]
+},
+{
+  question: "What is the hardest natural substance on Earth?",
+  answers: [
+    { text: "Gold", correct: false },
+    { text: "Iron", correct: false },
+    { text: "Diamond", correct: true },
+    { text: "Platinum", correct: false }
+  ]
+},
+{
+  question: "What is the speed of light in a vacuum (approximate)?",
+  answers: [
+    { text: "300,000 km/s", correct: true },
+    { text: "150,000 km/s", correct: false },
+    { text: "1,000,000 km/s", correct: false },
+    { text: "30,000 km/s", correct: false }
+  ]
+},
+{
+  question: "What is the largest organ in the human body?",
+  answers: [
+    { text: "Liver", correct: false },
+    { text: "Skin", correct: true },
+    { text: "Heart", correct: false },
+    { text: "Lungs", correct: false }
+  ]
+},
+{
+  question: "Which element has the chemical symbol 'Fe'?",
+  answers: [
+    { text: "Lead", correct: false },
+    { text: "Iron", correct: true },
+    { text: "Gold", correct: false },
+    { text: "Fluorine", correct: false }
+  ]
+},
+{
+  question: "Who is the author of 'Harry Potter' series?",
+  answers: [
+    { text: "J.R.R. Tolkien", correct: false },
+    { text: "J.K. Rowling", correct: true },
+    { text: "C.S. Lewis", correct: false },
+    { text: "Stephen King", correct: false }
+  ]
+},
+{
+  question: "What is the term for a baby goat?",
+  answers: [
+    { text: "Calf", correct: false },
+    { text: "Kid", correct: true },
+    { text: "Foal", correct: false },
+    { text: "Puppy", correct: false }
+  ]
+},
+{
+  question: "In computing, what does 'RAM' stand for?",
+  answers: [
+    { text: "Readily Accessible Memory", correct: false },
+    { text: "Random Access Memory", correct: true },
+    { text: "Rapid Application Manager", correct: false },
+    { text: "Read Access Module", correct: false }
+  ]
+},
+{
+  question: "Which country gifted the Statue of Liberty to the USA?",
+  answers: [
+    { text: "France", correct: true },
+    { text: "United Kingdom", correct: false },
+    { text: "Germany", correct: false },
+    { text: "Spain", correct: false }
+  ]
+},
+{
+  question: "What is the primary ingredient in guacamole?",
+  answers: [
+    { text: "Tomato", correct: false },
+    { text: "Avocado", correct: true },
+    { text: "Potato", correct: false },
+    { text: "Eggplant", correct: false }
+  ]
+},
+{
+  question: "In which sport is the term 'home run' used?",
+  answers: [
+    { text: "Basketball", correct: false },
+    { text: "Cricket", correct: false },
+    { text: "Baseball", correct: true },
+    { text: "Soccer", correct: false }
+  ]
+},
+{
+  question: "Which ocean is the largest by surface area?",
+  answers: [
+    { text: "Atlantic Ocean", correct: false },
+    { text: "Indian Ocean", correct: false },
+    { text: "Arctic Ocean", correct: false },
+    { text: "Pacific Ocean", correct: true }
+  ]
+},
+{
+  question: "Who discovered penicillin?",
+  answers: [
+    { text: "Marie Curie", correct: false },
+    { text: "Alexander Fleming", correct: true },
+    { text: "Louis Pasteur", correct: false },
+    { text: "Isaac Newton", correct: false }
+  ]
+},
+{
+  question: "What is the process by which plants make food using sunlight?",
+  answers: [
+    { text: "Respiration", correct: false },
+    { text: "Photosynthesis", correct: true },
+    { text: "Digestion", correct: false },
+    { text: "Fermentation", correct: false }
+  ]
+},
+{
+  question: "What is the currency of Japan?",
+  answers: [
+    { text: "Yuan", correct: false },
+    { text: "Yen", correct: true },
+    { text: "Won", correct: false },
+    { text: "Dollar", correct: false }
+  ]
+},
+{
+  question: "Which planet has the most moons?",
+  answers: [
+    { text: "Earth", correct: false },
+    { text: "Mars", correct: false },
+    { text: "Jupiter", correct: true },
+    { text: "Venus", correct: false }
+  ]
+},
+{
+  question: "Which famous physicist developed the theory of relativity?",
+  answers: [
+    { text: "Isaac Newton", correct: false },
+    { text: "Galileo Galilei", correct: false },
+    { text: "Albert Einstein", correct: true },
+    { text: "Niels Bohr", correct: false }
+  ]
+},
+{
+  question: "What part of the cell contains genetic material?",
+  answers: [
+    { text: "Cytoplasm", correct: false },
+    { text: "Nucleus", correct: true },
+    { text: "Membrane", correct: false },
+    { text: "Mitochondria", correct: false }
+  ]
+},
+{
+  question: "In what year did the Titanic sink?",
+  answers: [
+    { text: "1912", correct: true },
+    { text: "1905", correct: false },
+    { text: "1898", correct: false },
+    { text: "1920", correct: false }
+  ]
+},
+{
+  question: "Which continent is the Sahara Desert located on?",
+  answers: [
+    { text: "Asia", correct: false },
+    { text: "Africa", correct: true },
+    { text: "North America", correct: false },
+    { text: "Australia", correct: false }
+  ]
+},
+{
+  question: "What is the smallest prime number?",
+  answers: [
+    { text: "1", correct: false },
+    { text: "2", correct: true },
+    { text: "3", correct: false },
+    { text: "5", correct: false }
+  ]
+},
+{
+  question: "Which country is famous for inventing pizza, originally?",
+  answers: [
+    { text: "France", correct: false },
+    { text: "Italy", correct: true },
+    { text: "Greece", correct: false },
+    { text: "Turkey", correct: false }
+  ]
+},
+{
+  question: "What is the boiling point of water at sea level in Celsius?",
+  answers: [
+    { text: "90°C", correct: false },
+    { text: "100°C", correct: true },
+    { text: "110°C", correct: false },
+    { text: "120°C", correct: false }
+  ]
+},
+{
+  question: "Who is known as the 'Father of Computers'?",
+  answers: [
+    { text: "Charles Babbage", correct: true },
+    { text: "Alan Turing", correct: false },
+    { text: "Bill Gates", correct: false },
+    { text: "Steve Jobs", correct: false }
+  ]
+},
+{
+  question: "Which instrument has keys, pedals and strings?",
+  answers: [
+    { text: "Guitar", correct: false },
+    { text: "Violin", correct: false },
+    { text: "Piano", correct: true },
+    { text: "Flute", correct: false }
+  ]
+},
+{
+  question: "What is the largest planet in our solar system?",
+  answers: [
+    { text: "Earth", correct: false },
+    { text: "Jupiter", correct: true },
+    { text: "Saturn", correct: false },
+    { text: "Neptune", correct: false }
+  ]
+},
+{
+  question: "What is the primary language spoken in Brazil?",
+  answers: [
+    { text: "Spanish", correct: false },
+    { text: "Portuguese", correct: true },
+    { text: "French", correct: false },
+    { text: "English", correct: false }
+  ]
+},
+{
+  question: "Which legendary British band wrote 'Hey Jude'?",
+  answers: [
+    { text: "The Rolling Stones", correct: false },
+    { text: "The Beatles", correct: true },
+    { text: "Queen", correct: false },
+    { text: "Pink Floyd", correct: false }
+  ]
+},
+{
+  question: "How many continents are there on Earth?",
+  answers: [
+    { text: "Five", correct: false },
+    { text: "Six", correct: false },
+    { text: "Seven", correct: true },
+    { text: "Eight", correct: false }
+  ]
+},
+{
+  question: "Which vitamin is produced when skin is exposed to sunlight?",
+  answers: [
+    { text: "Vitamin C", correct: false },
+    { text: "Vitamin D", correct: true },
+    { text: "Vitamin A", correct: false },
+    { text: "Vitamin B12", correct: false }
+  ]
+},
+{
+  question: "What is the chemical symbol for gold?",
+  answers: [
+    { text: "Ag", correct: false },
+    { text: "Au", correct: true },
+    { text: "Fe", correct: false },
+    { text: "Gd", correct: false }
+  ]
+},
+{
+  question: "Which country hosted the 2016 Summer Olympics?",
+  answers: [
+    { text: "China", correct: false },
+    { text: "Brazil", correct: true },
+    { text: "UK", correct: false },
+    { text: "Russia", correct: false }
+  ]
+},
+{
+  question: "What is the tallest mountain in the world above sea level?",
+  answers: [
+    { text: "K2", correct: false },
+    { text: "Mount Everest", correct: true },
+    { text: "Kangchenjunga", correct: false },
+    { text: "Lhotse", correct: false }
+  ]
+},
+{
+  question: "Which gas is most abundant in the Earth's atmosphere?",
+  answers: [
+    { text: "Oxygen", correct: false },
+    { text: "Nitrogen", correct: true },
+    { text: "Carbon Dioxide", correct: false },
+    { text: "Hydrogen", correct: false }
+  ]
+},
+{
+  question: "Who developed the first successful polio vaccine?",
+  answers: [
+    { text: "Albert Sabin", correct: false },
+    { text: "Jonas Salk", correct: true },
+    { text: "Louis Pasteur", correct: false },
+    { text: "Robert Koch", correct: false }
+  ]
+},
+{
+  question: "What is the main language spoken in Canada?",
+  answers: [
+    { text: "English and French", correct: true },
+    { text: "English only", correct: false },
+    { text: "French only", correct: false },
+    { text: "Spanish", correct: false }
+  ]
+},
+{
+  question: "Which country is both in Europe and Asia?",
+  answers: [
+    { text: "Russia", correct: true },
+    { text: "France", correct: false },
+    { text: "Germany", correct: false },
+    { text: "Spain", correct: false }
+  ]
+},
+{
+  question: "What is the smallest country in the world by area?",
+  answers: [
+    { text: "Monaco", correct: false },
+    { text: "Vatican City", correct: true },
+    { text: "San Marino", correct: false },
+    { text: "Liechtenstein", correct: false }
+  ]
+},
+{
+  question: "What is the term for a group of fish swimming together?",
+  answers: [
+    { text: "Pack", correct: false },
+    { text: "Herd", correct: false },
+    { text: "School", correct: true },
+    { text: "Flock", correct: false }
+  ]
+},
+{
+  question: "Which author wrote '1984'?",
+  answers: [
+    { text: "Aldous Huxley", correct: false },
+    { text: "George Orwell", correct: true },
+    { text: "Ray Bradbury", correct: false },
+    { text: "F. Scott Fitzgerald", correct: false }
+  ]
+},
+{
+  question: "In which month does the Southern Hemisphere experience summer solstice (around December)?",
+  answers: [
+    { text: "June", correct: false },
+    { text: "September", correct: false },
+    { text: "December", correct: true },
+    { text: "March", correct: false }
+  ]
+},
+{
+  question: "What is the freezing point of water in Fahrenheit?",
+  answers: [
+    { text: "32°F", correct: true },
+    { text: "0°F", correct: false },
+    { text: "100°F", correct: false },
+    { text: "212°F", correct: false }
+  ]
+},
+{
+  question: "Who painted the ceiling of the Sistine Chapel?",
+  answers: [
+    { text: "Leonardo da Vinci", correct: false },
+    { text: "Michelangelo", correct: true },
+    { text: "Raphael", correct: false },
+    { text: "Donatello", correct: false }
+  ]
+},
+{
+  question: "Which is the longest river in the world?",
+  answers: [
+    { text: "Amazon River", correct: true },
+    { text: "Nile River", correct: false },
+    { text: "Yangtze River", correct: false },
+    { text: "Mississippi River", correct: false }
+  ]
+},
+{
+  question: "In mythology, who wields the thunderbolt?",
+  answers: [
+    { text: "Poseidon", correct: false },
+    { text: "Zeus", correct: true },
+    { text: "Hades", correct: false },
+    { text: "Apollo", correct: false }
+  ]
+},
+
+{
+  question: "What is the currency of the United Kingdom?",
+  answers: [
+    { text: "Euro", correct: false },
+    { text: "Dollar", correct: false },
+    { text: "Pound Sterling", correct: true },
+    { text: "Franc", correct: false }
+  ]
+},
+{
+  question: "What is the smallest planet in our solar system?",
+  answers: [
+    { text: "Venus", correct: false },
+    { text: "Mars", correct: false },
+    { text: "Mercury", correct: true },
+    { text: "Neptune", correct: false }
+  ]
+},
+{
+  question: "Which famous scientist introduced the idea of natural selection?",
+  answers: [
+    { text: "Isaac Newton", correct: false },
+    { text: "Albert Einstein", correct: false },
+    { text: "Charles Darwin", correct: true },
+    { text: "Galileo Galilei", correct: false }
+  ]
+},
+{
+  question: "Which element has the atomic number 1?",
+  answers: [
+    { text: "Oxygen", correct: false },
+    { text: "Hydrogen", correct: true },
+    { text: "Helium", correct: false },
+    { text: "Carbon", correct: false }
+  ]
+},
+{
+  question: "What is the square root of 144?",
+  answers: [
+    { text: "10", correct: false },
+    { text: "11", correct: false },
+    { text: "12", correct: true },
+    { text: "13", correct: false }
+  ]
+},
+{
+  question: "What is the capital of Canada?",
+  answers: [
+    { text: "Toronto", correct: false },
+    { text: "Ottawa", correct: true },
+    { text: "Vancouver", correct: false },
+    { text: "Montreal", correct: false }
+  ]
+},
+{
+  question: "What is the most spoken language in the world?",
+  answers: [
+    { text: "English", correct: false },
+    { text: "Hindi", correct: false },
+    { text: "Mandarin Chinese", correct: true },
+    { text: "Spanish", correct: false }
+  ]
+},
+{
+  question: "Which company created the iPhone?",
+  answers: [
+    { text: "Microsoft", correct: false },
+    { text: "Google", correct: false },
+    { text: "Apple", correct: true },
+    { text: "Samsung", correct: false }
+  ]
+},
+{
+  question: "Which city hosted the 2020 Summer Olympics (held in 2021)?",
+  answers: [
+    { text: "Tokyo", correct: true },
+    { text: "Beijing", correct: false },
+    { text: "Paris", correct: false },
+    { text: "London", correct: false }
+  ]
+},
+{
+  question: "What is the longest bone in the human body?",
+  answers: [
+    { text: "Humerus", correct: false },
+    { text: "Femur", correct: true },
+    { text: "Tibia", correct: false },
+    { text: "Spine", correct: false }
+  ]
+},
+{
+  question: "Which Shakespeare play features the characters Rosencrantz and Guildenstern?",
+  answers: [
+    { text: "Hamlet", correct: true },
+    { text: "Macbeth", correct: false },
+    { text: "Othello", correct: false },
+    { text: "King Lear", correct: false }
+  ]
+},
+{
+  question: "Which country has the most population?",
+  answers: [
+    { text: "United States", correct: false },
+    { text: "China", correct: false },
+    { text: "India", correct: true },
+    { text: "Indonesia", correct: false }
+  ]
+},
+{
+  question: "Which U.S. state is known as the Sunshine State?",
+  answers: [
+    { text: "California", correct: false },
+    { text: "Florida", correct: true },
+    { text: "Texas", correct: false },
+    { text: "Nevada", correct: false }
+  ]
+},
+{
+  question: "What is the national flower of Japan?",
+  answers: [
+    { text: "Tulip", correct: false },
+    { text: "Rose", correct: false },
+    { text: "Cherry Blossom", correct: true },
+    { text: "Orchid", correct: false }
+  ]
+},
+{
+  question: "Which planet is closest to the Sun?",
+  answers: [
+    { text: "Venus", correct: false },
+    { text: "Mercury", correct: true },
+    { text: "Mars", correct: false },
+    { text: "Earth", correct: false }
+  ]
+},
+{
+  question: "What type of animal is a Komodo dragon?",
+  answers: [
+    { text: "Snake", correct: false },
+    { text: "Lizard", correct: true },
+    { text: "Amphibian", correct: false },
+    { text: "Crocodile", correct: false }
+  ]
+},
+{
+  question: "Who was the first President of the United States?",
+  answers: [
+    { text: "John Adams", correct: false },
+    { text: "George Washington", correct: true },
+    { text: "Thomas Jefferson", correct: false },
+    { text: "James Madison", correct: false }
+  ]
+},
+{
+  question: "Which organ pumps blood throughout the body?",
+  answers: [
+    { text: "Brain", correct: false },
+    { text: "Liver", correct: false },
+    { text: "Heart", correct: true },
+    { text: "Kidney", correct: false }
+  ]
+},
+{
+  question: "What is the main ingredient in traditional Japanese miso soup?",
+  answers: [
+    { text: "Seaweed", correct: false },
+    { text: "Soybean paste", correct: true },
+    { text: "Tofu", correct: false },
+    { text: "Rice", correct: false }
+  ]
+},
+{
+  question: "Which ocean is the deepest?",
+  answers: [
+    { text: "Atlantic", correct: false },
+    { text: "Pacific", correct: true },
+    { text: "Indian", correct: false },
+    { text: "Southern", correct: false }
+  ]
+},
+{
+  question: "What year did World War II end?",
+  answers: [
+    { text: "1943", correct: false },
+    { text: "1945", correct: true },
+    { text: "1947", correct: false },
+    { text: "1950", correct: false }
+  ]
+},
+{
+  question: "How many hearts does an octopus have?",
+  answers: [
+    { text: "1", correct: false },
+    { text: "2", correct: false },
+    { text: "3", correct: true },
+    { text: "4", correct: false }
+  ]
+},
+{
+  question: "Which bird is a universal symbol of peace?",
+  answers: [
+    { text: "Eagle", correct: false },
+    { text: "Owl", correct: false },
+    { text: "Dove", correct: true },
+    { text: "Hawk", correct: false }
+  ]
+},
+{
+  question: "What does the 'www' in a website URL stand for?",
+  answers: [
+    { text: "World Web Window", correct: false },
+    { text: "World Wide Web", correct: true },
+    { text: "Web World Wide", correct: false },
+    { text: "Wide Web World", correct: false }
+  ]
+},
+{
+  question: "Which sport uses the terms 'love' and 'deuce'?",
+  answers: [
+    { text: "Badminton", correct: false },
+    { text: "Tennis", correct: true },
+    { text: "Volleyball", correct: false },
+    { text: "Table Tennis", correct: false }
+  ]
+},
+{
+  question: "Which country is known for the kangaroo?",
+  answers: [
+    { text: "New Zealand", correct: false },
+    { text: "Australia", correct: true },
+    { text: "South Africa", correct: false },
+    { text: "Argentina", correct: false }
+  ]
+},
+{
+  question: "Which blood type is a universal donor?",
+  answers: [
+    { text: "AB+", correct: false },
+    { text: "O-", correct: true },
+    { text: "A+", correct: false },
+    { text: "B-", correct: false }
+  ]
+},
+{
+  question: "Which famous physicist had ALS?",
+  answers: [
+    { text: "Isaac Newton", correct: false },
+    { text: "Stephen Hawking", correct: true },
+    { text: "Albert Einstein", correct: false },
+    { text: "Nikola Tesla", correct: false }
+  ]
+},
+{
+  question: "In what country is the Great Pyramid of Giza located?",
+  answers: [
+    { text: "Morocco", correct: false },
+    { text: "Egypt", correct: true },
+    { text: "Iran", correct: false },
+    { text: "Turkey", correct: false }
+  ]
+},
+{
+  question: "What is the tallest animal in the world?",
+  answers: [
+    { text: "Elephant", correct: false },
+    { text: "Giraffe", correct: true },
+    { text: "Kangaroo", correct: false },
+    { text: "Ostrich", correct: false }
+  ]
+},
+{
+  question: "How many players are on a soccer team on the field?",
+  answers: [
+    { text: "10", correct: false },
+    { text: "11", correct: true },
+    { text: "12", correct: false },
+    { text: "9", correct: false }
+  ]
+},
+{
+  question: "Which natural disaster is measured on the Richter scale?",
+  answers: [
+    { text: "Hurricane", correct: false },
+    { text: "Earthquake", correct: true },
+    { text: "Tornado", correct: false },
+    { text: "Flood", correct: false }
+  ]
+},
+{
+  question: "Who is the Greek god of the sea?",
+  answers: [
+    { text: "Zeus", correct: false },
+    { text: "Poseidon", correct: true },
+    { text: "Hades", correct: false },
+    { text: "Apollo", correct: false }
+  ]
+},
+{
+  question: "Which food is known to be high in potassium?",
+  answers: [
+    { text: "Banana", correct: true },
+    { text: "Apple", correct: false },
+    { text: "Orange", correct: false },
+    { text: "Strawberry", correct: false }
+  ]
+},
+{
+  question: "Which is the smallest ocean?",
+  answers: [
+    { text: "Indian", correct: false },
+    { text: "Arctic", correct: true },
+    { text: "Southern", correct: false },
+    { text: "Atlantic", correct: false }
+  ]
+},
+{
+  question: "Which metal is liquid at room temperature?",
+  answers: [
+    { text: "Mercury", correct: true },
+    { text: "Gold", correct: false },
+    { text: "Copper", correct: false },
+    { text: "Silver", correct: false }
+  ]
+},
+{
+  question: "Who was the first woman to win a Nobel Prize?",
+  answers: [
+    { text: "Marie Curie", correct: true },
+    { text: "Rosalind Franklin", correct: false },
+    { text: "Ada Lovelace", correct: false },
+    { text: "Jane Goodall", correct: false }
+  ]
+},
+{
+  question: "What is the national sport of Japan?",
+  answers: [
+    { text: "Karate", correct: false },
+    { text: "Sumo Wrestling", correct: true },
+    { text: "Judo", correct: false },
+    { text: "Baseball", correct: false }
+  ]
+},
+{
+  question: "Which city is also called 'The Big Apple'?",
+  answers: [
+    { text: "Los Angeles", correct: false },
+    { text: "New York City", correct: true },
+    { text: "Chicago", correct: false },
+    { text: "San Francisco", correct: false }
+  ]
+},
+{
+  question: "What is the name of Sherlock Holmes' assistant?",
+  answers: [
+    { text: "Dr. Watson", correct: true },
+    { text: "Dr. Smith", correct: false },
+    { text: "Inspector Lestrade", correct: false },
+    { text: "Professor Moriarty", correct: false }
+  ]
+},
+{
+  question: "How many days are in a leap year?",
+  answers: [
+    { text: "365", correct: false },
+    { text: "366", correct: true },
+    { text: "367", correct: false },
+    { text: "364", correct: false }
+  ]
+},
+{
+  question: "Which planet is known for its rings?",
+  answers: [
+    { text: "Uranus", correct: false },
+    { text: "Jupiter", correct: false },
+    { text: "Saturn", correct: true },
+    { text: "Neptune", correct: false }
+  ]
+},
+{
+  question: "Which famous structure can be found in Agra, India?",
+  answers: [
+    { text: "Eiffel Tower", correct: false },
+    { text: "Taj Mahal", correct: true },
+    { text: "Colosseum", correct: false },
+    { text: "Big Ben", correct: false }
+  ]
+},
+{
+  question: "What is the main gas in Earth’s atmosphere?",
+  answers: [
+    { text: "Oxygen", correct: false },
+    { text: "Nitrogen", correct: true },
+    { text: "Carbon Dioxide", correct: false },
+    { text: "Hydrogen", correct: false }
+  ]
+},
+{
+  question: "What is the third planet from the Sun?",
+  answers: [
+    { text: "Mars", correct: false },
+    { text: "Earth", correct: true },
+    { text: "Venus", correct: false },
+    { text: "Jupiter", correct: false }
+  ]
+},
+{
+  question: "What is the term for animals that eat both plants and meat?",
+  answers: [
+    { text: "Herbivore", correct: false },
+    { text: "Carnivore", correct: false },
+    { text: "Omnivore", correct: true },
+    { text: "Insectivore", correct: false }
+  ]
+},
+
+{
+  question: "What is the tallest building in the world as of 2025?",
+  answers: [
+    { text: "Shanghai Tower", correct: false },
+    { text: "Burj Khalifa", correct: true },
+    { text: "Abraj Al-Bait Clock Tower", correct: false },
+    { text: "One World Trade Center", correct: false }
+  ]
+},
+{
+  question: "Which country is home to the Great Wall?",
+  answers: [
+    { text: "India", correct: false },
+    { text: "China", correct: true },
+    { text: "Japan", correct: false },
+    { text: "Thailand", correct: false }
+  ]
+},
+{
+  question: "Which U.S. president appears on the $1 bill?",
+  answers: [
+    { text: "Thomas Jefferson", correct: false },
+    { text: "George Washington", correct: true },
+    { text: "Abraham Lincoln", correct: false },
+    { text: "Andrew Jackson", correct: false }
+  ]
+},
+{
+  question: "What kind of animal is the largest living primate?",
+  answers: [
+    { text: "Chimpanzee", correct: false },
+    { text: "Gorilla", correct: true },
+    { text: "Orangutan", correct: false },
+    { text: "Baboon", correct: false }
+  ]
+},
+{
+  question: "What is the capital of Argentina?",
+  answers: [
+    { text: "Lima", correct: false },
+    { text: "Santiago", correct: false },
+    { text: "Buenos Aires", correct: true },
+    { text: "Montevideo", correct: false }
+  ]
+},
+{
+  question: "What is the main ingredient in hummus?",
+  answers: [
+    { text: "Lentils", correct: false },
+    { text: "Chickpeas", correct: true },
+    { text: "Kidney beans", correct: false },
+    { text: "Black beans", correct: false }
+  ]
+},
+{
+  question: "Which is the longest-running Broadway musical?",
+  answers: [
+    { text: "The Lion King", correct: false },
+    { text: "Chicago", correct: false },
+    { text: "The Phantom of the Opera", correct: true },
+    { text: "Les Misérables", correct: false }
+  ]
+},
+{
+  question: "What is the capital of Norway?",
+  answers: [
+    { text: "Copenhagen", correct: false },
+    { text: "Oslo", correct: true },
+    { text: "Helsinki", correct: false },
+    { text: "Stockholm", correct: false }
+  ]
+},
+{
+  question: "What part of the plant conducts photosynthesis?",
+  answers: [
+    { text: "Root", correct: false },
+    { text: "Stem", correct: false },
+    { text: "Leaf", correct: true },
+    { text: "Flower", correct: false }
+  ]
+},
+{
+  question: "Which Disney movie features a song called 'Let It Go'?",
+  answers: [
+    { text: "Moana", correct: false },
+    { text: "Frozen", correct: true },
+    { text: "Tangled", correct: false },
+    { text: "Encanto", correct: false }
+  ]
+},
+{
+  question: "What is a baby kangaroo called?",
+  answers: [
+    { text: "Cub", correct: false },
+    { text: "Joey", correct: true },
+    { text: "Calf", correct: false },
+    { text: "Kid", correct: false }
+  ]
+},
+{
+  question: "Which musical instrument has 88 keys?",
+  answers: [
+    { text: "Organ", correct: false },
+    { text: "Harp", correct: false },
+    { text: "Piano", correct: true },
+    { text: "Accordion", correct: false }
+  ]
+},
+{
+  question: "Which part of the body produces insulin?",
+  answers: [
+    { text: "Liver", correct: false },
+    { text: "Pancreas", correct: true },
+    { text: "Kidney", correct: false },
+    { text: "Gallbladder", correct: false }
+  ]
+},
+{
+  question: "Which country is known for the maple leaf symbol?",
+  answers: [
+    { text: "Australia", correct: false },
+    { text: "Canada", correct: true },
+    { text: "Sweden", correct: false },
+    { text: "Germany", correct: false }
+  ]
+},
+{
+  question: "What does the acronym NATO stand for?",
+  answers: [
+    { text: "National Allied Treaty Organization", correct: false },
+    { text: "North Atlantic Treaty Organization", correct: true },
+    { text: "Northern Atlantic Treaty Order", correct: false },
+    { text: "Nations Against Terrorist Operations", correct: false }
+  ]
+},
+{
+  question: "Which metal is most commonly used for electrical wiring?",
+  answers: [
+    { text: "Iron", correct: false },
+    { text: "Copper", correct: true },
+    { text: "Aluminum", correct: false },
+    { text: "Gold", correct: false }
+  ]
+},
+{
+  question: "How many stripes are there on the U.S. flag?",
+  answers: [
+    { text: "10", correct: false },
+    { text: "12", correct: false },
+    { text: "13", correct: true },
+    { text: "15", correct: false }
+  ]
+},
+{
+  question: "What is the Roman numeral for 50?",
+  answers: [
+    { text: "X", correct: false },
+    { text: "L", correct: true },
+    { text: "C", correct: false },
+    { text: "V", correct: false }
+  ]
+},
+{
+  question: "Which is the only planet that rotates clockwise?",
+  answers: [
+    { text: "Mercury", correct: false },
+    { text: "Venus", correct: true },
+    { text: "Earth", correct: false },
+    { text: "Mars", correct: false }
+  ]
+},
+{
+  question: "What is the chemical symbol for potassium?",
+  answers: [
+    { text: "P", correct: false },
+    { text: "Po", correct: false },
+    { text: "K", correct: true },
+    { text: "Pt", correct: false }
+  ]
+},
+{
+  question: "What year did man first land on the moon?",
+  answers: [
+    { text: "1965", correct: false },
+    { text: "1969", correct: true },
+    { text: "1971", correct: false },
+    { text: "1959", correct: false }
+  ]
+},
+{
+  question: "What is sushi traditionally wrapped in?",
+  answers: [
+    { text: "Rice paper", correct: false },
+    { text: "Seaweed", correct: true },
+    { text: "Lettuce", correct: false },
+    { text: "Plastic", correct: false }
+  ]
+},
+{
+  question: "Which famous tower is found in Italy?",
+  answers: [
+    { text: "Eiffel Tower", correct: false },
+    { text: "Leaning Tower of Pisa", correct: true },
+    { text: "CN Tower", correct: false },
+    { text: "Tokyo Tower", correct: false }
+  ]
+},
+{
+  question: "What is the boiling point of water in Fahrenheit?",
+  answers: [
+    { text: "100°F", correct: false },
+    { text: "212°F", correct: true },
+    { text: "180°F", correct: false },
+    { text: "98.6°F", correct: false }
+  ]
+},
+{
+  question: "How many sides does a hexagon have?",
+  answers: [
+    { text: "5", correct: false },
+    { text: "6", correct: true },
+    { text: "7", correct: false },
+    { text: "8", correct: false }
+  ]
+},
+{
+  question: "Which color is a primary color?",
+  answers: [
+    { text: "Green", correct: false },
+    { text: "Red", correct: true },
+    { text: "Purple", correct: false },
+    { text: "Orange", correct: false }
+  ]
+},
+{
+  question: "Which is the coldest continent?",
+  answers: [
+    { text: "Europe", correct: false },
+    { text: "Antarctica", correct: true },
+    { text: "North America", correct: false },
+    { text: "Asia", correct: false }
+  ]
+},
+{
+  question: "Who is the main character in 'The Legend of Zelda' series?",
+  answers: [
+    { text: "Zelda", correct: false },
+    { text: "Link", correct: true },
+    { text: "Mario", correct: false },
+    { text: "Samus", correct: false }
+  ]
+},
+{
+  question: "What gas do humans need to breathe?",
+  answers: [
+    { text: "Carbon Dioxide", correct: false },
+    { text: "Oxygen", correct: true },
+    { text: "Hydrogen", correct: false },
+    { text: "Helium", correct: false }
+  ]
+}
+
+];
+
+const questionContainer = document.getElementById('question-container');
+const questionEl = document.getElementById('question');
+const answerButtonsEl = document.getElementById('answer-buttons');
+const nextBtn = document.getElementById('next-btn');
+const scoreEl = document.getElementById('score');
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function startGame() {
+  shuffle(questions); // Randomize question order
+  currentQuestionIndex = 0;
+  score = 0;
+  nextBtn.innerText = 'Next';
+  showQuestion();
+}
+
+function showQuestion() {
+  resetState();
+  const currentQuestion = questions[currentQuestionIndex];
+  questionEl.innerText = currentQuestion.question;
+
+  currentQuestion.answers.forEach(answer => {
+    const button = document.createElement('button');
+    button.innerText = answer.text;
+    button.classList.add('btn');
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener('click', selectAnswer);
+    answerButtonsEl.appendChild(button);
+  });
+}
+
+function resetState() {
+  nextBtn.style.display = 'none';
+  while (answerButtonsEl.firstChild) {
+    answerButtonsEl.removeChild(answerButtonsEl.firstChild);
+  }
+}
+
+function selectAnswer(e) {
+  const selectedBtn = e.target;
+  const correct = selectedBtn.dataset.correct === 'true';
+
+  if (correct) {
+    selectedBtn.classList.add('correct');
+    score++;
+  } else {
+    selectedBtn.classList.add('wrong');
+  }
+
+  Array.from(answerButtonsEl.children).forEach(button => {
+    button.disabled = true;
+    if (button.dataset.correct === 'true') {
+      button.classList.add('correct');
+    }
+  });
+
+  nextBtn.style.display = 'inline-block';
+  scoreEl.innerText = `Score: ${score}`;
+}
+
+nextBtn.addEventListener('click', () => {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
+});
+
+function showScore() {
+  resetState();
+  questionEl.innerText = `🎉 You scored ${score} out of ${questions.length}!`;
+  nextBtn.innerText = 'Play Again';
+  nextBtn.style.display = 'inline-block';
+  nextBtn.addEventListener('click', startGame);
+}
+
+startGame();
+
+  </script>
+</body>
+</html>

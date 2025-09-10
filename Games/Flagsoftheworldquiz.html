@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flags Of The World Quiz</title>
+  <meta name="description" content="Test your geography knowledge with our interactive Flags of the World Quiz! Identify country flags, learn fascinating facts, and challenge friends. Free online quiz with 195+ world flags.">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .logo img {
+      height: 2.5rem;
+      width: 3rem;
+    }
+    
+  /* NAVBAR STYLES */
+  nav {
+      color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+
+    /* Popup overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .question-box {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+    .question {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .question img {
+      max-width: 100%;
+      max-height: 200px;
+      display: block;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .correct {
+      background-color: #d4edda !important;
+    }
+    .incorrect {
+      background-color: #f8d7da !important;
+    }
+    .score-box {
+      background-color: #fff3cd;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .clue {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+    .image{
+    width: 100%;
+    display: block;
+}
+
+/* footer */
+footer{
+    background: var(--exDark);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+.social-links a{
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover{
+    background: #fff;
+    color: var(--exDark);
+}
+.footer span{
+    margin-top: 1rem;
+    display: block;
+    font-family: var(--Playfair);
+    letter-spacing: 2px;
+}
+
+    /* MOBILE NAV STYLES */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><img src="/Images/Main Logo.png" alt="Main KitsoForYou Logo" /></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="/index.html">Home</a>
+        <a href="">Shopping</a>
+        <a href="/index.html#design">Games</a>
+        <a href="/index.html#blog">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+<h1>Flags Of The World Quiz</h1>
+<div id="quiz-container"></div>
+<div id="score-container"></div>
+
+  <!-- Popup container -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup">
+      <img src="Images/Mr Moo country popup.png" alt="Popup Image" />
+    </div>
+  </div>
+
+    <!-- footer -->
+    <footer>
+      <div class = "social-links">
+        <a href = "#"><i class = "fab fa-facebook-f"></i></a>
+        <a href = "#"><i class = "fab fa-twitter"></i></a>
+        <a href = "#"><i class = "fab fa-instagram"></i></a>
+        <a href = "#"><i class = "fab fa-pinterest"></i></a>
+      </div>
+      <span>Copyright &#169; 2025. All rights reserved</span>
+
+    </footer>
+    <!-- end of footer -->
+
+<script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    });
+
+    // Optional: Automatically close after a few seconds
+    // setTimeout(() => {
+    //   document.getElementById('popup').style.display = 'none';
+    // }, 5000); // closes after 5 seconds
+
+        // Navbar toggle logic
+        const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+  const allQuestions = [
+  {
+  question: "",
+  answer: "Afghanistan",
+  image: "Images/Afghanistan.png",
+  clue1: "This country has Kabul as its capital.",
+  clue2: "It's known for the Hindu Kush mountains."
+},
+{
+  question: "",
+  answer: "Albania",
+  image: "Images/Albania.png",
+  clue1: "Its capital is Tirana.",
+  clue2: "Located on the Balkan Peninsula."
+},
+{
+  question: "",
+  answer: "Algeria",
+  image: "Images/Algeria.png",
+  clue1: "It's Africa's largest country by area.",
+  clue2: "Its capital is Algiers."
+},
+{
+  question: "",
+  answer: "Andorra",
+  image: "Images/Andorra.png",
+  clue1: "A tiny country in the Pyrenees mountains.",
+  clue2: "Between France and Spain."
+},
+{
+  question: "",
+  answer: "Angola",
+  image: "Images/Angola.png",
+  clue1: "Its capital is Luanda.",
+  clue2: "It's in southwestern Africa."
+},
+{
+  question: "",
+  answer: "Antarctica",
+  image: "Images/Antarctica.png",
+  clue1: "No permanent residents live here.",
+  clue2: "It's Earth's coldest continent."
+},
+{
+  question: "",
+  answer: "Antigua and Barbuda",
+  image: "Images/Antigua And Barbuda.png",
+  clue1: "A Caribbean nation of two main islands.",
+  clue2: "Its capital is St. John's."
+},
+{
+  question: "",
+  answer: "Argentina",
+  image: "Images/Argentina.png",
+  clue1: "Home to tango music.",
+  clue2: "Its capital is Buenos Aires."
+},
+{
+  question: "",
+  answer: "Armenia",
+  image: "Images/Armenia.png",
+  clue1: "One of the world's oldest Christian countries.",
+  clue2: "Its capital is Yerevan."
+},
+{
+  question: "",
+  answer: "Artsakh",
+  image: "Images/Artsakh.png",
+  clue1: "A disputed region mostly inhabited by Armenians.",
+  clue2: "Also known as Nagorno-Karabakh."
+},
+{
+  question: "",
+  answer: "Australia",
+  image: "Images/Australia.png",
+  clue1: "Home to kangaroos and koalas.",
+  clue2: "Its capital is Canberra."
+},
+{
+  question: "",
+  answer: "Austria",
+  image: "Images/Austria.png",
+  clue1: "Famous for classical composers like Mozart.",
+  clue2: "Its capital is Vienna."
+},
+{
+  question: "",
+  answer: "Azerbaijan",
+  image: "Images/Azerbaijan.png",
+  clue1: "Its capital is Baku.",
+  clue2: "It's on the Caspian Sea."
+},
+{
+  question: "",
+  answer: "Burundi",
+  image: "Images/Burundi.png",
+  clue1: "A small country in East Africa.",
+  clue2: "Its capital is Gitega."
+},
+{
+  question: "",
+  answer: "Burkina Faso",
+  image: "Images/Burkina Faso.png",
+  clue1: "A landlocked country in West Africa.",
+  clue2: "Its capital is Ouagadougou."
+},
+{
+  question: "",
+  answer: "Bulgaria",
+  image: "Images/Bulgaria.png",
+  clue1: "A Balkan country with Sofia as its capital.",
+  clue2: "Famous for rose oil production."
+},
+{
+  question: "",
+  answer: "Brunei",
+  image: "Images/Brunei.png",
+  clue1: "A tiny wealthy sultanate on Borneo.",
+  clue2: "Its capital is Bandar Seri Begawan."
+},
+{
+  question: "",
+  answer: "Brazil",
+  image: "Images/Brazil.png",
+  clue1: "Largest country in South America.",
+  clue2: "Home to the Amazon rainforest."
+},
+{
+  question: "",
+  answer: "Botswana",
+  image: "Images/Botswana.png",
+  clue1: "Known for the Okavango Delta.",
+  clue2: "Its capital is Gaborone."
+},
+{
+  question: "",
+  answer: "Bosnia and Herzegovina",
+  image: "Images/Bosnia_and_Herzegovina.png",
+  clue1: "A Balkan country with Sarajevo as its capital.",
+  clue2: "It declared independence from Yugoslavia in the 1990s."
+},
+{
+  question: "",
+  answer: "Bolivia",
+  image: "Images/Bolivia.png",
+  clue1: "A landlocked country in South America.",
+  clue2: "Home to Lake Titicaca."
+},
+{
+  question: "",
+  answer: "Bhutan",
+  image: "Images/Bhutan.png",
+  clue1: "A Himalayan kingdom.",
+  clue2: "Its capital is Thimphu."
+},
+{
+  question: "",
+  answer: "Benin",
+  image: "Images/Benin.png",
+  clue1: "A country in West Africa.",
+  clue2: "Its capital is Porto-Novo."
+},
+{
+  question: "",
+  answer: "Belize",
+  image: "Images/Belize.png",
+  clue1: "The only country in Central America where English is the official language.",
+  clue2: "Famous for its barrier reef."
+},
+{
+  question: "",
+  answer: "Belgium",
+  image: "Images/Belgium.png",
+  clue1: "Famous for chocolate and waffles.",
+  clue2: "Its capital is Brussels."
+},
+{
+  question: "",
+  answer: "Belarus",
+  image: "Images/Belarus.png",
+  clue1: "A landlocked country in Eastern Europe.",
+  clue2: "Its capital is Minsk."
+},
+{
+  question: "",
+  answer: "Barbados",
+  image: "Images/Barbados.png",
+  clue1: "An island country in the Caribbean.",
+  clue2: "Its capital is Bridgetown."
+},
+{
+  question: "",
+  answer: "Bangladesh",
+  image: "Images/Bangladesh.png",
+  clue1: "Has the world's largest river delta.",
+  clue2: "Its capital is Dhaka."
+},
+{
+  question: "",
+  answer: "Bahrain",
+  image: "Images/Bahrain.png",
+  clue1: "An island nation in the Persian Gulf.",
+  clue2: "Its capital is Manama."
+},
+{
+  question: "",
+  answer: "Bahamas",
+  image: "Images/Bahamas.png",
+  clue1: "An island chain near Florida.",
+  clue2: "Its capital is Nassau."
+},
+{
+  question: "",
+  answer: "Cambodia",
+  image: "Images/Cambodia.png",
+  clue1: "Home to the famous Angkor Wat temple.",
+  clue2: "Its capital is Phnom Penh."
+},
+{
+  question: "",
+  answer: "Cameroon",
+  image: "Images/Cameroon.png",
+  clue1: "Known as 'Africa in Miniature'.",
+  clue2: "Its capital is Yaoundé."
+},
+{
+  question: "",
+  answer: "Canada",
+  image: "Images/Canada.png",
+  clue1: "The second-largest country by land area.",
+  clue2: "Its capital is Ottawa."
+},
+{
+  question: "",
+  answer: "Cape Verde",
+  image: "Images/Cape Verde.png",
+  clue1: "An island country off West Africa’s coast.",
+  clue2: "Its capital is Praia."
+},
+{
+  question: "",
+  answer: "Central African Republic",
+  image: "Images/Central_African_Republic.png",
+  clue1: "A landlocked country in the heart of Africa.",
+  clue2: "Its capital is Bangui."
+},
+{
+  question: "",
+  answer: "Chad",
+  image: "Images/Chad.png",
+  clue1: "Named after a large lake it shares.",
+  clue2: "Its capital is N'Djamena."
+},
+{
+  question: "",
+  answer: "Chile",
+  image: "Images/Chile.png",
+  clue1: "A long narrow country along South America’s west coast.",
+  clue2: "Its capital is Santiago."
+},
+{
+  question: "",
+  answer: "Colombia",
+  image: "Images/Colombia.png",
+  clue1: "A South American country known for coffee.",
+  clue2: "Its capital is Bogotá."
+},
+{
+  question: "",
+  answer: "Comoros",
+  image: "Images/Comoros.png",
+  clue1: "An island nation off Africa’s east coast.",
+  clue2: "Its capital is Moroni."
+},
+{
+  question: "",
+  answer: "Cook Islands",
+  image: "Images/Cook Islands.png",
+  clue1: "A group of islands in the South Pacific.",
+  clue2: "In free association with New Zealand."
+},
+{
+  question: "",
+  answer: "Costa Rica",
+  image: "Images/Costa Rica.png",
+  clue1: "Famous for rainforests and eco-tourism.",
+  clue2: "Its capital is San José."
+},
+{
+  question: "",
+  answer: "Côte d'Ivoire",
+  image: "Images/Côte_dIvoire.png",
+  clue1: "Also known as Ivory Coast.",
+  clue2: "Its capital is Yamoussoukro."
+},
+{
+  question: "",
+  answer: "Croatia",
+  image: "Images/Croatia.png",
+  clue1: "A Balkan country with a stunning Adriatic coastline.",
+  clue2: "Its capital is Zagreb."
+},
+{
+  question: "",
+  answer: "Cuba",
+  image: "Images/Cuba.png",
+  clue1: "An island nation near Florida known for cigars.",
+  clue2: "Its capital is Havana."
+},
+{
+  question: "",
+  answer: "Cyprus",
+  image: "Images/Cyprus.png",
+  clue1: "An island country in the eastern Mediterranean.",
+  clue2: "Its capital is Nicosia."
+},
+{
+  question: "",
+  answer: "Czech Republic",
+  image: "Images/Czech Republic.png",
+  clue1: "Known for Prague and medieval castles.",
+  clue2: "Also called Czechia."
+},
+{
+  question: "",
+  answer: "Democratic Republic of Congo",
+  image: "Images/Democratic_Republic_of_Congo.png",
+  clue1: "Second-largest country in Africa by area.",
+  clue2: "Its capital is Kinshasa."
+},
+{
+  question: "",
+  answer: "Denmark",
+  image: "Images/Denmark.png",
+  clue1: "A Scandinavian country famous for Vikings.",
+  clue2: "Its capital is Copenhagen."
+},
+{
+  question: "",
+  answer: "Djibouti",
+  image: "Images/Djibouti.png",
+  clue1: "A small country on Africa's Horn.",
+  clue2: "Its capital is also called Djibouti."
+},
+{
+  question: "",
+  answer: "Dominica",
+  image: "Images/Dominica.png",
+  clue1: "A Caribbean island known as the 'Nature Island'.",
+  clue2: "Its capital is Roseau."
+},
+
+{
+  question: "",
+  answer: "Dominican Republic",
+  image: "Images/Dominican_Republic.png",
+  clue1: "Shares the island of Hispaniola with Haiti.",
+  clue2: "Its capital is Santo Domingo."
+},
+{
+  question: "",
+  answer: "East Timor",
+  image: "Images/East Timor.png",
+  clue1: "Also called Timor-Leste.",
+  clue2: "One of the youngest countries in Southeast Asia."
+},
+{
+  question: "",
+  answer: "Ecuador",
+  image: "Images/Ecuador.png",
+  clue1: "Named after the equator.",
+  clue2: "Its capital is Quito."
+},
+{
+  question: "",
+  answer: "Egypt",
+  image: "Images/Egypt.png",
+  clue1: "Famous for pyramids and the Nile River.",
+  clue2: "Its capital is Cairo."
+},
+{
+  question: "",
+  answer: "El Salvador",
+  image: "Images/El_Salvador.png",
+  clue1: "The smallest country in Central America.",
+  clue2: "Its capital is San Salvador."
+},
+{
+  question: "",
+  answer: "England",
+  image: "Images/England.png",
+  clue1: "Part of the United Kingdom.",
+  clue2: "Its capital is London."
+},
+{
+  question: "",
+  answer: "Equatorial Guinea",
+  image: "Images/Equatorial_Guinea.png",
+  clue1: "An oil-rich country in Central Africa.",
+  clue2: "Its capital is Malabo."
+},
+{
+  question: "",
+  answer: "Eritrea",
+  image: "Images/Eritrea.png",
+  clue1: "Located in the Horn of Africa.",
+  clue2: "Its capital is Asmara."
+},
+{
+  question: "",
+  answer: "Estonia",
+  image: "Images/Estonia.png",
+  clue1: "A Baltic nation known for digital innovation.",
+  clue2: "Its capital is Tallinn."
+},
+{
+  question: "",
+  answer: "Eswatini",
+  image: "Images/Eswatini.png",
+  clue1: "Formerly known as Swaziland.",
+  clue2: "A small monarchy in Southern Africa."
+},
+{
+  question: "",
+  answer: "Ethiopia",
+  image: "Images/image61.png",
+  clue1: "Known as the birthplace of coffee.",
+  clue2: "Its capital is Addis Ababa."
+},
+{
+  question: "",
+  answer: "Federated States of Micronesia",
+  image: "Images/Federated_States_of_Micronesia.png",
+  clue1: "An island nation in the western Pacific Ocean.",
+  clue2: "Its capital is Palikir."
+},
+{
+  question: "",
+  answer: "Fiji",
+  image: "Images/Fiji.png",
+  clue1: "A popular island nation for tropical vacations.",
+  clue2: "Its capital is Suva."
+},
+{
+  question: "",
+  answer: "Finland",
+  image: "Images/Finland.png",
+  clue1: "A Nordic country famous for saunas.",
+  clue2: "Its capital is Helsinki."
+},
+{
+  question: "",
+  answer: "France",
+  image: "Images/France.png",
+  clue1: "Famous for the Eiffel Tower and wine.",
+  clue2: "Its capital is Paris."
+},
+{
+  question: "",
+  answer: "Gabon",
+  image: "Images/Gabon.png",
+  clue1: "An oil-rich country in Central Africa.",
+  clue2: "Its capital is Libreville."
+},
+{
+  question: "",
+  answer: "Gambia",
+  image: "Images/image67.png",
+  clue1: "The smallest country on mainland Africa.",
+  clue2: "Its capital is Banjul."
+},
+{
+  question: "",
+  answer: "Georgia",
+  image: "Images/Georgia.png",
+  clue1: "A country at the crossroads of Europe and Asia.",
+  clue2: "Its capital is Tbilisi."
+},
+{
+  question: "",
+  answer: "Germany",
+  image: "Images/Germany.png",
+  clue1: "Known for Oktoberfest and cars like BMW.",
+  clue2: "Its capital is Berlin."
+},
+{
+  question: "",
+  answer: "Ghana",
+  image: "Images/Ghana.png",
+  clue1: "A West African country with a gold-rich history.",
+  clue2: "Its capital is Accra."
+},
+{
+  question: "",
+  answer: "Greece",
+  image: "Images/Greece.png",
+  clue1: "Known for ancient ruins and islands like Santorini.",
+  clue2: "Its capital is Athens."
+},
+{
+  question: "",
+  answer: "Grenada",
+  image: "Images/Grenada.png",
+  clue1: "A Caribbean island nicknamed the ‘Spice Isle’.",
+  clue2: "Its capital is St. George’s."
+},
+{
+  question: "",
+  answer: "Guatemala",
+  image: "Images/Gautemala.png",
+  clue1: "Home to ancient Mayan ruins like Tikal.",
+  clue2: "Its capital is Guatemala City."
+},
+{
+  question: "",
+  answer: "Guinea",
+  image: "Images/Guinea.png",
+  clue1: "A coastal country in West Africa.",
+  clue2: "Its capital is Conakry."
+},
+{
+  question: "",
+  answer: "Guinea-Bissau",
+  image: "Images/Guinea-Bissau.png",
+  clue1: "A small country in West Africa.",
+  clue2: "Its capital is Bissau."
+},
+
+{
+  question: "",
+  answer: "Guyana",
+  image: "Images/Guyana.png",
+  clue1: "The only English-speaking country in South America.",
+  clue2: "Its capital is Georgetown."
+},
+{
+  question: "",
+  answer: "Haiti",
+  image: "Images/Haiti.png",
+  clue1: "Shares an island with the Dominican Republic.",
+  clue2: "Its capital is Port-au-Prince."
+},
+{
+  question: "",
+  answer: "Honduras",
+  image: "Images/Honduras.png",
+  clue1: "A Central American country with Caribbean beaches.",
+  clue2: "Its capital is Tegucigalpa."
+},
+{
+  question: "",
+  answer: "Hong Kong",
+  image: "Images/Hong Kong.png",
+  clue1: "A Special Administrative Region of China.",
+  clue2: "Famous for its skyscraper skyline."
+},
+{
+  question: "",
+  answer: "Hungary",
+  image: "Images/Hungary.png",
+  clue1: "A Central European country known for the Danube River.",
+  clue2: "Its capital is Budapest."
+},
+{
+  question: "",
+  answer: "Iceland",
+  image: "Images/Iceland.png",
+  clue1: "A Nordic island known for volcanoes and geysers.",
+  clue2: "Its capital is Reykjavik."
+},
+{
+  question: "",
+  answer: "India",
+  image: "Images/India.png",
+  clue1: "Second most populous country in the world.",
+  clue2: "Its capital is New Delhi."
+},
+{
+  question: "",
+  answer: "Indonesia",
+  image: "Images/Indonesia.png",
+  clue1: "World's largest island country.",
+  clue2: "Its capital is Jakarta."
+},
+{
+  question: "",
+  answer: "Iran",
+  image: "Images/Iran.png",
+  clue1: "Also known historically as Persia.",
+  clue2: "Its capital is Tehran."
+},
+{
+  question: "",
+  answer: "Iraq",
+  image: "Images/Iraq.png",
+  clue1: "Home to ancient Mesopotamia.",
+  clue2: "Its capital is Baghdad."
+},
+{
+  question: "",
+  answer: "Ireland",
+  image: "Images/Ireland.png",
+  clue1: "An island country known as the Emerald Isle.",
+  clue2: "Its capital is Dublin."
+},
+{
+  question: "",
+  answer: "Israel",
+  image: "Images/Israel.png",
+  clue1: "A Middle Eastern country with Jerusalem as its capital.",
+  clue2: "Home to sacred sites for Judaism, Christianity, and Islam."
+},
+{
+  question: "",
+  answer: "Italy",
+  image: "Images/Italy.png",
+  clue1: "Shaped like a boot on the map.",
+  clue2: "Its capital is Rome."
+},
+{
+  question: "",
+  answer: "Jamaica",
+  image: "Images/Jamaica.png",
+  clue1: "A Caribbean island famous for reggae music.",
+  clue2: "Its capital is Kingston."
+},
+{
+  question: "",
+  answer: "Japan",
+  image: "Images/Japan.png",
+  clue1: "An East Asian island nation known for sushi and samurai.",
+  clue2: "Its capital is Tokyo."
+},
+{
+  question: "",
+  answer: "Jordan",
+  image: "Images/Jordan.png",
+  clue1: "Home to the ancient city of Petra.",
+  clue2: "Its capital is Amman."
+},
+{
+  question: "",
+  answer: "Kazakhstan",
+  image: "Images/Kazakhstan.png",
+  clue1: "The largest landlocked country in the world.",
+  clue2: "Its capital is Astana (also called Nur-Sultan)."
+},
+{
+  question: "",
+  answer: "Kenya",
+  image: "Images/Kenya.png",
+  clue1: "Famous for safaris and Mount Kenya.",
+  clue2: "Its capital is Nairobi."
+},
+{
+  question: "",
+  answer: "Kiribati",
+  image: "Images/Kiribati.png",
+  clue1: "A Pacific island country spread over the equator.",
+  clue2: "Its capital is South Tarawa."
+},
+{
+  question: "",
+  answer: "Kosovo",
+  image: "Images/Kosovo.png",
+  clue1: "Europe's newest country, declared independence in 2008.",
+  clue2: "Its capital is Pristina."
+},
+{
+  question: "",
+  answer: "Kuwait",
+  image: "Images/Kuwait.png",
+  clue1: "A small, oil-rich country on the Persian Gulf.",
+  clue2: "Its capital is Kuwait City."
+},
+{
+  question: "",
+  answer: "Kyrgyzstan",
+  image: "Images/Kyrgyzstan.png",
+  clue1: "A Central Asian country known for its mountains.",
+  clue2: "Its capital is Bishkek."
+},
+{
+  question: "",
+  answer: "Laos",
+  image: "Images/Laos.png",
+  clue1: "A landlocked country in Southeast Asia.",
+  clue2: "Its capital is Vientiane."
+},
+{
+  question: "",
+  answer: "Latvia",
+  image: "Images/Latvia.png",
+  clue1: "One of the Baltic states.",
+  clue2: "Its capital is Riga."
+},
+{
+  question: "",
+  answer: "Lebanon",
+  image: "Images/Labanon.png",
+  clue1: "A Middle Eastern country on the Mediterranean coast.",
+  clue2: "Its capital is Beirut."
+},
+
+{
+  question: "",
+  answer: "Lesotho",
+  image: "Images/Lesotho.png",
+  clue1: "A landlocked country entirely surrounded by South Africa.",
+  clue2: "Its capital is Maseru."
+},
+{
+  question: "",
+  answer: "Liberia",
+  image: "Images/Liberia.png",
+  clue1: "Founded by freed American slaves.",
+  clue2: "Its capital is Monrovia."
+},
+{
+  question: "",
+  answer: "Libya",
+  image: "Images/Libya.png",
+  clue1: "A North African country with a large desert.",
+  clue2: "Its capital is Tripoli."
+},
+{
+  question: "",
+  answer: "Liechtenstein",
+  image: "Images/Liechtenstein.png",
+  clue1: "A tiny alpine country between Switzerland and Austria.",
+  clue2: "Its capital is Vaduz."
+},
+{
+  question: "",
+  answer: "Lithuania",
+  image: "Images/Lithuania.png",
+  clue1: "One of the three Baltic States.",
+  clue2: "Its capital is Vilnius."
+},
+{
+  question: "",
+  answer: "Luxembourg",
+  image: "Images/Luxembourg.png",
+  clue1: "A small European country known for banking.",
+  clue2: "Its capital is Luxembourg City."
+},
+{
+  question: "",
+  answer: "Madagascar",
+  image: "Images/Madagascar.png",
+  clue1: "An island nation off Africa's southeast coast.",
+  clue2: "Known for unique wildlife like lemurs."
+},
+{
+  question: "",
+  answer: "Malawi",
+  image: "Images/Malawi.png",
+  clue1: "A landlocked country in southeastern Africa.",
+  clue2: "Known for its large freshwater lake."
+},
+{
+  question: "",
+  answer: "Malaysia",
+  image: "Images/Malaysia.png",
+  clue1: "Split between the Malay Peninsula and Borneo.",
+  clue2: "Its capital is Kuala Lumpur."
+},
+{
+  question: "",
+  answer: "Maldives",
+  image: "Images/Maldives.png",
+  clue1: "An island nation in the Indian Ocean.",
+  clue2: "Famous for luxury resorts and coral reefs."
+},
+{
+  question: "",
+  answer: "Mali",
+  image: "Images/Mali.png",
+  clue1: "A West African country once home to Timbuktu.",
+  clue2: "Its capital is Bamako."
+},
+{
+  question: "",
+  answer: "Malta",
+  image: "Images/Malta.png",
+  clue1: "A small island country in the Mediterranean.",
+  clue2: "Its capital is Valletta."
+},
+{
+  question: "",
+  answer: "Marshall Islands",
+  image: "Images/Marshall Islands.png",
+  clue1: "A Pacific island country known for WWII battles.",
+  clue2: "Its capital is Majuro."
+},
+{
+  question: "",
+  answer: "Mauritania",
+  image: "Images/Mauritania.png",
+  clue1: "A West African country mostly covered by desert.",
+  clue2: "Its capital is Nouakchott."
+},
+{
+  question: "",
+  answer: "Mauritius",
+  image: "Images/Mauritius.png",
+  clue1: "An island nation east of Madagascar.",
+  clue2: "Its capital is Port Louis."
+},
+{
+  question: "",
+  answer: "Mexico",
+  image: "Images/Mexico.png",
+  clue1: "Shares a border with the United States.",
+  clue2: "Its capital is Mexico City."
+},
+{
+  question: "",
+  answer: "Moldova",
+  image: "Images/Maldova.png",
+  clue1: "A landlocked country between Romania and Ukraine.",
+  clue2: "Its capital is Chișinău."
+},
+{
+  question: "",
+  answer: "Monaco",
+  image: "Images/Monaco.png",
+  clue1: "A tiny city-state famous for casinos and Formula 1.",
+  clue2: "Located on the French Riviera."
+},
+{
+  question: "",
+  answer: "Mongolia",
+  image: "Images/Mongolia.png",
+  clue1: "Known for Genghis Khan and vast steppes.",
+  clue2: "Its capital is Ulaanbaatar."
+},
+{
+  question: "",
+  answer: "Morocco",
+  image: "Images/Morocco.png",
+  clue1: "A North African country with cities like Marrakech.",
+  clue2: "Its capital is Rabat."
+},
+{
+  question: "",
+  answer: "Montenegro",
+  image: "Images/Montenegro.png",
+  clue1: "A Balkan country with stunning Adriatic coastlines.",
+  clue2: "Its capital is Podgorica."
+},
+{
+  question: "",
+  answer: "Mozambique",
+  image: "Images/Mozambique.png",
+  clue1: "An East African country with a long Indian Ocean coastline.",
+  clue2: "Its capital is Maputo."
+},
+{
+  question: "",
+  answer: "Myanmar",
+  image: "Images/Myanmar.png",
+  clue1: "Also known as Burma.",
+  clue2: "Its capital is Naypyidaw."
+},
+{
+  question: "",
+  answer: "Namibia",
+  image: "Images/Namibia.png",
+  clue1: "Home to the Namib Desert.",
+  clue2: "Its capital is Windhoek."
+},
+{
+  question: "",
+  answer: "Nauru",
+  image: "Images/Nauru.png",
+  clue1: "The world's third smallest country by area.",
+  clue2: "An island country in Micronesia."
+},
+
+{
+  question: "",
+  answer: "Netherlands",
+  image: "Images/image126.png",
+  clue1: "Known for tulips, windmills, and canals.",
+  clue2: "Its capital is Amsterdam."
+},
+{
+  question: "",
+  answer: "New Zealand",
+  image: "Images/New Zealand.png",
+  clue1: "An island country famous for the haka and hobbits.",
+  clue2: "Its capital is Wellington."
+},
+{
+  question: "",
+  answer: "Nicaragua",
+  image: "Images/Nicaragua.png",
+  clue1: "Largest country in Central America.",
+  clue2: "Its capital is Managua."
+},
+{
+  question: "",
+  answer: "Niger",
+  image: "Images/Niger.png",
+  clue1: "A landlocked country in West Africa named after a river.",
+  clue2: "Its capital is Niamey."
+},
+{
+  question: "",
+  answer: "Nigeria",
+  image: "Images/Nigeria.png",
+  clue1: "Africa's most populous country.",
+  clue2: "Its capital is Abuja."
+},
+{
+  question: "",
+  answer: "Niue",
+  image: "Images/Niue.png",
+  clue1: "A tiny island country in the South Pacific.",
+  clue2: "Known as 'The Rock of Polynesia'."
+},
+{
+  question: "",
+  answer: "North Korea",
+  image: "Images/North Korea.png",
+  clue1: "A reclusive country on the Korean Peninsula.",
+  clue2: "Its capital is Pyongyang."
+},
+{
+  question: "",
+  answer: "North Macedonia",
+  image: "Images/North Macedonia.png",
+  clue1: "A Balkan country that changed its name in 2019.",
+  clue2: "Its capital is Skopje."
+},
+{
+  question: "",
+  answer: "Norway",
+  image: "Images/Norway.png",
+  clue1: "A Scandinavian country famous for fjords.",
+  clue2: "Its capital is Oslo."
+},
+{
+  question: "",
+  answer: "Oman",
+  image: "Images/Oman.png",
+  clue1: "An Arabian country known for desert and coastlines.",
+  clue2: "Its capital is Muscat."
+},
+{
+  question: "",
+  answer: "Pakistan",
+  image: "Images/Pakistan.png",
+  clue1: "A South Asian country with the city of Karachi.",
+  clue2: "Its capital is Islamabad."
+},
+{
+  question: "",
+  answer: "Palau",
+  image: "Images/Palau.png",
+  clue1: "An island country in Micronesia, Pacific Ocean.",
+  clue2: "Its capital is Ngerulmud."
+},
+{
+  question: "",
+  answer: "Palestine",
+  image: "Images/Palastine.png",
+  clue1: "Recognized by some countries as a state.",
+  clue2: "Claims East Jerusalem as its capital."
+},
+{
+  question: "",
+  answer: "Panama",
+  image: "Images/Panama.png",
+  clue1: "Home to a famous canal connecting two oceans.",
+  clue2: "Its capital is Panama City."
+},
+{
+  question: "",
+  answer: "Papua New Guinea",
+  image: "Images/Papua New Guinea.png",
+  clue1: "Occupies the eastern half of the island of New Guinea.",
+  clue2: "Its capital is Port Moresby."
+},
+{
+  question: "",
+  answer: "Paraguay",
+  image: "Images/Paraguay.png",
+  clue1: "A landlocked country in South America.",
+  clue2: "Its capital is Asunción."
+},
+{
+  question: "",
+  answer: "Peoples Republic of China",
+  image: "Images/Peoples Republic Of China.png",
+  clue1: "The world's most populous country.",
+  clue2: "Its capital is Beijing."
+},
+{
+  question: "",
+  answer: "Peru",
+  image: "Images/Peru.png",
+  clue1: "Home to Machu Picchu and the Andes.",
+  clue2: "Its capital is Lima."
+},
+{
+  question: "",
+  answer: "Philippines",
+  image: "Images/Philippines.png",
+  clue1: "An archipelago in Southeast Asia with over 7,000 islands.",
+  clue2: "Its capital is Manila."
+},
+{
+  question: "",
+  answer: "Poland",
+  image: "Images/Poland.png",
+  clue1: "A Central European country known for pierogi.",
+  clue2: "Its capital is Warsaw."
+},
+{
+  question: "",
+  answer: "Portugal",
+  image: "Images/Portugal.png",
+  clue1: "Famous for port wine and explorers like Vasco da Gama.",
+  clue2: "Its capital is Lisbon."
+},
+{
+  question: "",
+  answer: "Qatar",
+  image: "Images/Qatar.png",
+  clue1: "A small but wealthy country on the Persian Gulf.",
+  clue2: "Its capital is Doha."
+},
+{
+  question: "",
+  answer: "Republic of Abkhazia",
+  image: "Images/Republic Of Abkhazia.png",
+  clue1: "A disputed territory on the Black Sea.",
+  clue2: "Claims Sukhumi as its capital."
+},
+{
+  question: "",
+  answer: "Republic of Congo",
+  image: "Images/Republic of Congo.png",
+  clue1: "Sometimes called Congo-Brazzaville.",
+  clue2: "Its capital is Brazzaville."
+},
+{
+  question: "",
+  answer: "Romania",
+  image: "Images/Romania.png",
+  clue1: "Home to Transylvania and legends of Dracula.",
+  clue2: "Its capital is Bucharest."
+},
+
+{
+  question: "",
+  answer: "Russia",
+  image: "Images/Russia.png",
+  clue1: "The world's largest country by land area.",
+  clue2: "Its capital is Moscow."
+},
+{
+  question: "",
+  answer: "Rwanda",
+  image: "Images/Rwanda.png",
+  clue1: "A landlocked country known as the ‘Land of a Thousand Hills’.",
+  clue2: "Its capital is Kigali."
+},
+{
+  question: "",
+  answer: "Sahrawi Arab Democratic Republic",
+  image: "Images/Sahrawi_Arab_Democratic_Republic.png",
+  clue1: "A partially recognized state in North Africa.",
+  clue2: "Also known as Western Sahara."
+},
+{
+  question: "",
+  answer: "Saint Kitts and Nevis",
+  image: "Images/Saint_Kitts_and_Nevis.png",
+  clue1: "The smallest sovereign state in the Western Hemisphere.",
+  clue2: "Its capital is Basseterre."
+},
+{
+  question: "",
+  answer: "Saint Lucia",
+  image: "Images/Saint_Lucia.png",
+  clue1: "A Caribbean island famous for the Pitons mountains.",
+  clue2: "Its capital is Castries."
+},
+{
+  question: "",
+  answer: "Saint Vincent and the Grenadines",
+  image: "Images/Saint_Vincent_and_the_Grenadines.png",
+  clue1: "A Caribbean nation made up of a main island and smaller ones.",
+  clue2: "Its capital is Kingstown."
+},
+{
+  question: "",
+  answer: "Samoa",
+  image: "Images/Samoa.png",
+  clue1: "An island country in the South Pacific Ocean.",
+  clue2: "Its capital is Apia."
+},
+{
+  question: "",
+  answer: "San Marino",
+  image: "Images/San_Marino.png",
+  clue1: "One of the world's oldest republics, surrounded by Italy.",
+  clue2: "Its capital shares its name with the country."
+},
+{
+  question: "",
+  answer: "Sao Tome and Principe",
+  image: "Images/Sao_Tome_and_Principe.png",
+  clue1: "An island nation near the equator in the Gulf of Guinea.",
+  clue2: "Its capital is São Tomé."
+},
+{
+  question: "",
+  answer: "Saudi Arabia",
+  image: "Images/Saudi_Arabia.png",
+  clue1: "Home to Islam's two holiest cities.",
+  clue2: "Its capital is Riyadh."
+},
+{
+  question: "",
+  answer: "Scotland",
+  image: "Images/Scotland.png",
+  clue1: "Part of the United Kingdom, famous for lochs and bagpipes.",
+  clue2: "Its capital is Edinburgh."
+},
+{
+  question: "",
+  answer: "Senegal",
+  image: "Images/Senegal.png",
+  clue1: "A West African country with a westernmost point on mainland Africa.",
+  clue2: "Its capital is Dakar."
+},
+{
+  question: "",
+  answer: "Serbia",
+  image: "Images/Serbia.png",
+  clue1: "A landlocked Balkan country.",
+  clue2: "Its capital is Belgrade."
+},
+{
+  question: "",
+  answer: "Seychelles",
+  image: "Images/Seychelles.png",
+  clue1: "An archipelago of 115 islands in the Indian Ocean.",
+  clue2: "Its capital is Victoria."
+},
+{
+  question: "",
+  answer: "Sierra Leone",
+  image: "Images/Sierra_Leone.png",
+  clue1: "A West African country with a history of diamond mining.",
+  clue2: "Its capital is Freetown."
+},
+{
+  question: "",
+  answer: "Singapore",
+  image: "Images/Singapore.png",
+  clue1: "A city-state island nation in Southeast Asia.",
+  clue2: "Known for Marina Bay Sands and its port."
+},
+{
+  question: "",
+  answer: "Slovakia",
+  image: "Images/Slovakia.png",
+  clue1: "A Central European country split from Czech Republic in 1993.",
+  clue2: "Its capital is Bratislava."
+},
+{
+  question: "",
+  answer: "Slovenia",
+  image: "Images/Slovenia.png",
+  clue1: "A European country with a short Adriatic coastline.",
+  clue2: "Its capital is Ljubljana."
+},
+{
+  question: "",
+  answer: "Solomon Islands",
+  image: "Images/image169.png",
+  clue1: "An archipelago nation in the South Pacific.",
+  clue2: "Its capital is Honiara."
+},
+{
+  question: "",
+  answer: "Somalia",
+  image: "Images/Somalia.png",
+  clue1: "A country in the Horn of Africa.",
+  clue2: "Its capital is Mogadishu."
+},
+{
+  question: "",
+  answer: "Somaliland",
+  image: "Images/Somaliland.png",
+  clue1: "A self-declared state internationally considered part of Somalia.",
+  clue2: "Its capital is Hargeisa."
+},
+{
+  question: "",
+  answer: "South Africa",
+  image: "Images/South Africa.png",
+  clue1: "Has three capital cities: Pretoria, Bloemfontein, and Cape Town.",
+  clue2: "Home to Table Mountain."
+},
+{
+  question: "",
+  answer: "South Korea",
+  image: "Images/South Korea.png",
+  clue1: "A country on the southern half of the Korean Peninsula.",
+  clue2: "Its capital is Seoul."
+},
+{
+  question: "",
+  answer: "South Ossetia",
+  image: "Images/South_Ossetia.png",
+  clue1: "A partially recognized state in the South Caucasus.",
+  clue2: "Claims Tskhinvali as its capital."
+},
+{
+  question: "",
+  answer: "South Sudan",
+  image: "Images/South Sudan.png",
+  clue1: "The world's newest country, independent since 2011.",
+  clue2: "Its capital is Juba."
+},
+
+{
+  question: "",
+  answer: "Spain",
+  image: "Images/Spain.png",
+  clue1: "A European country famous for flamenco and paella.",
+  clue2: "Its capital is Madrid."
+},
+{
+  question: "",
+  answer: "Sri Lanka",
+  image: "Images/Sri Lanka.png",
+  clue1: "An island nation south of India, known for tea and beaches.",
+  clue2: "Its capital is Colombo (official) and Sri Jayawardenepura Kotte (administrative)."
+},
+{
+  question: "",
+  answer: "Sudan",
+  image: "Images/Sudan.png",
+  clue1: "A North-East African country split into two in 2011.",
+  clue2: "Its capital is Khartoum."
+},
+{
+  question: "",
+  answer: "Suriname",
+  image: "Images/Suriname.png",
+  clue1: "The smallest country in South America by area.",
+  clue2: "Its capital is Paramaribo."
+},
+{
+  question: "",
+  answer: "Sweden",
+  image: "Images/Sweden.png",
+  clue1: "A Scandinavian country known for ABBA and IKEA.",
+  clue2: "Its capital is Stockholm."
+},
+{
+  question: "",
+  answer: "Switzerland",
+  image: "Images/Switzerland.png",
+  clue1: "A landlocked European country famous for chocolate and watches.",
+  clue2: "Its capital is Bern."
+},
+{
+  question: "",
+  answer: "Syria",
+  image: "Images/Syria.png",
+  clue1: "A Middle Eastern country with ancient cities like Damascus.",
+  clue2: "Its capital is Damascus."
+},
+{
+  question: "",
+  answer: "Taiwan",
+  image: "Images/Taiwan.png",
+  clue1: "An island known for Taipei 101 and technology companies.",
+  clue2: "Its capital is Taipei."
+},
+{
+  question: "",
+  answer: "Tajikistan",
+  image: "Images/Tajikistan.png",
+  clue1: "A mountainous, landlocked country in Central Asia.",
+  clue2: "Its capital is Dushanbe."
+},
+{
+  question: "",
+  answer: "Tanzania",
+  image: "Images/Tanzania.png",
+  clue1: "Home to Mount Kilimanjaro and Serengeti National Park.",
+  clue2: "Its capital is Dodoma."
+},
+{
+  question: "",
+  answer: "Thailand",
+  image: "Images/Thailand.png",
+  clue1: "A Southeast Asian country famous for beaches and temples.",
+  clue2: "Its capital is Bangkok."
+},
+{
+  question: "",
+  answer: "Togo",
+  image: "Images/Togo.png",
+  clue1: "A narrow country in West Africa on the Gulf of Guinea.",
+  clue2: "Its capital is Lomé."
+},
+{
+  question: "",
+  answer: "Tonga",
+  image: "Images/Tonga.png",
+  clue1: "A Polynesian kingdom of more than 170 South Pacific islands.",
+  clue2: "Its capital is Nuku'alofa."
+},
+{
+  question: "",
+  answer: "Transnistria",
+  image: "Images/Transnistria.png",
+  clue1: "A breakaway state along Moldova's eastern border.",
+  clue2: "Its capital is Tiraspol."
+},
+{
+  question: "",
+  answer: "Trinidad and Tobago",
+  image: "Images/Trinidad_and_Tobago.png",
+  clue1: "A twin-island Caribbean country famous for Carnival.",
+  clue2: "Its capital is Port of Spain."
+},
+{
+  question: "",
+  answer: "Tunisia",
+  image: "Images/Tunisia.png",
+  clue1: "A North African country known for ancient Carthage.",
+  clue2: "Its capital is Tunis."
+},
+{
+  question: "",
+  answer: "Turkey",
+  image: "Images/Turkey.png",
+  clue1: "A country spanning Europe and Asia.",
+  clue2: "Its largest city is Istanbul, but its capital is Ankara."
+},
+{
+  question: "",
+  answer: "Turkish Republic of Northern Cyprus",
+  image: "Images/Turkish_Republic_of_Northern_Cyprus.png",
+  clue1: "A self-declared state recognized only by Turkey.",
+  clue2: "Located in the northern part of Cyprus island."
+},
+{
+  question: "",
+  answer: "Turkmenistan",
+  image: "Images/Turkmenistan.png",
+  clue1: "A Central Asian country covered mostly by the Karakum Desert.",
+  clue2: "Its capital is Ashgabat."
+},
+{
+  question: "",
+  answer: "Tuvalu",
+  image: "Images/Tuvalu.png",
+  clue1: "One of the world's smallest countries in Oceania.",
+  clue2: "Its capital is Funafuti."
+},
+{
+  question: "",
+  answer: "Uganda",
+  image: "Images/Uganda.png",
+  clue1: "An East African country home to Lake Victoria.",
+  clue2: "Its capital is Kampala."
+},
+{
+  question: "",
+  answer: "Ukraine",
+  image: "Images/Ukraine.png",
+  clue1: "The second largest country in Europe by area.",
+  clue2: "Its capital is Kyiv."
+},
+{
+  question: "",
+  answer: "United Arab Emirates",
+  image: "Images/United_Arab_Emirates.png",
+  clue1: "A federation of seven emirates including Dubai and Abu Dhabi.",
+  clue2: "Its capital is Abu Dhabi."
+},
+{
+  question: "",
+  answer: "United Kingdom",
+  image: "Images/United Kingdom.png",
+  clue1: "Made up of England, Scotland, Wales, and Northern Ireland.",
+  clue2: "Its capital is London."
+},
+{
+  question: "",
+  answer: "United States",
+  image: "Images/United States.png",
+  clue1: "A North American country with 50 states.",
+  clue2: "Its capital is Washington, D.C."
+},
+
+{
+  question: "",
+  answer: "Uruguay",
+  image: "Images/Uruguay.png",
+  clue1: "A small South American country known for beaches and beef.",
+  clue2: "Its capital is Montevideo."
+},
+{
+  question: "",
+  answer: "Uzbekistan",
+  image: "Images/Uzbekistan.png",
+  clue1: "A Central Asian nation famous for the Silk Road city of Samarkand.",
+  clue2: "Its capital is Tashkent."
+},
+{
+  question: "",
+  answer: "Vanuatu",
+  image: "Images/Vanuatu.png",
+  clue1: "An island nation in the South Pacific, popular for diving.",
+  clue2: "Its capital is Port Vila."
+},
+{
+  question: "",
+  answer: "Vatican City",
+  image: "Images/Vatican_City.png",
+  clue1: "The world's smallest independent state.",
+  clue2: "It is home to the Pope and St. Peter’s Basilica."
+},
+{
+  question: "",
+  answer: "Venezuela",
+  image: "Images/Venezuela.png",
+  clue1: "A South American country with Angel Falls, the world’s highest waterfall.",
+  clue2: "Its capital is Caracas."
+},
+{
+  question: "",
+  answer: "Vietnam",
+  image: "Images/Vietnam.png",
+  clue1: "A Southeast Asian country famous for pho and Ha Long Bay.",
+  clue2: "Its capital is Hanoi."
+},
+{
+  question: "",
+  answer: "Wales",
+  image: "Images/Wales.png",
+  clue1: "A part of the United Kingdom, known for dragons and castles.",
+  clue2: "Its capital is Cardiff."
+},
+{
+  question: "",
+  answer: "Yemen",
+  image: "Images/Yemen.png",
+  clue1: "A Middle Eastern country at the southern tip of the Arabian Peninsula.",
+  clue2: "Its capital is Sana'a."
+},
+{
+  question: "",
+  answer: "Zambia",
+  image: "Images/Zambia.png",
+  clue1: "A landlocked country in Southern Africa, home to Victoria Falls.",
+  clue2: "Its capital is Lusaka."
+},
+{
+  question: "",
+  answer: "Zimbabwe",
+  image: "Images/Zimbabwe.png",
+  clue1: "A Southern African country known for Victoria Falls and ancient ruins.",
+  clue2: "Its capital is Harare."
+},
+
+    // Add more questions as needed
+  ];
+
+  let lastRoundQuestions = [];
+  let currentQuestions = [];
+  let answeredCount = 0;
+  let score = 0;
+  const attempts = {};
+  const finalAnswers = {};
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+function loadQuestions() {
+  const container = document.getElementById('quiz-container');
+  const scoreBox = document.getElementById('score-container');
+  scoreBox.innerHTML = '';
+  container.innerHTML = '';
+  answeredCount = 0;
+  score = 0;
+  Object.keys(finalAnswers).forEach(k => delete finalAnswers[k]);
+  Object.keys(attempts).forEach(k => delete attempts[k]);
+
+  // Filter out last round's questions
+  const filtered = allQuestions.filter(
+    q => !lastRoundQuestions.includes(q.question)
+  );
+
+  // If not enough unique questions, fall back to full list
+  const availablePool = filtered.length >= 5 ? filtered : [...allQuestions];
+
+// Filter out questions used in the last round
+const filteredQuestions = allQuestions.filter(
+  q => !lastRoundQuestions.includes(q.question)
+);
+
+// Fallback if not enough new ones
+const questionPool = filteredQuestions.length >= 5 ? filteredQuestions : allQuestions;
+
+// Shuffle and pick new questions
+currentQuestions = shuffle([...questionPool]).slice(0, 5);
+
+// Save current question texts to prevent repeats next round
+lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Save current questions to exclude next time
+  lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Render questions
+  currentQuestions.forEach((q, index) => {
+    const box = document.createElement('div');
+    box.className = 'question-box';
+    box.innerHTML = `
+      <div class="question">${index + 1}. ${q.question}</div>
+      ${q.image ? `<img src="${q.image}" alt="Question image">` : ""}
+      <input type="text" id="answer-${index}" placeholder="Type your answer" />
+      <button onclick="checkAnswer('${q.answer}', ${index}, this)">Check</button>
+      <div id="clue-${index}" class="clue"></div>
+    `;
+    container.appendChild(box);
+  });
+}
+
+
+  function checkAnswer(correctAnswer, index, button) {
+    const input = document.getElementById(`answer-${index}`);
+    const clueBox = document.getElementById(`clue-${index}`);
+    const userAnswer = input.value.trim().toLowerCase();
+    const correct = correctAnswer.trim().toLowerCase();
+
+    if (!attempts[index]) attempts[index] = 1;
+    else attempts[index]++;
+
+    if (userAnswer === correct) {
+      finalAnswers[index] = true;
+      disableInput(input, button);
+      clueBox.innerText = "";
+      answeredCount++;
+    } else {
+      if (attempts[index] === 1) {
+        clueBox.innerText = currentQuestions[index].clue1 || "";
+      } else if (attempts[index] === 2) {
+        clueBox.innerText = currentQuestions[index].clue2 || "";
+      } else {
+        finalAnswers[index] = false;
+        disableInput(input, button);
+        clueBox.innerText = "No more attempts.";
+        answeredCount++;
+      }
+    }
+
+    if (answeredCount === 5) {
+      evaluateScore();
+      setTimeout(loadQuestions, 10000);
+    }
+  }
+
+  function disableInput(input, button) {
+    input.disabled = true;
+    button.disabled = true;
+  }
+
+  function evaluateScore() {
+  let correctTotal = 0;
+  Object.keys(finalAnswers).forEach(index => {
+    const input = document.getElementById(`answer-${index}`);
+    if (finalAnswers[index]) {
+      input.classList.add('correct');
+      correctTotal++;
+    } else {
+      input.classList.add('incorrect');
+    }
+  });
+  score = correctTotal;
+  startCountdown(); // ← New countdown function
+}
+function startCountdown() {
+  const scoreBox = document.getElementById('score-container');
+  let countdown = 10;
+
+  scoreBox.innerHTML = `
+    <div class="score-box">
+      You scored ${score} out of 5!<br>
+      <span id="countdown">Next round in ${countdown}...</span>
+    </div>
+  `;
+
+  const interval = setInterval(() => {
+    countdown--;
+    document.getElementById('countdown').innerText = `Next round in ${countdown}...`;
+
+    if (countdown === 0) {
+      clearInterval(interval);
+      loadQuestions();
+    }
+  }, 1000);
+}
+
+
+  function showScore() {
+    const scoreBox = document.getElementById('score-container');
+    scoreBox.innerHTML = `<div class="score-box">You scored ${score} out of 5!<br>Shuffling new questions...</div>`;
+  }
+
+  loadQuestions();
+</script>
+
+</body>
+</html>

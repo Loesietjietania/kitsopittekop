@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rebus Puzzle game</title>
+  <meta name="description" content="Solve challenging rebus puzzles! Brain teasers using pictures, words, and symbols to decode hidden phrases. Test your logic with our free puzzle collection.">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    
+    .logo img {
+      height: 2.5rem;
+      width: 3rem;
+    }
+        /* NAVBAR STYLES */
+        nav {
+      color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+
+    /* Popup overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .question-box {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+    .question {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .question img {
+      max-width: 100%;
+      max-height: 200px;
+      display: block;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .correct {
+      background-color: #d4edda !important;
+    }
+    .incorrect {
+      background-color: #f8d7da !important;
+    }
+    .score-box {
+      background-color: #fff3cd;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .clue {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+    .image{
+    width: 100%;
+    display: block;
+}
+
+/* footer */
+footer{
+    background: var(--exDark);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+.social-links a{
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover{
+    background: #fff;
+    color: var(--exDark);
+}
+.footer span{
+    margin-top: 1rem;
+    display: block;
+    font-family: var(--Playfair);
+    letter-spacing: 2px;
+}
+
+    /* MOBILE NAV STYLES */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><img src="/Images/Main Logo.png" alt="Main KitsoForYou Logo" /></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="/index.html">Home</a>
+        <a href="">Shopping</a>
+        <a href="/index.html#design">Games</a>
+        <a href="/index.html#blog">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+<h1>Online Rebus Puzzle Game</h1>
+<div id="quiz-container"></div>
+<div id="score-container"></div>
+
+  <!-- Popup container -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup">
+      <img src="Images/Mr Moo popup final.png" alt="Popup Image" />
+    </div>
+  </div>
+
+    <!-- footer -->
+    <footer>
+      <div class = "social-links">
+        <a href = "#"><i class = "fab fa-facebook-f"></i></a>
+        <a href = "#"><i class = "fab fa-twitter"></i></a>
+        <a href = "#"><i class = "fab fa-instagram"></i></a>
+        <a href = "#"><i class = "fab fa-pinterest"></i></a>
+      </div>
+      <span>Copyright &#169; 2025. All rights reserved</span>
+
+    </footer>
+    <!-- end of footer -->
+
+<script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    });
+
+    // Optional: Automatically close after a few seconds
+    // setTimeout(() => {
+    //   document.getElementById('popup').style.display = 'none';
+    // }, 5000); // closes after 5 seconds
+
+        // Navbar toggle logic
+        const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+  const allQuestions = [
+    {
+      question: "",
+      answer: "3d movie",
+      image: "Images/3d_movie.png",
+      clue1: "A cinematic experience that pops out at you—literally.",
+      clue2: "Glasses-required entertainment that adds an extra dimension."
+    },
+    {
+      question: "",
+      answer: "A Bad Apple",
+      image: "Images/a_bad_apple.png", 
+      clue1: "One rotten influence can spoil the rest.",
+      clue2: "A single misbehaving person in a group."
+    },
+    {
+      question: "",
+      answer: "Action Speaks Louder Than Words",
+      image: "Images/Actions_speaks_louder_than_words.png",
+      clue1: "Promises pale next to performance.",
+      clue2: "Doing something means more than just saying it."
+    },
+    {
+      question: "",
+      answer: "Advice",
+      image: "Images/advice.png",
+      clue1: "You give it, but don’t always take it.",
+      clue2: "Guidance offered to help someone decide."
+    },
+    {
+      question: "",
+      answer: "At the Drop of a Hat",
+      image: "Images/at_the_drop_of_a_hat.png",
+      clue1: "Quick to react, no questions asked.",
+      clue2: "Instantly, with no hesitation."
+    },
+    {
+      question: "",
+      answer: "Bank Note",
+      image: "Images/bank_note.png",
+      clue1: "Valuable paper issued by institutions.",
+      clue2: "A fancy word for money or currency."
+    },
+    {
+      question: "",
+      answer: "Barking Up the Wrong Tree",
+      image: "Images/barking_up_the_wrong_tree.png",
+      clue1: "Pursuing a lead that leads nowhere.",
+      clue2: "Blaming or accusing the wrong person."
+    },
+    {
+      question: "",
+      answer: "Beat Around the Bush",
+      image: "Images/beat_around_the_bush.png",
+      clue1: "Dodging the main topic in circles.",
+      clue2: "Avoiding the point in a conversation."
+    },
+    {
+      question: "",
+      answer: "Bite the Bullet",
+      image: "Images/bite_the_bullet.png",
+      clue1: "Face discomfort with grit and resolve.",
+      clue2: "Endure a painful or unpleasant situation."
+    },
+    {
+      question: "",
+      answer: "Break a Leg",
+      image: "Images/break_a_leg.png",
+      clue1: "A twisted way to wish someone success.",
+      clue2: "Theater slang for “Good luck.”"
+    },
+    {
+      question: "",
+      answer: "Broken Nose",
+      image: "Images/broken_nose.png",
+      clue1: "A shattered central feature.",
+      clue2: "A common result from a punch to the face."
+    },
+    {
+      question: "",
+      answer: "Comfortable",
+      image: "Images/comfortable.png",
+      clue1: "Clue 1: A state of ease without strain.",
+      clue2: "How you feel in your favorite hoodie."
+    },
+    {
+      question: "",
+      answer: "Cornerstone",
+      image: "Images/cornerstone.png",
+      clue1: "The essential start of something strong.",
+      clue2: "A key foundation block of a building or idea."
+    },
+    {
+      question: "",
+      answer: "Cutting Corners",
+      image: "Images/cutting_corners.png",
+      clue1: "Doing less to do it faster.",
+      clue2: "Skipping steps to save time or money."
+    },
+    {
+      question: "",
+      answer: "Design",
+      image: "Images/design.png",
+      clue1: "The blueprint of creativity.",
+      clue2: "A plan or pattern for something to be built or made."
+    },
+    {
+      question: "",
+      answer: "Downtown",
+      image: "Images/downtown.png",
+      clue1: "The pulse of the city lies here.",
+      clue2: "The central area of a city."
+    },
+    {
+      question: "",
+      answer: "Electric Blanket",
+      image: "Images/electric_blanket.png",
+      clue1: "A cozy current of comfort.",
+      clue2: "A plug-in bed cover that keeps you warm."
+    },
+    {
+      question: "",
+      answer: "Engineer",
+      image: "Images/engineer.png",
+      clue1: "Brains behind bridges and machines.",
+      clue2: "A person who designs and builds complex systems."
+    },
+    {
+      question: "",
+      answer: "Excuse Me",
+      image: "Images/excuse_me.png",
+      clue1: "A polite interruption phrase.",
+      clue2: "What you say before passing in a crowd."
+    },
+    {
+      question: "",
+      answer: "For Once in My Life",
+      image: "Images/for_once_in_my_life.png",
+      clue1: "A rare moment of fulfillment.",
+      clue2: "A phrase in Stevie Wonder’s famous song title."
+    },
+    {
+      question: "",
+      answer: "Forget It",
+      image: "Images/forget_it.png",
+      clue1: "Cancel the thought entirely.",
+      clue2: "Let it go—it’s not worth pursuing."
+    },
+    {
+      question: "",
+      answer: "French Fries",
+      image: "Images/french_fries.png",
+      clue1: "Golden sticks of salty temptation.",
+      clue2: "Crispy potato side dish at fast food joints."
+    },
+    {
+      question: "",
+      answer: "Good Afternoon",
+      image: "Images/good_afternoon.png",
+      clue1: "A polite post-noon greeting.",
+      clue2: "A common phrase said between 12 and 5 PM."
+    },
+    {
+      question: "",
+      answer: "Hang in There",
+      image: "Images/hang_in_there.png",
+      clue1: "Stay strong when the going gets tough.",
+      clue2: "Encouragement to not give up."
+    },
+    {
+      question: "",
+      answer: "Ice Coffee",
+      image: "Images/ice_coffee.png",
+      clue1: "A chilled version of a morning ritual.",
+      clue2: "Hot beverage served cold, often with ice."
+    },
+    {
+      question: "",
+      answer: "I'll Get Over It",
+      image: "Images/I'll_get_over_it.png",
+      clue1: "Temporary pain with eventual healing.",
+      clue2: "Expression after something upsetting happens."
+    },
+    {
+      question: "",
+      answer: "Illegal",
+      image: "Images/illegal.png",
+      clue1: "Outside the bounds of law.",
+      clue2: "The opposite of lawful."
+    },
+    {
+      question: "",
+      answer: "Last but Not Least",
+      image: "Images/last_but_not_least.png",
+      clue1: "Final, but still important.",
+      clue2: "Phrase used before introducing the final person/item."
+    },
+    {
+      question: "",
+      answer: "Lemonade",
+      image: "Images/lemonade.png",
+      clue1: "A sweet outcome from sour beginnings.",
+      clue2: "A drink made from lemons and sugar."
+    },
+    {
+      question: "",
+      answer: "Long Time No See",
+      image: "Images/long_time_no_see.png",
+      clue1: "What you say after a reunion.",
+      clue2: "Casual greeting for someone you haven’t seen in a while."
+    },
+    {
+      question: "",
+      answer: "Microscope",
+      image: "Images/microscope.png",
+      clue1: "A lens to life too small to see.",
+      clue2: "Tool used to view tiny things."
+    },
+    {
+      question: "",
+      answer: "Middle Aged",
+      image: "Images/middle_aged.png",
+      clue1: "Neither young nor old.",
+      clue2: "Life stage around your 40s or 50s."
+    },
+    {
+      question: "",
+      answer: "Missing You",
+      image: "Images/missing_you.png",
+      clue1: "Emotion felt in absence.",
+      clue2: "Sentimental phrase when you’re apart from someone."
+    },
+    {
+      question: "",
+      answer: "No Idea",
+      image: "Images/No_idea.png",
+      clue1: "A complete blank in thought.",
+      clue2: "What you say when you're clueless."
+    },
+    {
+      question: "",
+      answer: "Once Upon a Time",
+      image: "Images/once_upon_a_time.png",
+      clue1: "Where fairy tales begin.",
+      clue2: "Classic storytelling opening."
+    },
+    {
+      question: "",
+      answer: "Pardon Me",
+      image: "Images/pardon_me.png",
+      clue1: "A gentle way to interrupt.",
+      clue2: "Another way to say “Excuse me.”"
+    },
+    {
+      question: "",
+      answer: "Polite",
+      image: "Images/polite.png",
+      clue1: "The art of manners.",
+      clue2: "Showing good behavior and respect."
+    },
+    {
+      question: "",
+      answer: "Potatoes",
+      image: "Images/potatoes.png",
+      clue1: "Underground starch staples.",
+      clue2: "Veggies mashed, baked, or fried."
+    },
+    {
+      question: "",
+      answer: "Rain Check",
+      image: "Images/rain_check.png",
+      clue1: "Postponement with a promise.",
+      clue2: "Phrase used to reschedule plans."
+    },
+    {
+      question: "",
+      answer: "Robin Hood",
+      image: "Images/robin_hood.png",
+      clue1: "A legend in green tights and justice.",
+      clue2: "He steals from the rich to give to the poor."
+    },
+    {
+      question: "",
+      answer: "Rock n Roll",
+      image: "Images/rock_n_roll.png",
+      clue1: "A genre that shook the world.",
+      clue2: "Music style of Elvis and The Beatles."
+    },
+    {
+      question: "",
+      answer: "Seizure",
+      image: "Images/seizure.png",
+      clue1: "A sudden electrical storm in the brain.",
+      clue2: "Medical episode involving convulsions."
+    },
+    {
+      question: "",
+      answer: "Stepfather",
+      image: "Images/stepfather.png",
+      clue1: "Parent by marriage, not by birth.",
+      clue2: "A man who marries your mother."
+    },
+    {
+      question: "",
+      answer: "Teacup",
+      image: "Images/Teacup.png",
+      clue1: "A delicate vessel with a handle.",
+      clue2: "What you drink your Earl Grey from."
+    },
+    {
+      question: "",
+      answer: "Three Blind Mice",
+      image: "Images/three_blind_mice.png",
+      clue1: "Nursery rhyme about rodent mishaps.",
+      clue2: "Trio that ran after the farmer’s wife."
+    },
+    {
+      question: "",
+      answer: "Time to Go",
+      image: "Images/time_to_go.png",
+      clue1: "End of the line.",
+      clue2: "Phrase used when it’s time to leave."
+    },
+    {
+      question: "",
+      answer: "Toothpick",
+      image: "Images/toothpick.png",
+      clue1: "A splinter of wood for post-meal cleaning.",
+      clue2: "Tiny stick used to remove food from mouth."
+    },
+    {
+      question: "",
+      answer: "Top Secret",
+      image: "Images/top_secret.png",
+      clue1: "Confidential at the highest level.",
+      clue2: "Information only the elite should know."
+    },
+    {
+      question: "",
+      answer: "Touchdown",
+      image: "Images/touchdown.png",
+      clue1: "Final stop for a plane—or six points in football.",
+      clue2: "Scoring play in American football."
+    },
+    {
+      question: "",
+      answer: "Travel Overseas",
+      image: "Images/travel_overseas.png",
+      clue1: "Journey that crosses vast blue borders.",
+      clue2: "Going to another continent or country by sea or air."
+    },
+    {
+      question: "",
+      answer: "Trip Around the World",
+      image: "Images/trip_around_the_world.png",
+      clue1: "One massive circular journey.",
+      clue2: "Traveling to multiple countries across the globe."
+    },
+    {
+      question: "",
+      answer: "Try to Understand",
+      image: "Images/try_to_understand.png",
+      clue1: "Attempt to grasp what seems unclear.",
+      clue2: "Make an effort to get someone’s perspective."
+    },
+    {
+      question: "",
+      answer: "Tuna Fish",
+      image: "Images/tuna_fish.png",
+      clue1: "Ocean dweller often canned.",
+      clue2: "A type of fish often used in sandwiches."
+    },
+    {
+      question: "",
+      answer: "Underdogs",
+      image: "Images/underdogs.png",
+      clue1: "Least expected to win, but full of fight.",
+      clue2: "Teams or people at a disadvantage."
+    },
+    {
+      question: "",
+      answer: "Vegetables",
+      image: "Images/vegetables.png",
+      clue1: "Edible parts of plants, often green.",
+      clue2: "Carrots, peas, and broccoli are types of these."
+    },
+    {
+      question: "",
+      answer: "Wake Up",
+      image: "Images/wake_up.png",
+      clue1: "From dreams to daylight.",
+      clue2: "What you do when the alarm rings."
+    },
+    {
+      question: "",
+      answer: "Good Looking",
+      image: "Images/good_looking.png",
+      clue1: "Visually appealing in a way that turns heads.",
+      clue2: "Attractive or easy on the eyes."
+    },
+    {
+      question: "",
+      answer: "Foreigner",
+      image: "Images/foreigner.png",
+      clue1: "A passport holder not from around here.",
+      clue2: "A person from another country."
+    },
+    {
+      question: "",
+      answer: "Foreign Language",
+      image: "Images/foreign_language.png",
+      clue1: "A way to speak that’s outside your mother tongue.",
+      clue2: "A language not native to your own country."
+    },
+
+// Second batch of rebus puzzles
+
+
+    {
+    question: "",
+    answer: "Apple Pie",
+    image: "Images/Apple_pie.png",
+    clue1: "A classic American dessert often served with ice cream.",
+    clue2: "Sweet, fruity pastry synonymous with mom and tradition."
+  },
+  {
+    question: "",
+    answer: "Between a rock and a hard place",
+    image: "Images/Between_a_rock_and_a_hard_place.png",
+    clue1: "Stuck in a tough situation with no easy way out.",
+    clue2: "Caught in a dilemma where both options are bad."
+  },
+  {
+    question: "",
+    answer: "Big Bad Wolf",
+    image: "Images/Big_Bad_Wolf.png",
+    clue1: "Famous fairy tale villain who huffed and puffed.",
+    clue2: "The nemesis of three little pigs."
+  },
+  {
+    question: "",
+    answer: "Bluetooth",
+    image: "Images/Bluetooth.png",
+    clue1: "Wireless technology for connecting devices.",
+    clue2: "This lets your phone talk to your earbuds."
+  },
+  {
+    question: "",
+    answer: "Break the Ice",
+    image: "Images/Break_the_Ice.png",
+    clue1: "What you do to start a conversation at a party.",
+    clue2: "A phrase for easing initial tension."
+  },
+  {
+    question: "",
+    answer: "Breakfast",
+    image: "Images/Breakfast.png",
+    clue1: "The first meal of the day.",
+    clue2: "Often includes eggs, toast, or cereal."
+  },
+  {
+    question: "",
+    answer: "Burning the candle on both ends",
+    image: "Images/burning_the candle_on_both_ends.png",
+    clue1: "Doing too much and running out of energy.",
+    clue2: "Overworking by staying up late and rising early."
+  },
+  {
+    question: "",
+    answer: "Camping",
+    image: "Images/Camping.png",
+    clue1: "Sleeping in a tent under the stars.",
+    clue2: "An outdoor activity involving marshmallows and sleeping bags."
+  },
+  {
+    question: "",
+    answer: "Carpenter",
+    image: "Images/Carpenter.png",
+    clue1: "A person skilled in working with wood.",
+    clue2: "They build furniture or frame houses."
+  },
+  {
+    question: "",
+    answer: "Eye Shadow",
+    image: "Images/eye_shaddow.png",
+    clue1: "Cosmetic used on eyelids.",
+    clue2: "Adds color and contour to the upper eye area."
+  },
+  {
+    question: "",
+    answer: "Finland",
+    image: "Images/finland.png",
+    clue1: "A Nordic country known for saunas and lakes.",
+    clue2: "This country borders Sweden and Russia."
+  },
+  {
+    question: "",
+    answer: "Forehead",
+    image: "Images/forehead.png",
+    clue1: "Part of the face between your eyebrows and hairline.",
+    clue2: "Where you might feel a fever first."
+  },
+  {
+    question: "",
+    answer: "Green with Envy",
+    image: "Images/green_with_envy.png",
+    clue1: "Feeling jealous of someone else’s success.",
+    clue2: "A color-coded phrase for strong jealousy."
+  },
+  {
+    question: "",
+    answer: "Guitar",
+    image: "Images/guitar.png",
+    clue1: "String instrument often used in rock music.",
+    clue2: "You strum or pluck this to make music."
+  },
+  {
+    question: "",
+    answer: "Harry Potter",
+    image: "Images/harry_potter.png",
+    clue1: "The boy who lived.",
+    clue2: "Wizard known for his lightning-shaped scar."
+  },
+  {
+    question: "",
+    answer: "High Stakes",
+    image: "Images/high_stakes.png",
+    clue1: "A situation with a lot on the line.",
+    clue2: "Risky situation where the outcome is critical."
+  },
+  {
+    question: "",
+    answer: "Hiking",
+    image: "Images/hiking.png",
+    clue1: "Walking long distances in nature.",
+    clue2: "Climbing trails and enjoying the outdoors."
+  },
+  {
+    question: "",
+    answer: "History Repeats Itself",
+    image: "Images/history_repeats_itself.png",
+    clue1: "A saying about learning from the past.",
+    clue2: "It warns that past mistakes can come again."
+  },
+  {
+    question: "",
+    answer: "Ice Cream",
+    image: "Images/ice_cream.png",
+    clue1: "Cold dessert, often in cones or cups.",
+    clue2: "Comes in flavors like vanilla, chocolate, and strawberry."
+  },
+  {
+    question: "",
+    answer: "In Between Jobs",
+    image: "Images/in_between_jobs.png",
+    clue1: "A polite way to say unemployed.",
+    clue2: "You're not working now but looking."
+  },
+  {
+    question: "",
+    answer: "Kick the Bucket",
+    image: "Images/kick_the_bucket.png",
+    clue1: "A euphemism for dying.",
+    clue2: "To pass away, in a colorful phrase."
+  },
+  {
+    question: "",
+    answer: "Lipstick",
+    image: "Images/lipstick.png",
+    clue1: "Cosmetic for coloring the lips.",
+    clue2: "Comes in shades like red, pink, and nude."
+  },
+  {
+    question: "",
+    answer: "Looking for You",
+    image: "Images/looking_for_you.png",
+    clue1: "Searching to find someone specific.",
+    clue2: "A phrase used in messages or ads to find a person."
+  },
+  {
+    question: "",
+    answer: "Love at First Sight",
+    image: "Images/love_at_first_sight.png",
+    clue1: "Instant romantic connection.",
+    clue2: "Falling head over heels immediately."
+  },
+  {
+    question: "",
+    answer: "Mind Over Matter",
+    image: "Images/mind_over_matter.png",
+    clue1: "Mental strength can overcome obstacles.",
+    clue2: "Used to describe willpower beating physical limits."
+  },
+  {
+    question: "",
+    answer: "Musician",
+    image: "Images/musician.png",
+    clue1: "Someone who plays instruments or sings.",
+    clue2: "Performer of melodies and harmonies."
+  },
+  {
+    question: "",
+    answer: "No One to Blame",
+    image: "Images/no_one_to_blame.png",
+    clue1: "No fault can be placed.",
+    clue2: "Nobody’s responsible for what happened."
+  },
+  {
+    question: "",
+    answer: "Piece of Cake",
+    image: "Images/piece_of_cake.png",
+    clue1: "Something very easy to do.",
+    clue2: "Slang for a simple task."
+  },
+  {
+    question: "",
+    answer: "Rugby",
+    image: "Images/rugby.png",
+    clue1: "Sport similar to football, played with an oval ball.",
+    clue2: "Popular in the UK, involves scrums."
+  },
+  {
+    question: "",
+    answer: "Safe and Sound",
+    image: "Images/safe_and_sound.png",
+    clue1: "Unharmed and secure after danger.",
+    clue2: "Returned from a trip with no problems."
+  },
+  {
+    question: "",
+    answer: "Security",
+    image: "Images/security.png",
+    clue1: "Protection against danger or threats.",
+    clue2: "Can be physical, digital, or financial."
+  },
+  {
+    question: "",
+    answer: "Soccer",
+    image: "Images/soccer.png",
+    clue1: "Sport with goals and a ball kicked around.",
+    clue2: "Called football outside the U.S."
+  },
+  {
+    question: "",
+    answer: "Summer",
+    image: "Images/summer.png",
+    clue1: "Season of sunshine, vacations, and heat.",
+    clue2: "Follows spring and precedes fall."
+  },
+  {
+    question: "",
+    answer: "Time Heals All Wounds",
+    image: "Images/time_heals_all_wounds.png",
+    clue1: "Emotional pain lessens over time.",
+    clue2: "A common phrase about the passage of pain."
+  },
+  {
+    question: "",
+    answer: "Up for Grabs",
+    image: "Images/up_for_grabs.png",
+    clue1: "Available to anyone who wants it.",
+    clue2: "Not claimed or reserved—free to take."
+  },
+  {
+    question: "",
+    answer: "Wardrobe",
+    image: "Images/wardrobe.png",
+    clue1: "A place to hang your clothes.",
+    clue2: "A collection of someone’s outfits."
+  },
+  {
+    question: "",
+    answer: "Wolf in Sheep's Clothing",
+    image: "Images/wolf_in_sheep's_clothing.png",
+    clue1: "Someone who hides their true intentions.",
+    clue2: "Looks harmless, but is actually dangerous."
+  },
+
+
+
+// Third batch of rebus puzzles
+
+
+
+
+  {
+    question: "",
+    answer: "All ears",
+    image: "Images/All_ears.png",
+    clue1: "Totally focused and listening.",
+    clue2: "A phrase for full attention."
+  },
+  {
+    question: "",
+    answer: "Blow off steam",
+    image: "Images/Blow_off_steam.png",
+    clue1: "Letting out pressure.",
+    clue2: "To vent or release frustration."
+  },
+  {
+    question: "",
+    answer: "Face the music",
+    image: "Images/face_the_music.png",
+    clue1: "Deal with the consequences.",
+    clue2: "A phrase for confronting challenges."
+  },
+  {
+    question: "",
+    answer: "Heart of gold",
+    image: "Images/Heart_of_gold.png",
+    clue1: "Someone with an exceptionally kind nature.",
+    clue2: "A phrase for a pure and generous soul."
+  },
+  {
+    question: "",
+    answer: "Hip hop",
+    image: "Images/hip_hop.png",
+    clue1: "A genre of music born in the streets.",
+    clue2: "Popular with rhythmic beats and rap."
+  },
+  {
+    question: "",
+    answer: "Hit the hay",
+    image: "Images/hit_the_hay.png",
+    clue1: "A colloquialism for going to bed.",
+    clue2: "Time to rest for the night."
+  },
+  {
+    question: "",
+    answer: "Hypnotize",
+    image: "Images/hypnotize.png",
+    clue1: "To put someone in a trance.",
+    clue2: "Captivating the mind to alter perception."
+  },
+  {
+    question: "",
+    answer: "Ice cold beer",
+    image: "Images/ice_cold_beer.png",
+    clue1: "A frosty beverage on a hot day.",
+    clue2: "Chilled alcohol often served at pubs."
+  },
+  {
+    question: "",
+    answer: "In the red",
+    image: "Images/in_the_red.png",
+    clue1: "Referring to negative financial balance.",
+    clue2: "A phrase for being in debt."
+  },
+  {
+    question: "",
+    answer: "In the same boat",
+    image: "Images/in_the_same_boat.png",
+    clue1: "Facing the same challenges.",
+    clue2: "Sharing the same circumstance."
+  },
+  {
+    question: "",
+    answer: "James Bond",
+    image: "Images/James_bond.png",
+    clue1: "A famous British secret agent.",
+    clue2: "A 007 agent with a license to kill."
+  },
+  {
+    question: "",
+    answer: "Keep your chin up",
+    image: "Images/keep_your_chin_up.png",
+    clue1: "An expression for staying positive.",
+    clue2: "A phrase of encouragement to stay hopeful."
+  },
+  {
+    question: "",
+    answer: "Like father like son",
+    image: "Images/like_father_like_son.png",
+    clue1: "When a child is similar to their parent.",
+    clue2: "A phrase for generational similarities."
+  },
+  {
+    question: "",
+    answer: "Misunderstood",
+    image: "Images/misunderstood.png",
+    clue1: "Not grasped as intended.",
+    clue2: "A person or message that is unclear."
+  },
+  {
+    question: "",
+    answer: "Off the chain",
+    image: "Images/off_the_chain.png",
+    clue1: "A phrase for something amazing or extreme.",
+    clue2: "Something wildly impressive."
+  },
+  {
+    question: "",
+    answer: "Ring a bell",
+    image: "Images/ring_a_bell.png",
+    clue1: "When something jogs your memory.",
+    clue2: "A phrase for triggering recognition."
+  },
+  {
+    question: "",
+    answer: "Shortcut",
+    image: "Images/shortcut.png",
+    clue1: "A quicker route or method.",
+    clue2: "Taking the path of least resistance."
+  },
+  {
+    question: "",
+    answer: "Sit on the fence",
+    image: "Images/sit_on_the_fence.png",
+    clue1: "Not choosing a side in a dispute.",
+    clue2: "To remain neutral."
+  },
+  {
+    question: "",
+    answer: "Sit tight",
+    image: "Images/sit_tight.png",
+    clue1: "A phrase for holding still and waiting.",
+    clue2: "To remain in place and not move."
+  },
+  {
+    question: "",
+    answer: "Think outside the box",
+    image: "Images/think_outside_the_box.png",
+    clue1: "To think in innovative and unique ways.",
+    clue2: "A phrase for breaking free from traditional ideas."
+  }
+    // Add more questions as needed
+  ];
+
+  let lastRoundQuestions = [];
+  let currentQuestions = [];
+  let answeredCount = 0;
+  let score = 0;
+  const attempts = {};
+  const finalAnswers = {};
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+function loadQuestions() {
+  const container = document.getElementById('quiz-container');
+  const scoreBox = document.getElementById('score-container');
+  scoreBox.innerHTML = '';
+  container.innerHTML = '';
+  answeredCount = 0;
+  score = 0;
+  Object.keys(finalAnswers).forEach(k => delete finalAnswers[k]);
+  Object.keys(attempts).forEach(k => delete attempts[k]);
+
+  // Filter out last round's questions
+  const filtered = allQuestions.filter(
+    q => !lastRoundQuestions.includes(q.question)
+  );
+
+  // If not enough unique questions, fall back to full list
+  const availablePool = filtered.length >= 5 ? filtered : [...allQuestions];
+
+// Filter out questions used in the last round
+const filteredQuestions = allQuestions.filter(
+  q => !lastRoundQuestions.includes(q.question)
+);
+
+// Fallback if not enough new ones
+const questionPool = filteredQuestions.length >= 5 ? filteredQuestions : allQuestions;
+
+// Shuffle and pick new questions
+currentQuestions = shuffle([...questionPool]).slice(0, 5);
+
+// Save current question texts to prevent repeats next round
+lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Save current questions to exclude next time
+  lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Render questions
+  currentQuestions.forEach((q, index) => {
+    const box = document.createElement('div');
+    box.className = 'question-box';
+    box.innerHTML = `
+      <div class="question">${index + 1}. ${q.question}</div>
+      ${q.image ? `<img src="${q.image}" alt="Question image">` : ""}
+      <input type="text" id="answer-${index}" placeholder="Type your answer" />
+      <button onclick="checkAnswer('${q.answer}', ${index}, this)">Check</button>
+      <div id="clue-${index}" class="clue"></div>
+    `;
+    container.appendChild(box);
+  });
+}
+
+
+  function checkAnswer(correctAnswer, index, button) {
+    const input = document.getElementById(`answer-${index}`);
+    const clueBox = document.getElementById(`clue-${index}`);
+    const userAnswer = input.value.trim().toLowerCase();
+    const correct = correctAnswer.trim().toLowerCase();
+
+    if (!attempts[index]) attempts[index] = 1;
+    else attempts[index]++;
+
+    if (userAnswer === correct) {
+      finalAnswers[index] = true;
+      disableInput(input, button);
+      clueBox.innerText = "";
+      answeredCount++;
+    } else {
+      if (attempts[index] === 1) {
+        clueBox.innerText = currentQuestions[index].clue1 || "";
+      } else if (attempts[index] === 2) {
+        clueBox.innerText = currentQuestions[index].clue2 || "";
+      } else {
+        finalAnswers[index] = false;
+        disableInput(input, button);
+        clueBox.innerText = "No more attempts.";
+        answeredCount++;
+      }
+    }
+
+    if (answeredCount === 5) {
+      evaluateScore();
+      setTimeout(loadQuestions, 10000);
+    }
+  }
+
+  function disableInput(input, button) {
+    input.disabled = true;
+    button.disabled = true;
+  }
+
+  function evaluateScore() {
+  let correctTotal = 0;
+  Object.keys(finalAnswers).forEach(index => {
+    const input = document.getElementById(`answer-${index}`);
+    if (finalAnswers[index]) {
+      input.classList.add('correct');
+      correctTotal++;
+    } else {
+      input.classList.add('incorrect');
+    }
+  });
+  score = correctTotal;
+  startCountdown(); // ← New countdown function
+}
+function startCountdown() {
+  const scoreBox = document.getElementById('score-container');
+  let countdown = 10;
+
+  scoreBox.innerHTML = `
+    <div class="score-box">
+      You scored ${score} out of 5!<br>
+      <span id="countdown">Next round in ${countdown}...</span>
+    </div>
+  `;
+
+  const interval = setInterval(() => {
+    countdown--;
+    document.getElementById('countdown').innerText = `Next round in ${countdown}...`;
+
+    if (countdown === 0) {
+      clearInterval(interval);
+      loadQuestions();
+    }
+  }, 1000);
+}
+
+
+  function showScore() {
+    const scoreBox = document.getElementById('score-container');
+    scoreBox.innerHTML = `<div class="score-box">You scored ${score} out of 5!<br>Shuffling new questions...</div>`;
+  }
+
+  loadQuestions();
+</script>
+
+</body>
+</html>

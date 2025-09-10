@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddles For Adults</title>
+  <meta name="description" content="Challenge your mind with clever riddles for adults! Brain teasers, logic puzzles, and thought-provoking questions to test your wit. Free collection online.">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    
+    .logo img {
+      height: 2.5rem;
+      width: 3rem;
+    }
+        /* NAVBAR STYLES */
+        nav {
+      color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+
+    /* Popup overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .question-box {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+    .question {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .question img {
+      max-width: 100%;
+      max-height: 200px;
+      display: block;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .correct {
+      background-color: #d4edda !important;
+    }
+    .incorrect {
+      background-color: #f8d7da !important;
+    }
+    .score-box {
+      background-color: #fff3cd;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .clue {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+    .image{
+    width: 100%;
+    display: block;
+}
+
+/* footer */
+footer{
+    background: var(--exDark);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+.social-links a{
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover{
+    background: #fff;
+    color: var(--exDark);
+}
+.footer span{
+    margin-top: 1rem;
+    display: block;
+    font-family: var(--Playfair);
+    letter-spacing: 2px;
+}
+
+    /* MOBILE NAV STYLES */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><img src="/Images/Main Logo.png" alt="Main KitsoForYou Logo" /></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="/index.html">Home</a>
+        <a href="">Shopping</a>
+        <a href="/index.html#design">Games</a>
+        <a href="/index.html#blog">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+<h1>Answer Riddles for Adults</h1>
+<div id="quiz-container"></div>
+<div id="score-container"></div>
+
+  <!-- Popup container -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup">
+      <img src="/Games/Images/Riddles Answer Popup.png" alt="Popup Image" />
+    </div>
+  </div>
+
+    <!-- footer -->
+    <footer>
+      <div class = "social-links">
+        <a href = "#"><i class = "fab fa-facebook-f"></i></a>
+        <a href = "#"><i class = "fab fa-twitter"></i></a>
+        <a href = "#"><i class = "fab fa-instagram"></i></a>
+        <a href = "#"><i class = "fab fa-pinterest"></i></a>
+      </div>
+      <span>Copyright &#169; 2025. All rights reserved</span>
+
+    </footer>
+    <!-- end of footer -->
+
+<script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    });
+
+    // Optional: Automatically close after a few seconds
+    // setTimeout(() => {
+    //   document.getElementById('popup').style.display = 'none';
+    // }, 5000); // closes after 5 seconds
+
+        // Navbar toggle logic
+        const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+  const allQuestions = [
+  {
+    question: "What belongs to you but others use it more than you do?",
+    answer: "Your name",
+    clue1: "Everyone says it",
+    clue2: "Identity"
+  },
+  {
+    question: "What has to be broken before you can use it?",
+    answer: "An egg",
+    clue1: "Breakfast item",
+    clue2: "Shell"
+  },
+  {
+    question: "What has words, but never speaks?",
+    answer: "A book",
+    clue1: "You read it",
+    clue2: "Paper-based"
+  },
+  {
+    question: "I go up but never come down. What am I?",
+    answer: "Age",
+    clue1: "Time-related",
+    clue2: "Increases only"
+  },
+  {
+    question: "What has a thumb and four fingers but isn’t alive?",
+    answer: "A glove",
+    clue1: "Winter wear",
+    clue2: "Hand-shaped"
+  },
+  {
+    question: "You can catch me, but not throw me. What am I?",
+    answer: "A cold",
+    clue1: "Health-related",
+    clue2: "Unpleasant to have"
+  },
+  {
+    question: "What kind of band never plays music?",
+    answer: "A rubber band",
+    clue1: "Stretchy",
+    clue2: "Office supply"
+  },
+  {
+    question: "What has a face and two hands but no arms or legs?",
+    answer: "A clock",
+    clue1: "Tells time",
+    clue2: "Found on a wall"
+  },
+  {
+    question: "What gets sharper the more you use it?",
+    answer: "Your brain",
+    clue1: "Mental",
+    clue2: "Learning improves it"
+  },
+  {
+    question: "What can't be put in a saucepan?",
+    answer: "Its lid",
+    clue1: "Top part",
+    clue2: "Think practically"
+  },
+  {
+    question: "What kind of tree can you carry in your hand?",
+    answer: "A palm",
+    clue1: "Body part",
+    clue2: "Also a plant"
+  },
+  {
+    question: "What comes after a thunderstorm?",
+    answer: "The letter M",
+    clue1: "Play on spelling",
+    clue2: "Word logic"
+  },
+  {
+    question: "The more you take away, the more I become. What am I?",
+    answer: "A hole",
+    clue1: "Digging",
+    clue2: "Empty space"
+  },
+  {
+    question: "What’s black when it’s clean and white when it’s dirty?",
+    answer: "A chalkboard",
+    clue1: "Used in school",
+    clue2: "Dusty"
+  },
+  {
+    question: "What has four wheels and flies?",
+    answer: "A garbage truck",
+    clue1: "Dirty",
+    clue2: "Insects included"
+  },
+  {
+    question: "What goes through cities and fields but never moves?",
+    answer: "A road",
+    clue1: "Infrastructure",
+    clue2: "Paved"
+  },
+  {
+    question: "What is always running but never moves?",
+    answer: "A refrigerator",
+    clue1: "Appliance",
+    clue2: "Keeps food cold"
+  },
+  {
+    question: "I’m taken from a mine, and shut in a wooden case. I’m used by students daily. What am I?",
+    answer: "Pencil lead",
+    clue1: "Writing tool",
+    clue2: "Dark and thin"
+  },
+  {
+    question: "What goes up and down but doesn't move?",
+    answer: "A staircase",
+    clue1: "Structure",
+    clue2: "Helps you climb"
+  },
+  {
+    question: "What can be cracked, made, told, and played?",
+    answer: "A joke",
+    clue1: "Humor",
+    clue2: "Laughter"
+  },
+  {
+    question: "What has an eye but cannot see?",
+    answer: "A storm",
+    clue1: "Weather",
+    clue2: "Center is calm"
+  },
+  {
+    question: "What never asks a question but gets answered all the time?",
+    answer: "A phone",
+    clue1: "Rings",
+    clue2: "Communication tool"
+  },
+  {
+    question: "I have a tail and a head, but no body. What am I?",
+    answer: "A coin",
+    clue1: "Money",
+    clue2: "Flip me"
+  },
+  {
+    question: "What is easy to lift but hard to throw?",
+    answer: "A feather",
+    clue1: "Lightweight",
+    clue2: "From a bird"
+  },
+  {
+    question: "What’s always in front of you but you can’t see it?",
+    answer: "The future",
+    clue1: "Time-related",
+    clue2: "Unpredictable"
+  },
+  {
+    question: "What can you break, even if you never pick it up or touch it?",
+    answer: "A promise",
+    clue1: "Trust-related",
+    clue2: "Can hurt"
+  },
+  {
+    question: "What has many rings but no fingers?",
+    answer: "A telephone",
+    clue1: "Old-fashioned",
+    clue2: "It rings"
+  },
+  {
+    question: "What is lighter than a feather but the strongest man can’t hold it for long?",
+    answer: "Your breath",
+    clue1: "Essential",
+    clue2: "Try holding it"
+  },
+  {
+    question: "What has roots but never grows?",
+    answer: "A family tree",
+    clue1: "Genealogy",
+    clue2: "Not alive"
+  },
+  {
+    question: "What disappears as soon as you say its name?",
+    answer: "Silence",
+    clue1: "Audio",
+    clue2: "Broken easily"
+  },
+  {
+    question: "What kind of cup doesn’t hold water?",
+    answer: "A hiccup",
+    clue1: "Involuntary",
+    clue2: "Comes in bursts"
+  },
+  {
+    question: "What has stripes but no color?",
+    answer: "A zebra crossing",
+    clue1: "On roads",
+    clue2: "For pedestrians"
+  },
+  {
+    question: "I go all around the world but always stay in a corner. What am I?",
+    answer: "A stamp",
+    clue1: "Mail item",
+    clue2: "Small and sticky"
+  },
+  {
+    question: "What begins with an E and only contains one letter?",
+    answer: "An envelope",
+    clue1: "Mail",
+    clue2: "Outside the message"
+  },
+  {
+    question: "What has a head, a tail, is brown, and has no legs?",
+    answer: "A penny",
+    clue1: "Coin",
+    clue2: "Cent"
+  },
+  {
+    question: "The more you remove from me, the more I grow. What am I?",
+    answer: "A hole",
+    clue1: "Subtraction",
+    clue2: "Digging"
+  },
+  {
+    question: "You can’t see me, but I’m always ahead. What am I?",
+    answer: "The future",
+    clue1: "Time",
+    clue2: "Unknown"
+  },
+  {
+    question: "What goes up when the rain comes down?",
+    answer: "An umbrella",
+    clue1: "Rainy day tool",
+    clue2: "Pops open"
+  },
+  {
+    question: "What has ears but doesn’t listen?",
+    answer: "A cornfield",
+    clue1: "Farm",
+    clue2: "Play on words"
+  },
+  {
+    question: "What is white and black and read all over?",
+    answer: "A newspaper",
+    clue1: "Old media",
+    clue2: "Daily info"
+  },
+  {
+    question: "What can you hold without ever touching it?",
+    answer: "A conversation",
+    clue1: "Verbal",
+    clue2: "Involves two people"
+  },
+  {
+    question: "I have no bones and no legs, but if you keep me warm, I’ll soon walk away. What am I?",
+    answer: "An egg",
+    clue1: "Breakfast",
+    clue2: "Turns into life"
+  },
+  {
+    question: "What gets broken without being held?",
+    answer: "A promise",
+    clue1: "Trust",
+    clue2: "Non-physical"
+  },
+  {
+    question: "What comes in pairs, is used daily, and often gets lost?",
+    answer: "Socks",
+    clue1: "Feet",
+    clue2: "Laundry problems"
+  },
+  {
+    question: "What comes in through the window but isn’t a person?",
+    answer: "Light",
+    clue1: "Daytime",
+    clue2: "Brightness"
+  },
+  {
+    question: "I am not alive, but I grow. I don’t have lungs, but I need air. What am I?",
+    answer: "Fire",
+    clue1: "Burns",
+    clue2: "Dangerous"
+  },
+  {
+    question: "I’m found in socks, scarves, and mittens. I’m made of wool. What am I?",
+    answer: "Yarn",
+    clue1: "Knitting",
+    clue2: "String-like"
+  },
+  {
+    question: "What kind of room can you eat?",
+    answer: "A mushroom",
+    clue1: "Edible",
+    clue2: "Fungi"
+  },
+  {
+    question: "I’m tall when I’m young and short when I’m old. What am I?",
+    answer: "A candle",
+    clue1: "Wax",
+    clue2: "Burns down"
+  },
+
+  // More Riddles for Adults
+
+  {
+    question: "If you throw a red stone into the blue sea, what will it become?",
+    answer: "Wet",
+    clue1: "Simple logic",
+    clue2: "Think practically"
+  },
+  {
+    question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
+    answer: "The letter M",
+    clue1: "It's not about time",
+    clue2: "Focus on the spelling"
+  },
+  {
+    question: "What has keys but can't open locks?",
+    answer: "A piano",
+    clue1: "Musical instrument",
+    clue2: "Think of black and white"
+  },
+  {
+    question: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?",
+    answer: "An echo",
+    clue1: "It repeats",
+    clue2: "Found in valleys"
+  },
+  {
+    question: "What can travel around the world while staying in the same corner?",
+    answer: "A stamp",
+    clue1: "Found on envelopes",
+    clue2: "Postage-related"
+  },
+  {
+    question: "What has a heart that doesn’t beat?",
+    answer: "An artichoke",
+    clue1: "Edible",
+    clue2: "Green and layered"
+  },
+  {
+    question: "What is seen in the middle of March and April that can’t be seen at the beginning or end of either month?",
+    answer: "The letter R",
+    clue1: "It's about spelling",
+    clue2: "Middle letters"
+  },
+  {
+    question: "What gets wetter the more it dries?",
+    answer: "A towel",
+    clue1: "Bathroom item",
+    clue2: "Used after a shower"
+  },
+  {
+    question: "I shave every day, but my beard stays the same. What am I?",
+    answer: "A barber",
+    clue1: "Profession",
+    clue2: "Helps others groom"
+  },
+  {
+    question: "The more of me you take, the more you leave behind. What am I?",
+    answer: "Footsteps",
+    clue1: "Walking",
+    clue2: "Traceable"
+  },
+  {
+    question: "I’m light as a feather, yet the strongest man can’t hold me for more than 5 minutes. What am I?",
+    answer: "Breath",
+    clue1: "Essential for life",
+    clue2: "Invisible"
+  },
+  {
+    question: "What has one eye but can’t see?",
+    answer: "A needle",
+    clue1: "Sewing",
+    clue2: "Sharp object"
+  },
+  {
+    question: "What can you hold in your left hand but not in your right?",
+    answer: "Your right elbow",
+    clue1: "Body part",
+    clue2: "Try it physically"
+  },
+  {
+    question: "What has many teeth but can’t bite?",
+    answer: "A comb",
+    clue1: "Used daily",
+    clue2: "For your hair"
+  },
+  {
+    question: "I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?",
+    answer: "A map",
+    clue1: "Flat representation",
+    clue2: "Used for navigation"
+  },
+  {
+    question: "What can run but never walks, has a bed but never sleeps, and has a mouth but never talks?",
+    answer: "A river",
+    clue1: "Nature",
+    clue2: "Flows"
+  },
+  {
+    question: "Forward I am heavy, but backward I am not. What am I?",
+    answer: "Ton",
+    clue1: "Play with spelling",
+    clue2: "Reverse it"
+  },
+  {
+    question: "What begins with T, ends with T, and has T in it?",
+    answer: "Teapot",
+    clue1: "Kitchen item",
+    clue2: "Holds hot drink"
+  },
+  {
+    question: "What is full of holes but still holds water?",
+    answer: "A sponge",
+    clue1: "Used for cleaning",
+    clue2: "Soaks well"
+  },
+  {
+    question: "The more you take from me, the bigger I get. What am I?",
+    answer: "A hole",
+    clue1: "Subtraction logic",
+    clue2: "Think space"
+  },
+  {
+    question: "What five-letter word becomes shorter when you add two letters to it?",
+    answer: "Short",
+    clue1: "Play on words",
+    clue2: "Add 'er'"
+  },
+  {
+    question: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
+    answer: "A candle",
+    clue1: "Wax",
+    clue2: "Burns"
+  },
+  {
+    question: "What can't talk but will reply when spoken to?",
+    answer: "An echo",
+    clue1: "Sound",
+    clue2: "Repetition"
+  },
+  {
+    question: "The more you have of me, the less you see. What am I?",
+    answer: "Darkness",
+    clue1: "Opposite of light",
+    clue2: "Nighttime"
+  },
+  {
+    question: "What has one head, one foot, and four legs?",
+    answer: "A bed",
+    clue1: "Furniture",
+    clue2: "Used for sleeping"
+  },
+  {
+    question: "What comes down but never goes up?",
+    answer: "Rain",
+    clue1: "Weather",
+    clue2: "Falling"
+  },
+  {
+    question: "What begins with an E but only contains one letter?",
+    answer: "An envelope",
+    clue1: "Mail-related",
+    clue2: "Holds letters"
+  },
+  {
+    question: "What has hands but can’t clap?",
+    answer: "A clock",
+    clue1: "Tells time",
+    clue2: "Tick tock"
+  },
+  {
+    question: "You see me once in June, twice in November, but not at all in May. What am I?",
+    answer: "The letter E",
+    clue1: "Spelling",
+    clue2: "Count letters"
+  },
+  {
+    question: "What word is spelled incorrectly in every dictionary?",
+    answer: "Incorrectly",
+    clue1: "Trick question",
+    clue2: "Literal meaning"
+  },
+  {
+    question: "What can fill a room but takes up no space?",
+    answer: "Light",
+    clue1: "Energy",
+    clue2: "Bulbs emit it"
+  },
+  {
+    question: "What is always in front of you but can’t be seen?",
+    answer: "The future",
+    clue1: "Time-related",
+    clue2: "Ahead of now"
+  },
+  {
+    question: "What gets bigger the more you take away from it?",
+    answer: "A hole",
+    clue1: "Digging",
+    clue2: "Negative space"
+  },
+  {
+    question: "What comes once in a year, twice in a week, and never in a day?",
+    answer: "The letter E",
+    clue1: "Letters",
+    clue2: "Spell it out"
+  },
+  {
+    question: "What building has the most stories?",
+    answer: "The library",
+    clue1: "Books",
+    clue2: "Reading"
+  },
+  {
+    question: "What goes up but never comes down?",
+    answer: "Your age",
+    clue1: "Time-related",
+    clue2: "Numbers"
+  },
+  {
+    question: "What invention lets you look right through a wall?",
+    answer: "A window",
+    clue1: "Transparent",
+    clue2: "Part of buildings"
+  },
+  {
+    question: "What can't be used until it is broken?",
+    answer: "An egg",
+    clue1: "Breakfast item",
+    clue2: "Shell"
+  },
+  {
+    question: "What has legs but doesn’t walk?",
+    answer: "A table",
+    clue1: "Furniture",
+    clue2: "Dining area"
+  },
+  {
+    question: "What can be cracked, made, told, and played?",
+    answer: "A joke",
+    clue1: "Humor",
+    clue2: "Laughter"
+  },
+  {
+    question: "What kind of coat is always wet when you put it on?",
+    answer: "A coat of paint",
+    clue1: "Not clothing",
+    clue2: "Used on walls"
+  },
+  {
+    question: "What begins and has no end, and is the key to everything?",
+    answer: "Knowledge",
+    clue1: "Abstract",
+    clue2: "Grows with learning"
+  },
+  {
+    question: "If two’s company, and three’s a crowd, what are four and five?",
+    answer: "Nine",
+    clue1: "Math joke",
+    clue2: "Add them"
+  },
+  {
+    question: "What comes in a minute, twice in a moment, but never in a thousand years?",
+    answer: "The letter M",
+    clue1: "Alphabet",
+    clue2: "Think letters"
+  },
+  {
+    question: "The more you feed me, the smaller I become. What am I?",
+    answer: "A fire",
+    clue1: "Burns",
+    clue2: "Consumes fuel"
+  },
+  {
+    question: "What flies without wings and cries without eyes?",
+    answer: "A cloud",
+    clue1: "Sky-bound",
+    clue2: "Weather"
+  },
+  {
+    question: "What has a neck but no head?",
+    answer: "A bottle",
+    clue1: "Container",
+    clue2: "Holds liquid"
+  },
+  {
+    question: "What kind of room has no doors or windows?",
+    answer: "A mushroom",
+    clue1: "Food",
+    clue2: "Play on words"
+  },
+  {
+    question: "What has an end but no beginning, a home but no family, and a space without a room?",
+    answer: "A keyboard",
+    clue1: "Typing tool",
+    clue2: "Computer-related"
+  },
+  {
+    question: "What breaks and never falls, and what falls and never breaks?",
+    answer: "Day breaks and night falls",
+    clue1: "Time phrases",
+    clue2: "Common expressions"
+  },
+
+    // Add more questions as needed
+  ];
+
+  let lastRoundQuestions = [];
+  let currentQuestions = [];
+  let answeredCount = 0;
+  let score = 0;
+  const attempts = {};
+  const finalAnswers = {};
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+function loadQuestions() {
+  const container = document.getElementById('quiz-container');
+  const scoreBox = document.getElementById('score-container');
+  scoreBox.innerHTML = '';
+  container.innerHTML = '';
+  answeredCount = 0;
+  score = 0;
+  Object.keys(finalAnswers).forEach(k => delete finalAnswers[k]);
+  Object.keys(attempts).forEach(k => delete attempts[k]);
+
+  // Filter out last round's questions
+  const filtered = allQuestions.filter(
+    q => !lastRoundQuestions.includes(q.question)
+  );
+
+  // If not enough unique questions, fall back to full list
+  const availablePool = filtered.length >= 5 ? filtered : [...allQuestions];
+
+// Filter out questions used in the last round
+const filteredQuestions = allQuestions.filter(
+  q => !lastRoundQuestions.includes(q.question)
+);
+
+// Fallback if not enough new ones
+const questionPool = filteredQuestions.length >= 5 ? filteredQuestions : allQuestions;
+
+// Shuffle and pick new questions
+currentQuestions = shuffle([...questionPool]).slice(0, 5);
+
+// Save current question texts to prevent repeats next round
+lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Save current questions to exclude next time
+  lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Render questions
+  currentQuestions.forEach((q, index) => {
+    const box = document.createElement('div');
+    box.className = 'question-box';
+    box.innerHTML = `
+      <div class="question">${index + 1}. ${q.question}</div>
+      ${q.image ? `<img src="${q.image}" alt="Question image">` : ""}
+      <input type="text" id="answer-${index}" placeholder="Type your answer" />
+      <button onclick="checkAnswer('${q.answer}', ${index}, this)">Check</button>
+      <div id="clue-${index}" class="clue"></div>
+    `;
+    container.appendChild(box);
+  });
+}
+
+
+  function checkAnswer(correctAnswer, index, button) {
+    const input = document.getElementById(`answer-${index}`);
+    const clueBox = document.getElementById(`clue-${index}`);
+    const userAnswer = input.value.trim().toLowerCase();
+    const correct = correctAnswer.trim().toLowerCase();
+
+    if (!attempts[index]) attempts[index] = 1;
+    else attempts[index]++;
+
+    if (userAnswer === correct) {
+      finalAnswers[index] = true;
+      disableInput(input, button);
+      clueBox.innerText = "";
+      answeredCount++;
+    } else {
+      if (attempts[index] === 1) {
+        clueBox.innerText = currentQuestions[index].clue1 || "";
+      } else if (attempts[index] === 2) {
+        clueBox.innerText = currentQuestions[index].clue2 || "";
+      } else {
+        finalAnswers[index] = false;
+        disableInput(input, button);
+        clueBox.innerText = "No more attempts.";
+        answeredCount++;
+      }
+    }
+
+    if (answeredCount === 5) {
+      evaluateScore();
+      setTimeout(loadQuestions, 10000);
+    }
+  }
+
+  function disableInput(input, button) {
+    input.disabled = true;
+    button.disabled = true;
+  }
+
+  function evaluateScore() {
+  let correctTotal = 0;
+  Object.keys(finalAnswers).forEach(index => {
+    const input = document.getElementById(`answer-${index}`);
+    if (finalAnswers[index]) {
+      input.classList.add('correct');
+      correctTotal++;
+    } else {
+      input.classList.add('incorrect');
+    }
+  });
+  score = correctTotal;
+  startCountdown(); // ← New countdown function
+}
+function startCountdown() {
+  const scoreBox = document.getElementById('score-container');
+  let countdown = 10;
+
+  scoreBox.innerHTML = `
+    <div class="score-box">
+      You scored ${score} out of 5!<br>
+      <span id="countdown">Next round in ${countdown}...</span>
+    </div>
+  `;
+
+  const interval = setInterval(() => {
+    countdown--;
+    document.getElementById('countdown').innerText = `Next round in ${countdown}...`;
+
+    if (countdown === 0) {
+      clearInterval(interval);
+      loadQuestions();
+    }
+  }, 1000);
+}
+
+
+  function showScore() {
+    const scoreBox = document.getElementById('score-container');
+    scoreBox.innerHTML = `<div class="score-box">You scored ${score} out of 5!<br>Shuffling new questions...</div>`;
+  }
+
+  loadQuestions();
+</script>
+
+</body>
+</html>

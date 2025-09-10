@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivia Questions</title>
+  <meta name="description" content="Test your knowledge with fun trivia questions! Challenge friends, learn interesting facts, and boost your IQ. Free collection covering all topics and categories">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .logo img {
+      height: 2.5rem;
+      width: 3rem;
+    }
+    
+        /* NAVBAR STYLES */
+        nav {
+      color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+
+    /* Popup overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .question-box {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+    .question {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .question img {
+      max-width: 100%;
+      max-height: 200px;
+      display: block;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .correct {
+      background-color: #d4edda !important;
+    }
+    .incorrect {
+      background-color: #f8d7da !important;
+    }
+    .score-box {
+      background-color: #fff3cd;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .clue {
+      margin-top: 10px;
+      font-style: bold;
+      color: #000000;
+    }
+    .image{
+    width: 100%;
+    display: block;
+}
+
+/* footer */
+footer{
+    background: var(--exDark);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+.social-links a{
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover{
+    background: #fff;
+    color: var(--exDark);
+}
+.footer span{
+    margin-top: 1rem;
+    display: block;
+    font-family: var(--Playfair);
+    letter-spacing: 2px;
+}
+
+    /* MOBILE NAV STYLES */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><img src="/Images/Main Logo.png" alt="Main KitsoForYou Logo" /></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="/index.html">Home</a>
+        <a href="">Shopping</a>
+        <a href="/index.html#design">Games</a>
+        <a href="/index.html#blog">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+<h1>Answer the Trivia Questions</h1>
+<div id="quiz-container"></div>
+<div id="score-container"></div>
+
+  <!-- Popup container -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup">
+      <img src="/Games/Images/Trivia Questions popup.png" alt="Popup Image" />
+    </div>
+  </div>
+
+    <!-- footer -->
+    <footer>
+      <div class = "social-links">
+        <a href = "#"><i class = "fab fa-facebook-f"></i></a>
+        <a href = "#"><i class = "fab fa-twitter"></i></a>
+        <a href = "#"><i class = "fab fa-instagram"></i></a>
+        <a href = "#"><i class = "fab fa-pinterest"></i></a>
+      </div>
+      <span>Copyright &#169; 2025. All rights reserved</span>
+
+    </footer>
+    <!-- end of footer -->
+
+<script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    });
+
+    // Optional: Automatically close after a few seconds
+    // setTimeout(() => {
+    //   document.getElementById('popup').style.display = 'none';
+    // }, 5000); // closes after 5 seconds
+
+        // Navbar toggle logic
+        const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+  const allQuestions = [
+  {
+  question: "Famous Paris landmark",
+  answer: "Eiffel Tower",
+  clue1: "Made of iron",
+  clue2: "Sparkles at night"
+},
+{
+  question: "Massive structure in Asia",
+  answer: "Great Wall of China",
+  clue1: "Visible from space (myth)",
+  clue2: "Built to keep invaders out"
+},
+{
+  question: "Gift from France to the US",
+  answer: "Statue of Liberty",
+  clue1: "Holds a torch",
+  clue2: "Located in New York"
+},
+{
+  question: "White marble mausoleum",
+  answer: "Taj Mahal",
+  clue1: "Located in India",
+  clue2: "Symbol of love"
+},
+{
+  question: "World's tallest mountain",
+  answer: "Mount Everest",
+  clue1: "Located in the Himalayas",
+  clue2: "Climbers train for years"
+},
+{
+  question: "Famous London clock tower",
+  answer: "Big Ben",
+  clue1: "Attached to the Houses of Parliament",
+  clue2: "Chimes every hour"
+},
+{
+  question: "Iconic Australian building",
+  answer: "Sydney Opera House",
+  clue1: "Sail-like design",
+  clue2: "Hosts concerts and shows"
+},
+{
+  question: "Ancient Roman arena",
+  answer: "Colosseum",
+  clue1: "Used for gladiator fights",
+  clue2: "Located in Rome"
+},
+{
+  question: "Famous Egyptian tombs",
+  answer: "Pyramids of Giza",
+  clue1: "One of the Seven Wonders",
+  clue2: "Home to ancient pharaohs"
+},
+{
+  question: "Ancient city in the Andes",
+  answer: "Machu Picchu",
+  clue1: "In Peru",
+  clue2: "Built by the Incas"
+},
+{
+  question: "Waterfall on US-Canada border",
+  answer: "Niagara Falls",
+  clue1: "Famous for boat tours",
+  clue2: "Major honeymoon destination"
+},
+{
+  question: "Red bridge in San Francisco",
+  answer: "Golden Gate Bridge",
+  clue1: "Often covered in fog",
+  clue2: "Suspension bridge"
+},
+{
+  question: "Italian tower that tilts",
+  answer: "Leaning Tower of Pisa",
+  clue1: "Unintentionally slanted",
+  clue2: "Tourists pose like they're holding it"
+},
+{
+  question: "Famous statue in Brazil",
+  answer: "Christ the Redeemer",
+  clue1: "Arms wide open",
+  clue2: "Overlooks Rio de Janeiro"
+},
+{
+  question: "Prehistoric stone circle",
+  answer: "Stonehenge",
+  clue1: "Located in England",
+  clue2: "Built thousands of years ago"
+},
+{
+  question: "Theory of relativity",
+  answer: "Albert Einstein",
+  clue1: "Wild white hair",
+  clue2: "Famous physicist"
+},
+{
+  question: "First Black US president",
+  answer: "Barack Obama",
+  clue1: "Hope campaign",
+  clue2: "Married to Michelle"
+},
+{
+  question: "Pop singer with many eras",
+  answer: "Taylor Swift",
+  clue1: "Famous for break-up songs",
+  clue2: "Huge fanbase called Swifties"
+},
+{
+  question: "Tesla and SpaceX CEO",
+  answer: "Elon Musk",
+  clue1: "Owns X (formerly Twitter)",
+  clue2: "Wants to colonize Mars"
+},
+{
+  question: "Singer and performer",
+  answer: "Beyoncé",
+  clue1: "Married to Jay-Z",
+  clue2: "Album called 'Lemonade'"
+},
+{
+  question: "Famous English playwright",
+  answer: "William Shakespeare",
+  clue1: "Wrote Romeo and Juliet",
+  clue2: "Born in Stratford-upon-Avon"
+},
+{
+  question: "Renaissance artist and inventor",
+  answer: "Leonardo da Vinci",
+  clue1: "Painted the Mona Lisa",
+  clue2: "Sketched flying machines"
+},
+{
+  question: "Argentinian football legend",
+  answer: "Lionel Messi",
+  clue1: "Won World Cup in 2022",
+  clue2: "Played for Barcelona"
+},
+{
+  question: "Talk show queen",
+  answer: "Oprah Winfrey",
+  clue1: "Gives away cars",
+  clue2: "Media mogul"
+},
+{
+  question: "Anti-apartheid leader",
+  answer: "Nelson Mandela",
+  clue1: "President of South Africa",
+  clue2: "Spent 27 years in prison"
+},
+{
+  question: "King of Pop",
+  answer: "Michael Jackson",
+  clue1: "Moonwalk dance",
+  clue2: "Wore a white glove"
+},
+{
+  question: "US businessman and president",
+  answer: "Donald Trump",
+  clue1: "The Apprentice host",
+  clue2: "45th President of the USA"
+},
+{
+  question: "Boxing legend",
+  answer: "Muhammad Ali",
+  clue1: "Float like a butterfly...",
+  clue2: "...sting like a bee"
+},
+{
+  question: "Longest-reigning British monarch",
+  answer: "Queen Elizabeth",
+  clue1: "Served during WWII",
+  clue2: "Died in 2022"
+},
+{
+  question: "Apple co-founder",
+  answer: "Steve Jobs",
+  clue1: "Known for black turtlenecks",
+  clue2: "Introduced the iPhone"
+},
+{
+  question: "Epic romance set on a sinking ship",
+  answer: "Titanic",
+  clue1: "Stars Leonardo DiCaprio and Kate Winslet",
+  clue2: "Famous song 'My Heart Will Go On'"
+},
+{
+  question: "Wizard boy with a lightning scar",
+  answer: "Harry Potter",
+  clue1: "Goes to Hogwarts",
+  clue2: "Fights Lord Voldemort"
+},
+{
+  question: "Sci-fi saga with Jedi and Sith",
+  answer: "Star Wars",
+  clue1: "Features lightsabers",
+  clue2: "Iconic line: 'I am your father'"
+},
+{
+  question: "Fantasy TV series with dragons",
+  answer: "Game of Thrones",
+  clue1: "Based on books by George R.R. Martin",
+  clue2: "Famous for plot twists and battles"
+},
+{
+  question: "Animated movie about a lion cub",
+  answer: "The Lion King",
+  clue1: "Song: 'Hakuna Matata'",
+  clue2: "Character: Simba"
+},
+{
+  question: "Sitcom about six friends in NYC",
+  answer: "Friends",
+  clue1: "Central Perk café",
+  clue2: "Famous line: 'We were on a break!'"
+},
+{
+  question: "Animated show with yellow characters",
+  answer: "The Simpsons",
+  clue1: "Set in Springfield",
+  clue2: "Longest-running animated TV show"
+},
+{
+  question: "Dinosaur adventure movie",
+  answer: "Jurassic Park",
+  clue1: "Directed by Steven Spielberg",
+  clue2: "Theme park goes horribly wrong"
+},
+{
+  question: "Disney movie about ice and sisters",
+  answer: "Frozen",
+  clue1: "Song: 'Let It Go'",
+  clue2: "Characters: Elsa and Anna"
+},
+{
+  question: "Netflix show set in Hawkins",
+  answer: "Stranger Things",
+  clue1: "Features the Upside Down",
+  clue2: "Character: Eleven"
+},
+{
+  question: "Legendary British band",
+  answer: "The Beatles",
+  clue1: "Members include John and Paul",
+  clue2: "Hits like 'Hey Jude' and 'Let It Be'"
+},
+{
+  question: "K-pop supergroup",
+  answer: "BTS",
+  clue1: "Also known as Bangtan Boys",
+  clue2: "Massive international fanbase"
+},
+{
+  question: "King of Pop",
+  answer: "Michael Jackson",
+  clue1: "Famous for moonwalk",
+  clue2: "Hits include 'Thriller' and 'Beat It'"
+},
+{
+  question: "British singer with powerful vocals",
+  answer: "Adele",
+  clue1: "Albums named after her age",
+  clue2: "Hit songs like 'Hello'"
+},
+{
+  question: "Red-haired British singer-songwriter",
+  answer: "Ed Sheeran",
+  clue1: "Hit song: 'Shape of You'",
+  clue2: "Often performs solo with loop pedal"
+},
+{
+  question: "Bold performer with wild fashion",
+  answer: "Lady Gaga",
+  clue1: "Known for 'Bad Romance'",
+  clue2: "Starred in 'A Star Is Born'"
+},
+{
+  question: "Canadian rapper and singer",
+  answer: "Drake",
+  clue1: "Formerly on 'Degrassi'",
+  clue2: "Hits include 'Hotline Bling'"
+},
+{
+  question: "Rock and roll legend",
+  answer: "Elvis Presley",
+  clue1: "Known as the King",
+  clue2: "Famous for his hip-shaking moves"
+},
+{
+  question: "Barbadian pop superstar",
+  answer: "Rihanna",
+  clue1: "Hit songs like 'Umbrella'",
+  clue2: "Founder of Fenty Beauty"
+},
+{
+  question: "Pop singer with many hit eras",
+  answer: "Taylor Swift",
+  clue1: "Album titles include '1989' and 'Folklore'",
+  clue2: "Re-recorded her early albums"
+},
+
+// Food and Drinks and Animals
+
+{
+  question: "Cheesy Italian dish with toppings",
+  answer: "Pizza",
+  clue1: "Often delivered in boxes",
+  clue2: "Popular toppings include pepperoni"
+},
+{
+  question: "Japanese dish with raw fish and rice",
+  answer: "Sushi",
+  clue1: "Often served with soy sauce and wasabi",
+  clue2: "Rolled in seaweed"
+},
+{
+  question: "Beef patty in a bun",
+  answer: "Hamburger",
+  clue1: "Common fast food item",
+  clue2: "Can be topped with cheese, lettuce, and tomato"
+},
+{
+  question: "Famous fizzy soda brand",
+  answer: "Coca-Cola",
+  clue1: "Red can with white script",
+  clue2: "Often paired with fast food"
+},
+{
+  question: "Cold sweet treat in a cone or cup",
+  answer: "Ice Cream",
+  clue1: "Popular in summer",
+  clue2: "Comes in flavors like vanilla and chocolate"
+},
+{
+  question: "Mexican food with meat in a shell",
+  answer: "Tacos",
+  clue1: "Can be soft or hard shell",
+  clue2: "Often topped with salsa and cheese"
+},
+{
+  question: "Sweet treat made from cocoa",
+  answer: "Chocolate",
+  clue1: "Valentine’s Day favorite",
+  clue2: "Can be dark, milk, or white"
+},
+{
+  question: "Long pasta dish with sauce",
+  answer: "Spaghetti",
+  clue1: "Often topped with meatballs",
+  clue2: "Served with tomato or cream sauces"
+},
+{
+  question: "Crispy potato snack",
+  answer: "French Fries",
+  clue1: "Often eaten with ketchup",
+  clue2: "Popular side dish for burgers"
+},
+{
+  question: "Sweet treat with a hole in the middle",
+  answer: "Donuts",
+  clue1: "Often glazed or frosted",
+  clue2: "Eaten for breakfast or dessert"
+},
+{
+  question: "Big cat known as the king of the jungle",
+  answer: "Lion",
+  clue1: "Has a mane",
+  clue2: "Appears in 'The Lion King'"
+},
+{
+  question: "Largest land animal with a trunk",
+  answer: "Elephant",
+  clue1: "Lives in Africa and Asia",
+  clue2: "Has big ears and tusks"
+},
+{
+  question: "Black and white bear from China",
+  answer: "Panda",
+  clue1: "Eats mostly bamboo",
+  clue2: "Symbol of wildlife conservation"
+},
+{
+  question: "Common pet that barks",
+  answer: "Dog",
+  clue1: "Known as man’s best friend",
+  clue2: "Comes in many breeds"
+},
+{
+  question: "Independent pet that purrs",
+  answer: "Cat",
+  clue1: "Loves chasing mice",
+  clue2: "Often climbs and naps"
+},
+{
+  question: "Tall animal with a long neck",
+  answer: "Giraffe",
+  clue1: "Lives in Africa",
+  clue2: "Eats leaves from tall trees"
+},
+{
+  question: "Smart sea creature known for jumping",
+  answer: "Dolphin",
+  clue1: "Communicates with clicks",
+  clue2: "Often seen doing tricks at aquariums"
+},
+{
+  question: "Striped wild cat",
+  answer: "Tiger",
+  clue1: "Powerful predator",
+  clue2: "National animal of several countries"
+},
+{
+  question: "Marsupial that hops",
+  answer: "Kangaroo",
+  clue1: "Carries baby in pouch",
+  clue2: "Native to Australia"
+},
+{
+  question: "Black and white bird that can’t fly",
+  answer: "Penguin",
+  clue1: "Lives in cold climates",
+  clue2: "Waddles and swims well"
+},
+
+// Random things then sports and games
+
+{
+  question: "Device you use for calls, apps, and internet",
+  answer: "Smartphone",
+  clue1: "Often carried in pockets",
+  clue2: "Can take photos and play music"
+},
+{
+  question: "Flying vehicle for travel",
+  answer: "Airplane",
+  clue1: "Takes off from a runway",
+  clue2: "Used for long-distance journeys"
+},
+{
+  question: "Global connection of computers",
+  answer: "Internet",
+  clue1: "Used for browsing and emails",
+  clue2: "You’re probably on it right now"
+},
+{
+  question: "Colorful arc after rain",
+  answer: "Rainbow",
+  clue1: "Has seven colors",
+  clue2: "Symbol of hope and pride"
+},
+{
+  question: "Machine that can think or act like a human",
+  answer: "Robot",
+  clue1: "Often seen in sci-fi movies",
+  clue2: "Can be used in factories or homes"
+},
+{
+  question: "Erupting mountain",
+  answer: "Volcano",
+  clue1: "Lava comes out of it",
+  clue2: "Can be dormant or active"
+},
+{
+  question: "Tells you the time",
+  answer: "Clock",
+  clue1: "Can be on a wall or wrist",
+  clue2: "Has hands or numbers"
+},
+{
+  question: "Explosions of color in the sky",
+  answer: "Fireworks",
+  clue1: "Seen on New Year’s or 4th of July",
+  clue2: "Loud and bright nighttime display"
+},
+{
+  question: "Earth's satellite",
+  answer: "Moon",
+  clue1: "It has phases",
+  clue2: "Astronauts landed on it"
+},
+{
+  question: "Used to protect you from rain",
+  answer: "Umbrella",
+  clue1: "Opens above your head",
+  clue2: "Often carried on cloudy days"
+},
+{
+  question: "Sport played with a round ball and goals",
+  answer: "Soccer",
+  clue1: "Also known as football outside the US",
+  clue2: "Played in the FIFA World Cup"
+},
+{
+  question: "Sport with a hoop and dribbling",
+  answer: "Basketball",
+  clue1: "Played on a court with 5 players per team",
+  clue2: "You shoot to score points"
+},
+{
+  question: "Major international multi-sport event",
+  answer: "Olympic Games",
+  clue1: "Held every 4 years",
+  clue2: "Has summer and winter editions"
+},
+{
+  question: "Game with pawns and a checkered board",
+  answer: "Chess",
+  clue1: "Kings, queens, and rooks are involved",
+  clue2: "A game of strategy and logic"
+},
+{
+  question: "Sport played on a course with holes",
+  answer: "Golf",
+  clue1: "You use clubs to hit a ball",
+  clue2: "Scored in strokes"
+},
+{
+  question: "Bat-and-ball game popular in South Asia",
+  answer: "Cricket",
+  clue1: "Uses a wicket",
+  clue2: "Played in formats like Test and T20"
+},
+{
+  question: "Game played with rackets and a net",
+  answer: "Tennis",
+  clue1: "Played on clay, grass, or hard court",
+  clue2: "Scoring includes love, 15, 30"
+},
+{
+  question: "Board game about buying property",
+  answer: "Monopoly",
+  clue1: "Features fake money and real estate",
+  clue2: "You can go to jail in the game"
+},
+{
+  question: "Sport played with a bat and glove",
+  answer: "Baseball",
+  clue1: "Has innings and home runs",
+  clue2: "Very popular in the USA and Japan"
+},
+{
+  question: "Contact sport with an oval ball",
+  answer: "Rugby",
+  clue1: "Similar to American football",
+  clue2: "Popular in New Zealand and South Africa"
+},
+
+// Fictional characters
+
+{
+  question: "Iconic superhero from Krypton",
+  answer: "Superman",
+  clue1: "Wears a red cape and has a big 'S' on his chest",
+  clue2: "Weakness is Kryptonite"
+},
+{
+  question: "Classic Disney mascot with big ears",
+  answer: "Mickey Mouse",
+  clue1: "Created by Walt Disney",
+  clue2: "Wears red shorts and yellow shoes"
+},
+{
+  question: "British secret agent with a license to kill",
+  answer: "James Bond",
+  clue1: "Often introduced with 'the name is...'",
+  clue2: "Drives Aston Martins and drinks martinis"
+},
+{
+  question: "Teenage superhero who shoots webs",
+  answer: "Spider-Man",
+  clue1: "Alter ego is Peter Parker",
+  clue2: "Fights villains in New York City"
+},
+{
+  question: "Ice queen from Arendelle",
+  answer: "Elsa (Frozen)",
+  clue1: "Sings 'Let It Go'",
+  clue2: "Has magical freezing powers"
+},
+{
+  question: "Villain in a galaxy far, far away",
+  answer: "Darth Vader",
+  clue1: "Wears black armor and breathes heavily",
+  clue2: "Famous for saying 'I am your father'"
+},
+{
+  question: "Dark knight protector of Gotham",
+  answer: "Batman",
+  clue1: "Real identity is Bruce Wayne",
+  clue2: "Fights crime using gadgets and stealth"
+},
+{
+  question: "Yellow sponge who lives in a pineapple",
+  answer: "SpongeBob SquarePants",
+  clue1: "Works at the Krusty Krab",
+  clue2: "Best friend is Patrick Star"
+},
+{
+  question: "Famous detective known for deduction",
+  answer: "Sherlock Holmes",
+  clue1: "Often accompanied by Dr. Watson",
+  clue2: "Lives at 221B Baker Street"
+},
+{
+  question: "Wizard student at Hogwarts",
+  answer: "Harry Potter",
+  clue1: "Has a lightning-shaped scar",
+  clue2: "Best friends with Ron and Hermione"
+},
+
+// Famous songs
+
+{
+  question: "Best-selling hit by the King of Pop with a spooky music video",
+  answer: "Thriller",
+  clue1: "Released in 1982",
+  clue2: "Features zombies and iconic dance moves"
+},
+{
+  question: "Epic rock ballad with operatic sections and no chorus",
+  answer: "Bohemian Rhapsody",
+  clue1: "Released in 1975",
+  clue2: "Includes the lyric 'Is this the real life? Is this just fantasy?'"
+},
+{
+  question: "Massive streaming hit by a British pop star",
+  answer: "Shape of You",
+  clue1: "Topped global charts in 2017",
+  clue2: "Mentions 'bar' and 'relationship talk'"
+},
+{
+  question: "Powerful breakup anthem by a British soul singer",
+  answer: "Rolling in the Deep",
+  clue1: "From the album '21'",
+  clue2: "Includes the lyric 'We could have had it all'"
+},
+{
+  question: "Viral K-pop song with a horse-riding dance",
+  answer: "Gangnam Style",
+  clue1: "First YouTube video to hit 1 billion views",
+  clue2: "Released in 2012"
+},
+{
+  question: "Latin-pop song that topped charts worldwide",
+  answer: "Despacito",
+  clue1: "Features Daddy Yankee",
+  clue2: "Massive 2017 summer hit"
+},
+{
+  question: "Feel-good anthem from an animated movie",
+  answer: "Happy",
+  clue1: "From the movie 'Despicable Me 2'",
+  clue2: "Was nominated for an Academy Award"
+},
+{
+  question: "Empowering ballad from a Disney ice queen",
+  answer: "Let It Go",
+  clue1: "Sung by Idina Menzel",
+  clue2: "Won an Oscar for Best Original Song"
+},
+{
+  question: "Classic rock song with mysterious lyrics and haunting guitar",
+  answer: "Hotel California",
+  clue1: "Released in 1976",
+  clue2: "Includes the lyric 'You can check out any time you like, but you can never leave'"
+},
+{
+  question: "Funky dance-pop hit with retro vibes",
+  answer: "Uptown Funk",
+  clue1: "Topped Billboard Hot 100 for 14 weeks",
+  clue2: "Includes the lyric 'Don’t believe me just watch'"
+},
+
+// Landmarks and places and famous people
+
+{
+  question: "Iconic New York City location known for its bright lights and New Year's Eve ball drop",
+  answer: "Times Square",
+  clue1: "Located in Manhattan",
+  clue2: "Famous for digital billboards and Broadway theaters"
+},
+{
+  question: "Famous Japanese mountain known for its symmetrical cone shape",
+  answer: "Mount Fuji",
+  clue1: "An active stratovolcano",
+  clue2: "Considered a sacred symbol in Japan"
+},
+{
+  question: "Famous art museum in Paris that houses the Mona Lisa",
+  answer: "The Louvre",
+  clue1: "Glass pyramid entrance",
+  clue2: "World’s most visited museum"
+},
+{
+  question: "Largest hot desert in the world",
+  answer: "Sahara Desert",
+  clue1: "Covers much of North Africa",
+  clue2: "Known for its sand dunes and extreme temperatures"
+},
+{
+  question: "Famous landmark in Los Angeles representing the film industry",
+  answer: "Hollywood Sign",
+  clue1: "Located on Mount Lee",
+  clue2: "Originally said 'Hollywoodland'"
+},
+{
+  question: "Massive canyon carved by the Colorado River in Arizona",
+  answer: "Grand Canyon",
+  clue1: "One of the Seven Natural Wonders of the World",
+  clue2: "Can be seen from space"
+},
+{
+  question: "World’s tallest building, located in Dubai",
+  answer: "Burj Khalifa",
+  clue1: "Stands over 828 meters tall",
+  clue2: "Completed in 2010"
+},
+{
+  question: "Scottish lake said to be home to a mythical monster",
+  answer: "Loch Ness",
+  clue1: "Located in the Highlands",
+  clue2: "Associated with the legend of 'Nessie'"
+},
+{
+  question: "Vast tropical rainforest spanning several South American countries",
+  answer: "The Amazon Rainforest",
+  clue1: "Largest rainforest on Earth",
+  clue2: "Home to millions of species"
+},
+{
+  question: "Famous public square in Moscow, near the Kremlin",
+  answer: "Red Square",
+  clue1: "Home to Saint Basil’s Cathedral",
+  clue2: "Site of historical military parades"
+},
+{
+  question: "Portuguese footballer known for his goal-scoring and athleticism",
+  answer: "Cristiano Ronaldo",
+  clue1: "Has played for clubs like Manchester United and Real Madrid",
+  clue2: "Often compared to Messi"
+},
+{
+  question: "Russian political leader and former KGB officer",
+  answer: "Vladimir Putin",
+  clue1: "President of Russia",
+  clue2: "Known for his strongman image"
+},
+{
+  question: "Swedish environmental activist known for her school strike for climate",
+  answer: "Greta Thunberg",
+  clue1: "Gained international fame as a teenager",
+  clue2: "Delivered a passionate UN speech"
+},
+{
+  question: "American media personality and businesswoman known for reality TV",
+  answer: "Kim Kardashian",
+  clue1: "Famous for 'Keeping Up with the Kardashians'",
+  clue2: "Influential on social media"
+},
+{
+  question: "Youngest Nobel Prize laureate advocating for girls’ education",
+  answer: "Malala Yousafzai",
+  clue1: "Survived an attack by the Taliban",
+  clue2: "Author of 'I Am Malala'"
+},
+{
+  question: "American tennis champion with 23 Grand Slam titles",
+  answer: "Serena Williams",
+  clue1: "Known for her powerful serve",
+  clue2: "Sister of Venus Williams"
+},
+{
+  question: "Founder of Amazon and space exploration company Blue Origin",
+  answer: "Jeff Bezos",
+  clue1: "One of the richest people in the world",
+  clue2: "Stepped down as Amazon CEO in 2021"
+},
+{
+  question: "American actor known for action roles and 'Mission: Impossible'",
+  answer: "Tom Cruise",
+  clue1: "Starred in 'Top Gun'",
+  clue2: "Famous for doing his own stunts"
+},
+{
+  question: "Wrestler-turned-actor known for his charisma and physique",
+  answer: "Dwayne 'The Rock' Johnson",
+  clue1: "Starred in 'Jumanji' and 'Fast & Furious'",
+  clue2: "Former WWE champion"
+},
+{
+  question: "American singer, actress, and businesswoman nicknamed 'J.Lo'",
+  answer: "Jennifer Lopez",
+  clue1: "Starred in 'Selena' and 'Hustlers'",
+  clue2: "Known for hits like 'On the Floor'"
+},
+
+// TOys and kids stuff and food and beverages
+
+{
+  question: "Popular fashion doll brand launched in 1959",
+  answer: "Barbie",
+  clue1: "Created by Mattel",
+  clue2: "Has been adapted into movies and games"
+},
+{
+  question: "Colorful plastic construction toy loved by all ages",
+  answer: "LEGO",
+  clue1: "Interlocking brick system",
+  clue2: "Originated in Denmark"
+},
+{
+  question: "Popular video game console brand by Sony",
+  answer: "PlayStation",
+  clue1: "First launched in 1994",
+  clue2: "Known for games like 'God of War' and 'Uncharted'"
+},
+{
+  question: "Japanese media franchise involving pocket monsters",
+  answer: "Pokémon",
+  clue1: "Includes games, anime, and trading cards",
+  clue2: "Catch 'em all!"
+},
+{
+  question: "3D puzzle toy with colorful rotating squares",
+  answer: "Rubik's Cube",
+  clue1: "Invented in the 1970s",
+  clue2: "Six faces, each a different color"
+},
+{
+  question: "Miniature car toys popular since the 1960s",
+  answer: "Hot Wheels",
+  clue1: "Often used on orange tracks",
+  clue2: "Made by Mattel"
+},
+{
+  question: "Famous video game character known for his red hat and jumping skills",
+  answer: "Super Mario",
+  clue1: "Plumber from Nintendo",
+  clue2: "Often saves Princess Peach"
+},
+{
+  question: "Animated British pig loved by preschoolers",
+  answer: "Peppa Pig",
+  clue1: "Has a little brother named George",
+  clue2: "Snorts frequently"
+},
+{
+  question: "Online multiplayer battle royale game",
+  answer: "Fortnite",
+  clue1: "Known for building structures and emotes",
+  clue2: "Developed by Epic Games"
+},
+{
+  question: "Sandbox game where players build and explore blocky worlds",
+  answer: "Minecraft",
+  clue1: "Created by Mojang",
+  clue2: "Includes modes like Survival and Creative"
+},
+{
+  question: "Classic American food often eaten at barbecues or sports events",
+  answer: "Hot Dog",
+  clue1: "Sausage in a bun",
+  clue2: "Often topped with mustard or ketchup"
+},
+{
+  question: "Small baked dessert, often topped with frosting",
+  answer: "Cupcake",
+  clue1: "Mini version of a cake",
+  clue2: "Popular at birthday parties"
+},
+{
+  question: "Common movie theater snack made from heated corn kernels",
+  answer: "Popcorn",
+  clue1: "Can be buttered or caramelized",
+  clue2: "Often served in a bucket"
+},
+{
+  question: "Mexican food wrapped in a flour tortilla",
+  answer: "Burrito",
+  clue1: "Can contain beans, rice, meat, and veggies",
+  clue2: "Popular in Tex-Mex cuisine"
+},
+{
+  question: "Crispy, savory poultry dish, especially popular in the southern U.S.",
+  answer: "Fried Chicken",
+  clue1: "Often seasoned and breaded",
+  clue2: "Common fast food item"
+},
+{
+  question: "Blended fruit beverage often considered healthy",
+  answer: "Smoothie",
+  clue1: "Can include yogurt or milk",
+  clue2: "Served cold"
+},
+{
+  question: "Flaky French pastry often eaten for breakfast",
+  answer: "Croissant",
+  clue1: "Shaped like a crescent moon",
+  clue2: "Made with layers of butter and dough"
+},
+{
+  question: "Breakfast food made from grains and milk",
+  answer: "Cereal",
+  clue1: "Often served in a bowl",
+  clue2: "Comes in sweet and healthy varieties"
+},
+{
+  question: "Dairy product often served with wine or on sandwiches",
+  answer: "Cheese",
+  clue1: "Made from milk",
+  clue2: "Comes in many types: cheddar, mozzarella, brie"
+},
+{
+  question: "Hot beverage made by steeping leaves in water",
+  answer: "Tea",
+  clue1: "Popular worldwide",
+  clue2: "Varieties include green, black, and herbal"
+},
+
+// More animals things and concepts
+
+{
+  question: "Striped African animal known for its black and white pattern",
+  answer: "Zebra",
+  clue1: "Related to horses",
+  clue2: "Often found in savannas"
+},
+{
+  question: "Tree-dwelling marsupial from Australia",
+  answer: "Koala",
+  clue1: "Eats eucalyptus leaves",
+  clue2: "Often incorrectly called a bear"
+},
+{
+  question: "Largest animal on Earth",
+  answer: "Whale",
+  clue1: "Lives in the ocean",
+  clue2: "Species include blue, humpback, and orca"
+},
+{
+  question: "Reptile with tough skin and strong jaws",
+  answer: "Crocodile",
+  clue1: "Often confused with alligators",
+  clue2: "Can be found in rivers and swamps"
+},
+{
+  question: "Domesticated animal used for riding and racing",
+  answer: "Horse",
+  clue1: "Often wears a saddle",
+  clue2: "Known for galloping"
+},
+{
+  question: "Eight-armed sea creature",
+  answer: "Octopus",
+  clue1: "Can squirt ink",
+  clue2: "Highly intelligent and flexible"
+},
+{
+  question: "Slow-moving mammal from Central and South America",
+  answer: "Sloth",
+  clue1: "Known for hanging upside down",
+  clue2: "Sleeps up to 20 hours a day"
+},
+{
+  question: "Nocturnal bird known for its wisdom and silent flight",
+  answer: "Owl",
+  clue1: "Can rotate its head nearly 270 degrees",
+  clue2: "Often associated with night and magic"
+},
+{
+  question: "Large marine predator with sharp teeth",
+  answer: "Shark",
+  clue1: "Often feared by swimmers",
+  clue2: "Includes species like great white and hammerhead"
+},
+{
+  question: "Legless reptile with scales",
+  answer: "Snake",
+  clue1: "Can be venomous or non-venomous",
+  clue2: "Moves by slithering"
+},
+{
+  question: "Global network that connects computers",
+  answer: "Internet",
+  clue1: "Used for browsing, email, and streaming",
+  clue2: "Often called the web"
+},
+{
+  question: "Technology that enables machines to mimic human intelligence",
+  answer: "AI (Artificial Intelligence)",
+  clue1: "Includes machine learning and neural networks",
+  clue2: "Used in chatbots and self-driving cars"
+},
+{
+  question: "Digital platforms for connecting and sharing with others",
+  answer: "Social Media",
+  clue1: "Includes apps like Instagram and TikTok",
+  clue2: "Can be used for messaging, posting, and networking"
+},
+{
+  question: "Concept of moving backward or forward in time",
+  answer: "Time Travel",
+  clue1: "Popular in science fiction",
+  clue2: "Involves paradoxes and alternate timelines"
+},
+{
+  question: "Technology that helps you find your location",
+  answer: "GPS",
+  clue1: "Used in maps and navigation apps",
+  clue2: "Stands for Global Positioning System"
+},
+{
+  question: "Digital symbols used to express emotion or ideas",
+  answer: "Emoji",
+  clue1: "Often used in text messages",
+  clue2: "Can be faces, objects, or animals"
+},
+{
+  question: "Secret string used to access accounts",
+  answer: "Password",
+  clue1: "Should be strong and secure",
+  clue2: "Often includes letters, numbers, and symbols"
+},
+{
+  question: "Molecule that carries genetic information",
+  answer: "DNA",
+  clue1: "Double helix structure",
+  clue2: "Short for deoxyribonucleic acid"
+},
+{
+  question: "Long-term shifts in temperature and weather patterns",
+  answer: "Climate Change",
+  clue1: "Linked to global warming",
+  clue2: "Caused by human activities like fossil fuel use"
+},
+{
+  question: "Digital currency without a central bank",
+  answer: "Bitcoin",
+  clue1: "Uses blockchain technology",
+  clue2: "Created by an unknown person or group called Satoshi Nakamoto"
+},
+
+// 📱 Apps & Tech Brands	🏆 Events & Holidays
+
+{
+  question: "Photo and video sharing app with stories and reels",
+  answer: "Instagram",
+  clue1: "Owned by Meta",
+  clue2: "Known for influencers and hashtags"
+},
+{
+  question: "Short-form video app popular with Gen Z",
+  answer: "TikTok",
+  clue1: "Features music and viral trends",
+  clue2: "Known for its 'For You Page'"
+},
+{
+  question: "Social network for connecting with friends and family",
+  answer: "Facebook",
+  clue1: "Launched in 2004",
+  clue2: "Founded by Mark Zuckerberg"
+},
+{
+  question: "Video platform for creators and vloggers",
+  answer: "YouTube",
+  clue1: "Home to millions of videos",
+  clue2: "Acquired by Google"
+},
+{
+  question: "Messaging app for sending texts, calls, and media",
+  answer: "WhatsApp",
+  clue1: "Uses end-to-end encryption",
+  clue2: "Owned by Meta"
+},
+{
+  question: "Navigation app that gives directions and traffic updates",
+  answer: "Google Maps",
+  clue1: "Provides street view and satellite imagery",
+  clue2: "Helps find nearby restaurants or stores"
+},
+{
+  question: "Ride-sharing app for booking cars",
+  answer: "Uber",
+  clue1: "Also offers food delivery via Uber Eats",
+  clue2: "Can be used to schedule rides"
+},
+{
+  question: "Online shopping platform for just about anything",
+  answer: "Amazon",
+  clue1: "Founded by Jeff Bezos",
+  clue2: "Offers Prime membership"
+},
+{
+  question: "Streaming service with original shows and movies",
+  answer: "Netflix",
+  clue1: "Known for 'binge-watching'",
+  clue2: "Original content includes 'Stranger Things'"
+},
+{
+  question: "Music streaming service with playlists and podcasts",
+  answer: "Spotify",
+  clue1: "Offers both free and premium versions",
+  clue2: "Creates personalized mixes"
+},
+{
+  question: "Holiday involving costumes and candy",
+  answer: "Halloween",
+  clue1: "Celebrated on October 31",
+  clue2: "Features pumpkins and trick-or-treating"
+},
+{
+  question: "Holiday celebrated on December 25",
+  answer: "Christmas",
+  clue1: "Associated with Santa Claus",
+  clue2: "Decorating trees and exchanging gifts"
+},
+{
+  question: "Celebration of the start of a new calendar year",
+  answer: "New Year’s Eve",
+  clue1: "Takes place on December 31",
+  clue2: "Known for countdowns and fireworks"
+},
+{
+  question: "Romantic holiday celebrating love",
+  answer: "Valentine’s Day",
+  clue1: "Celebrated on February 14",
+  clue2: "Often involves chocolates and flowers"
+},
+{
+  question: "Massive retail sales day after Thanksgiving",
+  answer: "Black Friday",
+  clue1: "Known for doorbuster deals",
+  clue2: "Kicks off holiday shopping season"
+},
+{
+  question: "Day of pranks and jokes",
+  answer: "April Fool’s Day",
+  clue1: "Celebrated on April 1",
+  clue2: "Used for harmless trickery"
+},
+{
+  question: "International sporting event every four years",
+  answer: "Olympics",
+  clue1: "Has summer and winter editions",
+  clue2: "Features athletes from around the world"
+},
+{
+  question: "Global football (soccer) tournament held every four years",
+  answer: "World Cup",
+  clue1: "Organized by FIFA",
+  clue2: "Most-watched sporting event worldwide"
+},
+{
+  question: "Championship game of American football",
+  answer: "Super Bowl",
+  clue1: "Includes halftime show and commercials",
+  clue2: "Held annually in the U.S."
+},
+{
+  question: "Day promoting environmental awareness",
+  answer: "Earth Day",
+  clue1: "Celebrated on April 22",
+  clue2: "Focuses on protecting the planet"
+},
+
+// 🎭 Characters & Pop Culture Icons (New)
+
+{
+  question: "Yellow animated father in a long-running TV show",
+  answer: "Homer Simpson",
+  clue1: "Lives in Springfield",
+  clue2: "Famous for 'D'oh!'"
+},
+{
+  question: "Superheroine from DC Comics with a magic lasso",
+  answer: "Wonder Woman",
+  clue1: "Amazonian warrior princess",
+  clue2: "Also known as Diana Prince"
+},
+{
+  question: "Marvel superhero known as Tony Stark",
+  answer: "Iron Man",
+  clue1: "Wears a high-tech armored suit",
+  clue2: "Founder of the Avengers"
+},
+{
+  question: "Electric mouse Pokémon",
+  answer: "Pikachu",
+  clue1: "Ash's main companion",
+  clue2: "Known for its lightning bolt tail"
+},
+{
+  question: "Fictional archaeologist and adventurer in video games",
+  answer: "Lara Croft",
+  clue1: "Star of the Tomb Raider series",
+  clue2: "Known for her dual pistols"
+},
+{
+  question: "Friendly snowman from a Disney movie",
+  answer: "Olaf (Frozen)",
+  clue1: "Likes warm hugs",
+  clue2: "Appears in 'Frozen'"
+},
+{
+  question: "Iconic doll and character known worldwide",
+  answer: "Barbie (character)",
+  clue1: "Fashion model doll",
+  clue2: "Has many careers and styles"
+},
+{
+  question: "Wise Jedi Master from Star Wars",
+  answer: "Yoda",
+  clue1: "Known for his unique speech pattern",
+  clue2: "Trains Luke Skywalker"
+},
+{
+  question: "Friendly bear who loves honey",
+  answer: "Winnie the Pooh",
+  clue1: "Lives in the Hundred Acre Wood",
+  clue2: "Created by A.A. Milne"
+},
+{
+  question: "Marvel antihero with a sarcastic sense of humor",
+  answer: "Deadpool",
+  clue1: "Known as the 'Merc with a Mouth'",
+  clue2: "Wears a red and black costume"
+}
+
+
+    // Add more questions as needed
+  ];
+
+  let lastRoundQuestions = [];
+  let currentQuestions = [];
+  let answeredCount = 0;
+  let score = 0;
+  const attempts = {};
+  const finalAnswers = {};
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+function loadQuestions() {
+  const container = document.getElementById('quiz-container');
+  const scoreBox = document.getElementById('score-container');
+  scoreBox.innerHTML = '';
+  container.innerHTML = '';
+  answeredCount = 0;
+  score = 0;
+  Object.keys(finalAnswers).forEach(k => delete finalAnswers[k]);
+  Object.keys(attempts).forEach(k => delete attempts[k]);
+
+  // Filter out last round's questions
+  const filtered = allQuestions.filter(
+    q => !lastRoundQuestions.includes(q.question)
+  );
+
+  // If not enough unique questions, fall back to full list
+  const availablePool = filtered.length >= 5 ? filtered : [...allQuestions];
+
+// Filter out questions used in the last round
+const filteredQuestions = allQuestions.filter(
+  q => !lastRoundQuestions.includes(q.question)
+);
+
+// Fallback if not enough new ones
+const questionPool = filteredQuestions.length >= 5 ? filteredQuestions : allQuestions;
+
+// Shuffle and pick new questions
+currentQuestions = shuffle([...questionPool]).slice(0, 5);
+
+// Save current question texts to prevent repeats next round
+lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Save current questions to exclude next time
+  lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Render questions
+  currentQuestions.forEach((q, index) => {
+    const box = document.createElement('div');
+    box.className = 'question-box';
+    box.innerHTML = `
+      <div class="question">${index + 1}. ${q.question}</div>
+      ${q.image ? `<img src="${q.image}" alt="Question image">` : ""}
+      <input type="text" id="answer-${index}" placeholder="Type your answer" />
+      <button onclick="checkAnswer('${q.answer}', ${index}, this)">Check</button>
+      <div id="clue-${index}" class="clue"></div>
+    `;
+    container.appendChild(box);
+  });
+}
+
+
+  function checkAnswer(correctAnswer, index, button) {
+    const input = document.getElementById(`answer-${index}`);
+    const clueBox = document.getElementById(`clue-${index}`);
+    const userAnswer = input.value.trim().toLowerCase();
+    const correct = correctAnswer.trim().toLowerCase();
+
+    if (!attempts[index]) attempts[index] = 1;
+    else attempts[index]++;
+
+    if (userAnswer === correct) {
+      finalAnswers[index] = true;
+      disableInput(input, button);
+      clueBox.innerText = "";
+      answeredCount++;
+    } else {
+      if (attempts[index] === 1) {
+        clueBox.innerText = currentQuestions[index].clue1 || "";
+      } else if (attempts[index] === 2) {
+        clueBox.innerText = currentQuestions[index].clue2 || "";
+      } else {
+        finalAnswers[index] = false;
+        disableInput(input, button);
+        clueBox.innerText = "No more attempts.";
+        answeredCount++;
+      }
+    }
+
+    if (answeredCount === 5) {
+      evaluateScore();
+      setTimeout(loadQuestions, 10000);
+    }
+  }
+
+  function disableInput(input, button) {
+    input.disabled = true;
+    button.disabled = true;
+  }
+
+  function evaluateScore() {
+  let correctTotal = 0;
+  Object.keys(finalAnswers).forEach(index => {
+    const input = document.getElementById(`answer-${index}`);
+    if (finalAnswers[index]) {
+      input.classList.add('correct');
+      correctTotal++;
+    } else {
+      input.classList.add('incorrect');
+    }
+  });
+  score = correctTotal;
+  startCountdown(); // ← New countdown function
+}
+function startCountdown() {
+  const scoreBox = document.getElementById('score-container');
+  let countdown = 10;
+
+  scoreBox.innerHTML = `
+    <div class="score-box">
+      You scored ${score} out of 5!<br>
+      <span id="countdown">Next round in ${countdown}...</span>
+    </div>
+  `;
+
+  const interval = setInterval(() => {
+    countdown--;
+    document.getElementById('countdown').innerText = `Next round in ${countdown}...`;
+
+    if (countdown === 0) {
+      clearInterval(interval);
+      loadQuestions();
+    }
+  }, 1000);
+}
+
+
+  function showScore() {
+    const scoreBox = document.getElementById('score-container');
+    scoreBox.innerHTML = `<div class="score-box">You scored ${score} out of 5!<br>Shuffling new questions...</div>`;
+  }
+
+  loadQuestions();
+</script>
+
+</body>
+</html>

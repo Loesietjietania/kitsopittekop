@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Answering Riddles For Kids</title>
+  <meta name="description" content="Fun riddles for kids! Easy brain teasers, silly jokes, and educational puzzles perfect for children. Boost learning while having fun with our free collection.">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .logo img {
+      height: 2.5rem;
+      width: 3rem;
+    }
+    
+        /* NAVBAR STYLES */
+        nav {
+      color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+
+    /* Popup overlay */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Popup image container */
+    .popup {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .popup img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .question-box {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    }
+    .question {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .question img {
+      max-width: 100%;
+      max-height: 200px;
+      display: block;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .correct {
+      background-color: #d4edda !important;
+    }
+    .incorrect {
+      background-color: #f8d7da !important;
+    }
+    .score-box {
+      background-color: #fff3cd;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .clue {
+      margin-top: 10px;
+      font-style: bold;
+      color: #000000;
+    }
+    .image{
+    width: 100%;
+    display: block;
+}
+
+/* footer */
+footer{
+    background: var(--exDark);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+.social-links a{
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover{
+    background: #fff;
+    color: var(--exDark);
+}
+.footer span{
+    margin-top: 1rem;
+    display: block;
+    font-family: var(--Playfair);
+    letter-spacing: 2px;
+}
+
+    /* MOBILE NAV STYLES */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border: 1px solid #444;
+        border-radius: 4px;
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><img src="/Images/Main Logo.png" alt="Main KitsoForYou Logo" /></div>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="/index.html">Home</a>
+        <a href="">Shopping</a>
+        <a href="/index.html#design">Games</a>
+        <a href="/index.html#blog">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+<h1>Answer the Riddles For Kids</h1>
+<div id="quiz-container"></div>
+<div id="score-container"></div>
+
+  <!-- Popup container -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup">
+      <img src="/Games/Images/Riddles Answer Popup.png" alt="Popup Image" />
+    </div>
+  </div>
+
+    <!-- footer -->
+    <footer>
+      <div class = "social-links">
+        <a href = "#"><i class = "fab fa-facebook-f"></i></a>
+        <a href = "#"><i class = "fab fa-twitter"></i></a>
+        <a href = "#"><i class = "fab fa-instagram"></i></a>
+        <a href = "#"><i class = "fab fa-pinterest"></i></a>
+      </div>
+      <span>Copyright &#169; 2025. All rights reserved</span>
+
+    </footer>
+    <!-- end of footer -->
+
+<script>
+
+      // Close the popup when it's clicked
+      document.getElementById('popup').addEventListener('click', function () {
+      this.style.display = 'none';
+    });
+
+    // Optional: Automatically close after a few seconds
+    // setTimeout(() => {
+    //   document.getElementById('popup').style.display = 'none';
+    // }, 5000); // closes after 5 seconds
+
+        // Navbar toggle logic
+        const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+  const allQuestions = [
+
+  // Riddles For Kids
+  {
+    question: "What has hands but can't clap?",
+    answer: "A clock",
+    clue1: "Found on the wall",
+    clue2: "Tells time"
+  },
+  {
+    question: "What has a face and two hands but no arms or legs?",
+    answer: "A clock",
+    clue1: "Used to check the time",
+    clue2: "Has numbers on its face"
+  },
+  {
+    question: "What has to be broken before you can use it?",
+    answer: "An egg",
+    clue1: "Used in breakfast",
+    clue2: "Has a shell"
+  },
+  {
+    question: "What has a neck but no head?",
+    answer: "A bottle",
+    clue1: "Holds liquid",
+    clue2: "Can be made of glass or plastic"
+  },
+  {
+    question: "What gets wetter the more it dries?",
+    answer: "A towel",
+    clue1: "Used after a shower",
+    clue2: "Absorbs water"
+  },
+  {
+    question: "What comes down but never goes up?",
+    answer: "Rain",
+    clue1: "Falls from clouds",
+    clue2: "Can get you wet"
+  },
+  {
+    question: "What goes up but never comes down?",
+    answer: "Your age",
+    clue1: "Increases every year",
+    clue2: "Related to birthdays"
+  },
+  {
+    question: "What belongs to you but others use it more than you do?",
+    answer: "Your name",
+    clue1: "People call you by it",
+    clue2: "It's part of your identity"
+  },
+  {
+    question: "What can travel around the world while staying in the same corner?",
+    answer: "A stamp",
+    clue1: "Goes on letters",
+    clue2: "Tiny and sticky"
+  },
+  {
+    question: "What has four legs but can't walk?",
+    answer: "A table",
+    clue1: "Found in kitchens",
+    clue2: "Used for eating"
+  },
+  {
+    question: "Why did the student eat his homework?",
+    answer: "Because the teacher told him it was a piece of cake!",
+    clue1: "Silly logic",
+    clue2: "Involves food"
+  },
+  {
+    question: "What has one eye but can't see?",
+    answer: "A needle",
+    clue1: "Used for sewing",
+    clue2: "Very sharp"
+  },
+  {
+    question: "What has many keys but can't open any doors?",
+    answer: "A piano",
+    clue1: "Makes music",
+    clue2: "Black and white keys"
+  },
+  {
+    question: "What kind of room has no doors or windows?",
+    answer: "A mushroom",
+    clue1: "A type of fungus",
+    clue2: "Edible in pizza"
+  },
+  {
+    question: "I'm tall when I'm young, and I'm short when I'm old. What am I?",
+    answer: "A candle",
+    clue1: "Gives off light",
+    clue2: "Melts over time"
+  },
+  {
+    question: "What's full of holes but still holds water?",
+    answer: "A sponge",
+    clue1: "Used for cleaning",
+    clue2: "Soft and squishy"
+  },
+  {
+    question: "If you drop a yellow hat in the Red Sea, what does it become?",
+    answer: "Wet",
+    clue1: "Not about color",
+    clue2: "Think practically"
+  },
+  {
+    question: "What do you find at the end of a rainbow?",
+    answer: "The letter W",
+    clue1: "Think of spelling",
+    clue2: "Not a real object"
+  },
+  {
+    question: "What kind of tree can you carry in your hand?",
+    answer: "A palm tree",
+    clue1: "Shares a name with a body part",
+    clue2: "Grows in tropical places"
+  },
+  {
+    question: "What word is spelled wrong in the dictionary?",
+    answer: "Wrong",
+    clue1: "It's a joke",
+    clue2: "It's actually a real word"
+  },
+  {
+    question: "What animal has more lives than a cat?",
+    answer: "A frog",
+    clue1: "It croaks every night",
+    clue2: "Jumps a lot"
+  },
+  {
+    question: "What do you call a sleeping bull?",
+    answer: "A bulldozer",
+    clue1: "Sounds like a construction vehicle",
+    clue2: "Play on words"
+  },
+  {
+    question: "Why are fish so smart?",
+    answer: "Because they live in schools!",
+    clue1: "Wordplay on education",
+    clue2: "Group of fish"
+  },
+  {
+    question: "What do you get when you cross a snowman and a dog?",
+    answer: "Frostbite",
+    clue1: "Cold and bite",
+    clue2: "A wintry pun"
+  },
+  {
+    question: "What animal needs to wear a wig?",
+    answer: "A bald eagle",
+    clue1: "It's bald",
+    clue2: "A national symbol"
+  },
+  {
+    question: "Why don't elephants use computers?",
+    answer: "They're afraid of the mouse",
+    clue1: "Tiny rodent",
+    clue2: "Tech joke"
+  },
+  {
+    question: "What has four legs in the morning, two in the afternoon, and three in the evening?",
+    answer: "A person",
+    clue1: "Crawls as a baby",
+    clue2: "Uses a cane when old"
+  },
+  {
+    question: "Why do birds fly south for the winter?",
+    answer: "Because it's too far to walk!",
+    clue1: "Silly logic",
+    clue2: "They migrate"
+  },
+  {
+    question: "What do you get when you cross a vampire and a snowman?",
+    answer: "Frostbite",
+    clue1: "Chilly pun",
+    clue2: "Involves biting"
+  },
+  {
+    question: "What is black and white and read all over?",
+    answer: "A newspaper",
+    clue1: "Used to get news",
+    clue2: "Play on words: “read”"
+  },
+  {
+    question: "What kind of cup doesn't hold water?",
+    answer: "A cupcake",
+    clue1: "Dessert",
+    clue2: "Sweet and fluffy"
+  },
+  {
+    question: "What has teeth but can't bite?",
+    answer: "A comb",
+    clue1: "Used for hair",
+    clue2: "Plastic or wooden"
+  },
+  {
+    question: "What kind of band never plays music?",
+    answer: "A rubber band",
+    clue1: "Used to hold things together",
+    clue2: "Stretchy"
+  },
+  {
+    question: "What has ears but cannot hear?",
+    answer: "A cornfield",
+    clue1: "Grows in farms",
+    clue2: "Food item"
+  },
+  {
+    question: "What do you get when you boil a funny bone?",
+    answer: "A laughing stock",
+    clue1: "Silly wordplay",
+    clue2: "A joke answer"
+  },
+  {
+    question: "What is orange and sounds like a parrot?",
+    answer: "A carrot",
+    clue1: "Healthy vegetable",
+    clue2: "Rhymes with 'parrot'"
+  },
+  {
+    question: "Why did the banana go to the doctor?",
+    answer: "Because it wasn't peeling well",
+    clue1: "Pun on 'feeling'",
+    clue2: "Fruit-related"
+  },
+  {
+    question: "What kind of key opens a banana?",
+    answer: "A monkey",
+    clue1: "Loves bananas",
+    clue2: "Swings from trees"
+  },
+  {
+    question: "Why did the cookie go to the hospital?",
+    answer: "Because it felt crummy",
+    clue1: "Falling apart",
+    clue2: "A pun on 'crumb'"
+  },
+  {
+    question: "What is easy to lift but hard to throw?",
+    answer: "A feather",
+    clue1: "Very light",
+    clue2: "From a bird"
+  },
+  {
+    question: "What invention lets you look right through a wall?",
+    answer: "A window",
+    clue1: "Made of glass",
+    clue2: "Part of most houses"
+  },
+  {
+    question: "The more you take, the more you leave behind. What are they?",
+    answer: "Footsteps",
+    clue1: "Left when walking",
+    clue2: "Seen in sand or snow"
+  },
+  {
+    question: "If you have it, you want to share it. Once you share it, you don't have it. What is it?",
+    answer: "A secret",
+    clue1: "Meant to be kept",
+    clue2: "Told in whispers"
+  },
+  {
+    question: "What can you catch but not throw?",
+    answer: "A cold",
+    clue1: "Makes you sneeze",
+    clue2: "Spreads in winter"
+  },
+  {
+    question: "What gets bigger the more you take away from it?",
+    answer: "A hole",
+    clue1: "Dug in the ground",
+    clue2: "Lack of something"
+  },
+  {
+    question: "What begins with T, ends with T, and has T in it?",
+    answer: "A teapot",
+    clue1: "Used for tea",
+    clue2: "Has a spout"
+  },
+  {
+    question: "What has cities but no houses, rivers but no water, and roads but no cars?",
+    answer: "A map",
+    clue1: "Used for directions",
+    clue2: "Printed on paper or digital"
+  },
+  {
+    question: "Where does Friday come before Thursday?",
+    answer: "In the dictionary",
+    clue1: "Not about time",
+    clue2: "Alphabetical order"
+  },
+  {
+    question: "What starts with P, ends with E, and has thousands of letters?",
+    answer: "The post office",
+    clue1: "Delivers mail",
+    clue2: "Found in every town"
+  },
+  {
+    question: "What is always in front of you but can't be seen?",
+    answer: "The future",
+    clue1: "Time-related",
+    clue2: "Yet to come"
+  },
+
+// More Kid Riddles
+
+{
+    question: "What has stripes and goes 'zzzz'?",
+    answer: "A sleeping zebra",
+    clue1: "It's black and white",
+    clue2: "It's napping"
+  },
+  {
+    question: "What has legs but doesn't walk?",
+    answer: "A chair",
+    clue1: "You sit on it",
+    clue2: "Found in classrooms"
+  },
+  {
+    question: "What do you call cheese that isn't yours?",
+    answer: "Nacho cheese",
+    clue1: "Play on words",
+    clue2: "Cheesy joke"
+  },
+  {
+    question: "What has words but never speaks?",
+    answer: "A book",
+    clue1: "You read it",
+    clue2: "Full of pages"
+  },
+  {
+    question: "Why did the teddy bear say no to dessert?",
+    answer: "Because it was stuffed",
+    clue1: "Not hungry",
+    clue2: "A toy bear"
+  },
+  {
+    question: "What can you hold in your left hand but not in your right?",
+    answer: "Your right elbow",
+    clue1: "Body part",
+    clue2: "Try to reach it!"
+  },
+  {
+    question: "What has a bottom at the top?",
+    answer: "Your legs",
+    clue1: "Part of your body",
+    clue2: "They hold you up"
+  },
+  {
+    question: "What has a heart that doesn't beat?",
+    answer: "An artichoke",
+    clue1: "It's a vegetable",
+    clue2: "The middle is called its 'heart'"
+  },
+  {
+    question: "What's brown and sticky?",
+    answer: "A stick",
+    clue1: "Found outside",
+    clue2: "Not actually sticky!"
+  },
+  {
+    question: "What has one horn and gives milk?",
+    answer: "A milk truck",
+    clue1: "Delivers dairy",
+    clue2: "Honk honk!"
+  },
+  {
+    question: "Why can't your nose be 12 inches long?",
+    answer: "Because then it would be a foot!",
+    clue1: "Think measurements",
+    clue2: "A nose pun"
+  },
+  {
+    question: "What kind of dog can tell time?",
+    answer: "A watch dog",
+    clue1: "Plays on 'watch'",
+    clue2: "Keeps an eye out"
+  },
+  {
+    question: "What did the big flower say to the little flower?",
+    answer: "Hi, bud!",
+    clue1: "Plant pun",
+    clue2: "Friendly greeting"
+  },
+  {
+    question: "What can you catch but never throw?",
+    answer: "A shadow",
+    clue1: "Follows you around",
+    clue2: "Made by light"
+  },
+  {
+    question: "Where do cows go for entertainment?",
+    answer: "To the moo-vies",
+    clue1: "Animal pun",
+    clue2: "Watch a film"
+  },
+  {
+    question: "What has four wheels and flies?",
+    answer: "A garbage truck",
+    clue1: "Picks up trash",
+    clue2: "Attracts bugs"
+  },
+  {
+    question: "What gets sharper the more you use it?",
+    answer: "Your brain",
+    clue1: "Inside your head",
+    clue2: "Gets smarter"
+  },
+  {
+    question: "What has a thumb and four fingers but isn't alive?",
+    answer: "A glove",
+    clue1: "Worn in winter",
+    clue2: "Made of fabric"
+  },
+  {
+    question: "Why was the math book sad?",
+    answer: "Because it had too many problems",
+    clue1: "School subject",
+    clue2: "Emotional pun"
+  },
+  {
+    question: "Why did the bicycle fall over?",
+    answer: "Because it was two-tired",
+    clue1: "Wheels involved",
+    clue2: "It was exhausted!"
+  },
+  {
+    question: "What's black, white, and red all over?",
+    answer: "A sunburned zebra",
+    clue1: "Stripes and sun",
+    clue2: "Ouch!"
+  },
+  {
+    question: "Why can't you give Elsa a balloon?",
+    answer: "Because she'll let it go!",
+    clue1: "Disney movie",
+    clue2: "Popular frozen character"
+  },
+  {
+    question: "What runs but never walks?",
+    answer: "A river",
+    clue1: "Full of water",
+    clue2: "Flows"
+  },
+  {
+    question: "What is always coming but never arrives?",
+    answer: "Tomorrow",
+    clue1: "Time-based",
+    clue2: "You wait for it daily"
+  },
+  {
+    question: "What has two hands and a face but no eyes?",
+    answer: "A clock",
+    clue1: "Tells time",
+    clue2: "Found on the wall"
+  },
+  {
+    question: "What has a ring but no finger?",
+    answer: "A telephone",
+    clue1: "It rings",
+    clue2: "Used for calls"
+  },
+  {
+    question: "What can fill a room but takes up no space?",
+    answer: "Light",
+    clue1: "Brightens things",
+    clue2: "Not solid"
+  },
+  {
+    question: "What has a head, a tail, is brown, and has no legs?",
+    answer: "A penny",
+    clue1: "Small and shiny",
+    clue2: "Used as money"
+  },
+  {
+    question: "What kind of coat is always wet?",
+    answer: "A coat of paint",
+    clue1: "Used on walls",
+    clue2: "Needs time to dry"
+  },
+  {
+    question: "What gets bigger the more you share it?",
+    answer: "Happiness",
+    clue1: "An emotion",
+    clue2: "Contagious in a good way"
+  },
+  {
+    question: "What can't be used until it's broken?",
+    answer: "An egg",
+    clue1: "Breakfast food",
+    clue2: "Comes in a shell"
+  },
+  {
+    question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
+    answer: "The letter M",
+    clue1: "Alphabet clue",
+    clue2: "Look at the words"
+  },
+  {
+    question: "What do you call a bear with no teeth?",
+    answer: "A gummy bear",
+    clue1: "Sweet treat",
+    clue2: "Toothless"
+  },
+  {
+    question: "Why don't skeletons fight each other?",
+    answer: "They don't have the guts",
+    clue1: "They're bony",
+    clue2: "Play on words"
+  },
+  {
+    question: "Why was the broom late?",
+    answer: "It over swept!",
+    clue1: "Cleans floors",
+    clue2: "Play on 'overslept'"
+  },
+  {
+    question: "Why did the golfer bring two pants?",
+    answer: "In case he got a hole in one",
+    clue1: "Sports pun",
+    clue2: "Played on green grass"
+  },
+  {
+    question: "Why did the chicken go to the playground?",
+    answer: "To get to the other slide",
+    clue1: "Variation on classic joke",
+    clue2: "Slides are fun!"
+  },
+  {
+    question: "What has 88 keys but can't open a single door?",
+    answer: "A piano",
+    clue1: "Used in music",
+    clue2: "Black and white"
+  },
+  {
+    question: "Where do pencils go for vacation?",
+    answer: "Pencil-vania",
+    clue1: "State pun",
+    clue2: "They need a break!"
+  },
+  {
+    question: "What comes with a bow but is not a gift?",
+    answer: "A violin",
+    clue1: "Played with strings",
+    clue2: "Used in orchestras"
+  },
+  {
+    question: "What kind of tree fits in your hand?",
+    answer: "A palm tree",
+    clue1: "Body part pun",
+    clue2: "Found on beaches"
+  },
+  {
+    question: "Why did the computer go to the doctor?",
+    answer: "It had a virus",
+    clue1: "Needs antivirus software",
+    clue2: "Digital illness"
+  },
+  {
+    question: "What's white and goes up?",
+    answer: "A confused snowflake",
+    clue1: "It should fall down",
+    clue2: "Silly logic"
+  },
+  {
+    question: "Why did the cow cross the road?",
+    answer: "To get to the udder side",
+    clue1: "Cow pun",
+    clue2: "Classic twist"
+  },
+  {
+    question: "What's fast, loud, and crunchy?",
+    answer: "A rocket chip",
+    clue1: "Not a spaceship",
+    clue2: "Snack pun"
+  },
+  {
+    question: "What goes tick-tock and woof-woof?",
+    answer: "A watchdog",
+    clue1: "Keeps an eye on things",
+    clue2: "Barks"
+  },
+  {
+    question: "What's round and never stops moving?",
+    answer: "The Earth",
+    clue1: "We live on it",
+    clue2: "Orbits the sun"
+  },
+  {
+    question: "What do you call an alligator in a vest?",
+    answer: "An investigator",
+    clue1: "Detective pun",
+    clue2: "Scaly reptile"
+  },
+  {
+    question: "What has fur and likes to play fetch?",
+    answer: "A dog",
+    clue1: "Man's best friend",
+    clue2: "Wags its tail"
+  },
+  {
+    question: "What do you call a fish with no eyes?",
+    answer: "Fsh",
+    clue1: "Remove the 'i'",
+    clue2: "Silly spelling"
+  }
+
+
+
+// Fictional characters
+
+
+
+// Famous songs
+
+
+
+// Landmarks and places and famous people
+
+
+
+// TOys and kids stuff and food and beverages
+
+
+// More animals things and concepts
+
+
+// 📱 Apps & Tech Brands	🏆 Events & Holidays
+
+
+
+// 🎭 Characters & Pop Culture Icons (New)
+
+
+
+
+    // Add more questions as needed
+  ];
+
+  let lastRoundQuestions = [];
+  let currentQuestions = [];
+  let answeredCount = 0;
+  let score = 0;
+  const attempts = {};
+  const finalAnswers = {};
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+function loadQuestions() {
+  const container = document.getElementById('quiz-container');
+  const scoreBox = document.getElementById('score-container');
+  scoreBox.innerHTML = '';
+  container.innerHTML = '';
+  answeredCount = 0;
+  score = 0;
+  Object.keys(finalAnswers).forEach(k => delete finalAnswers[k]);
+  Object.keys(attempts).forEach(k => delete attempts[k]);
+
+  // Filter out last round's questions
+  const filtered = allQuestions.filter(
+    q => !lastRoundQuestions.includes(q.question)
+  );
+
+  // If not enough unique questions, fall back to full list
+  const availablePool = filtered.length >= 5 ? filtered : [...allQuestions];
+
+// Filter out questions used in the last round
+const filteredQuestions = allQuestions.filter(
+  q => !lastRoundQuestions.includes(q.question)
+);
+
+// Fallback if not enough new ones
+const questionPool = filteredQuestions.length >= 5 ? filteredQuestions : allQuestions;
+
+// Shuffle and pick new questions
+currentQuestions = shuffle([...questionPool]).slice(0, 5);
+
+// Save current question texts to prevent repeats next round
+lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Save current questions to exclude next time
+  lastRoundQuestions = currentQuestions.map(q => q.question);
+
+  // Render questions
+  currentQuestions.forEach((q, index) => {
+    const box = document.createElement('div');
+    box.className = 'question-box';
+    box.innerHTML = `
+      <div class="question">${index + 1}. ${q.question}</div>
+      ${q.image ? `<img src="${q.image}" alt="Question image">` : ""}
+      <input type="text" id="answer-${index}" placeholder="Type your answer" />
+      <button onclick="checkAnswer('${q.answer}', ${index}, this)">Check</button>
+      <div id="clue-${index}" class="clue"></div>
+    `;
+    container.appendChild(box);
+  });
+}
+
+
+  function checkAnswer(correctAnswer, index, button) {
+    const input = document.getElementById(`answer-${index}`);
+    const clueBox = document.getElementById(`clue-${index}`);
+    const userAnswer = input.value.trim().toLowerCase();
+    const correct = correctAnswer.trim().toLowerCase();
+
+    if (!attempts[index]) attempts[index] = 1;
+    else attempts[index]++;
+
+    if (userAnswer === correct) {
+      finalAnswers[index] = true;
+      disableInput(input, button);
+      clueBox.innerText = "";
+      answeredCount++;
+    } else {
+      if (attempts[index] === 1) {
+        clueBox.innerText = currentQuestions[index].clue1 || "";
+      } else if (attempts[index] === 2) {
+        clueBox.innerText = currentQuestions[index].clue2 || "";
+      } else {
+        finalAnswers[index] = false;
+        disableInput(input, button);
+        clueBox.innerText = "No more attempts.";
+        answeredCount++;
+      }
+    }
+
+    if (answeredCount === 5) {
+      evaluateScore();
+      setTimeout(loadQuestions, 10000);
+    }
+  }
+
+  function disableInput(input, button) {
+    input.disabled = true;
+    button.disabled = true;
+  }
+
+  function evaluateScore() {
+  let correctTotal = 0;
+  Object.keys(finalAnswers).forEach(index => {
+    const input = document.getElementById(`answer-${index}`);
+    if (finalAnswers[index]) {
+      input.classList.add('correct');
+      correctTotal++;
+    } else {
+      input.classList.add('incorrect');
+    }
+  });
+  score = correctTotal;
+  startCountdown(); // ← New countdown function
+}
+function startCountdown() {
+  const scoreBox = document.getElementById('score-container');
+  let countdown = 10;
+
+  scoreBox.innerHTML = `
+    <div class="score-box">
+      You scored ${score} out of 5!<br>
+      <span id="countdown">Next round in ${countdown}...</span>
+    </div>
+  `;
+
+  const interval = setInterval(() => {
+    countdown--;
+    document.getElementById('countdown').innerText = `Next round in ${countdown}...`;
+
+    if (countdown === 0) {
+      clearInterval(interval);
+      loadQuestions();
+    }
+  }, 1000);
+}
+
+
+  function showScore() {
+    const scoreBox = document.getElementById('score-container');
+    scoreBox.innerHTML = `<div class="score-box">You scored ${score} out of 5!<br>Shuffling new questions...</div>`;
+  }
+
+  loadQuestions();
+</script>
+
+</body>
+</html>
