@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="s0QeOU3FLZG5aMuZp_Zv11Kqjq2eOJBBiNlMR3b_NxI" />
+    <title>Riddles</title>
+    <meta name="description" content="Explore all riddle categories! Hard riddles, kids riddles, adult brain teasers, and logic puzzles - all with answers included. Free collection for every skill level.">
+    <link rel="shortcut icon" type="x-icon" href="Images/Main Logo.png">
+
+ <style>
+    
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: 'helvetica';
+    src: url(Fonts/helvetica-rounded-bold-5871d05ead8de.otf) format('opentype');
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+}
+
+
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 1.3em 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(70px);
+    z-index: -1;
+}
+.navbar a{
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5em;
+}
+#check{
+    display: none;
+}
+.logo img{
+    height: 2.5rem;
+    width: 3rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin: none;
+
+}
+
+.nav-icon{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+.close-icon{
+    display: none;
+}
+
+hr{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+/*-- Button -- */
+.butt button {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(109, 61, 136);
+    border: 0.25em solid var(--glow-color);
+    padding: 1em 3em;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0em 1em 0.25em var(--glow-color),
+                0 0 4em var(--glow-spread-color),
+                inset 0 0 0.75em 0.25em var(--glow-color);
+    text-shadow: 0 0 0.5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.butt button::after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: 0.7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+.butt button:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0em 1em 0.25em var(--glow-color),
+                0 0 2em 2em var(--glow-spread-color),
+                inset 0 0 0.75em 0.25em var(--glow-color);
+}
+
+.butt button:active {
+    box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+                0 0 2.5em 2em var(--glow-spread-color),
+                inset 0 0 0.5em 0.25em var(--glow-color);
+}
+
+/*---Our services---*/
+
+.sect3{
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 1.25rem;
+    box-sizing: none;
+}
+
+.img-os{
+    width: 19rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ads{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ads-items{
+    align-items: center;
+    justify-content: center;
+}
+
+.ads-head{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    max-width: 100%;
+
+}
+.ads-head h1{
+    margin-left: 10px;
+}
+.ads-pic{
+    max-width: 50%;
+    float: left;
+    
+}
+.ads-img{
+    max-width: 17em;
+    height: auto;
+    padding: 3%;
+}
+
+.ads-text{
+    float: right;
+    overflow: hidden;
+    max-width: 500px;
+    height: auto;
+}
+.ads-text p{
+    text-align: justify;
+}
+
+
+.web{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.web-items{
+    align-items: center;
+    justify-content: center;
+}
+.web-head{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    margin: 10px;
+    max-width: 100%;
+
+}
+.web-head h1{
+    margin-left: 10px;
+}
+.web-pic{
+    max-width: 50%;
+    float: left;
+}
+.web-img{
+    max-width: 17em;
+    height: auto;
+    padding: 3%;
+}
+
+.web-text{
+    float: right;
+    overflow: hidden;
+    max-width: 500px;
+    height: auto;
+}
+.web-text p{
+    text-align: justify;
+}
+
+.content{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content-items{
+    align-items: center;
+    justify-content: center;
+}
+.content-head{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
+}
+.content-head h1{
+    margin-left: 10px;
+}
+.content-pic{
+    max-width: 50%;
+    float: right;
+}
+.content-img{
+    max-width: 17em;
+    height: auto;
+    padding: 3%;
+}
+
+.content-text{
+    float: left;
+    overflow: hidden;
+    max-width: 500px;
+    height: auto;
+
+}
+.content-text p{
+    text-align: justify;
+}
+
+.manage{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.manage-items{
+    align-items: center;
+    justify-content: center;
+}
+.manage-head{
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
+}
+.manage-head h1{
+    margin-left: 10px;
+}
+.manage-pic{
+    max-width: 50%;
+    float: left;
+}
+.manage-img{
+    max-width: 17em;
+    height: auto;
+    padding: 3%;
+}
+
+.manage-text{
+    float: right;
+    overflow: hidden;
+    max-width: 500px;
+    height: auto;
+
+}
+.manage-text p{
+    text-align: justify;
+}
+
+
+
+/*--Final part--*/
+
+.sect4{
+    background: rgb(109, 61, 136);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.all-end{
+    display: block;
+    text-align: center;
+    padding: 30px;
+}
+.contact{
+    margin: 50px;
+}
+.socials{
+    display: flex;
+    justify-content: center;
+
+}
+.socials a{
+    padding-top: 0.25em;
+    margin: 0 1em;
+    color: #fff;
+    background: rgb(109, 61, 136);
+    height: 2em;
+    width: 2em;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+
+.socials a:hover{
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2), inset -4px -4px 6px -1px rgba(255,255,255,0.7),-0.5px -0.5px 0px rgba(255,255,255,1), 0.5px 0.5px 0px rgba(0,0,0,0.15), 0px 12px 10px -10px rgba(0,0,0,0.05);
+}
+.bottom{
+    display: flex;
+    width: 100%;
+}
+.copyright{
+    padding: 1.25em;
+    width: 50%;
+    text-align: left;
+}
+.design{
+    padding: 20px;
+    width: 50%;
+    text-align: right;
+}
+
+/*--BREAKPOINT--*/
+
+@media screen and (max-width: 64em){
+
+    .nav-icon{
+        display: inline-flex;
+    }
+    #check:checked~.nav-icon .menu-icon{
+        display: none;
+
+    }
+    .nav-icon .close-icon{
+        display: none;
+    }
+    #check:checked~.nav-icon .close-icon{
+        display: block;
+
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, 0,1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0,1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+    #check:checked~.navbar{
+        height: 17.7rem;
+
+    }
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        transition: .3s ease;
+    }
+    #check:checked~.navbar a{
+        transform: translateY(0);
+
+    }
+    
+    .container{
+        min-width: 280px;
+
+    }
+    .user-input-box{
+        margin-bottom: 12px;
+        width: 100%;
+    }
+    .user-input-box:nth-child(2n){
+        justify-content: space-between;
+    }
+
+
+/*---services---*/
+    .ads{
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        
+    }
+    .ads-text{
+        font-size: .8rem;
+        padding: 7%;
+    }
+    .ads-pic{
+        float: none; 
+    }
+    .ads-img{
+        padding: 15%;
+        max-width: 12em;
+        height: auto;
+    }
+    .web{
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        
+    }
+    .web-text{
+        font-size: .8rem;
+        padding: 7%;
+    }
+    .web-img{
+        padding: 15%;
+        max-width: 12em;
+        height: auto;
+    }
+    .content{
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        
+    }
+    .content-text{
+        font-size: .8rem;
+        padding: 7%;
+    }
+    .content-pic{
+        float: none; 
+    }
+    .content-img{
+        padding: 15%;
+        max-width: 12em;
+        height: auto;
+    }
+    .manage{
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+     
+    }
+    .manage-text{
+        font-size: .8rem;
+        padding: 7%;
+    }
+    .manage-img{
+        padding: 15%;
+        max-width: 12em;
+        height: auto;
+    }
+
+    /*--Final part--*/
+
+    .bottom{
+        font-size: .5em;
+        width: 100%;
+    }
+    .copyright{
+        width: 50%;
+    }
+    .design{
+        width: 50%;
+    }
+    .bottom-text p{
+        font-size: .8rem;
+        padding: .2%;
+    }
+    .sect4 h1{
+        font-size: 1rem;
+        padding: .2%;
+    }
+
+    
+
+}
+
+
+
+
+ </style>   
+</head>
+<body>
+    <section id="banner">
+        <div class="header">
+            <a href="#" class="logo"><img src="Images/Main Logo.png"></a>
+
+            <input type="checkbox" id="check">
+            <label for="check" class="nav-icon">
+                <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg></span>
+                <span class="close-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg></span>
+            </label>
+            <nav class="navbar">
+                <a href="/index.html">Home</a>
+                <a href="">Shopping</a>
+                <a href="/index.html#design">Games</a>
+                <a href="/index.html#blog">Blogs</a>
+            </nav>
+        </div>
+      
+        
+    </section>
+    <hr>
+<br>
+<br>
+           <!--Our services-->
+
+           <section class="sect3">
+            <!--
+            <div>
+                <span id="our-services"><img src="Images/OurServices.png" class="img-about"></span>
+            </div>
+    -->
+            <div>
+                <div class="ads">
+                    <div class="ads-items">
+                        <div class="ads-text">
+                            <div class="ads-head">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6h-5.586l2.293-2.293l-1.414-1.414L12 5.586L8.707 2.293L7.293 3.707L9.586 6H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2"/></svg>
+                                <h1>Riddles For Kids</h1>
+                            </div>
+                            <div>
+                                <p>Discover fun and clever riddles for kids that spark imagination and learning. Perfect for young minds at home, school, or on the go!</p>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="butt">
+                                <a href="Articles/riddlesforkidswithanswers.html"><button> Play Now </button></a>
+                            </div>
+                        </div>
+                        <div class="ads-pic">
+                            <img src="Images/Riddles for kids.jpg" class="ads-img">
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+    
+                <div class="ads">
+                  <div class="ads-items">
+                      <div class="ads-text">
+                          <div class="ads-head">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6h-5.586l2.293-2.293l-1.414-1.414L12 5.586L8.707 2.293L7.293 3.707L9.586 6H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2"/></svg>
+                              <h1>Riddles For Adults</h1>
+                          </div>
+                          <div>
+                              <p>Explore challenging and witty riddles for adults that test logic and creativity. Great for game nights, parties, or solo brain workouts!</p>
+                          </div>
+                          <br>
+                          <br>
+                          <div class="butt">
+                            <a href="Articles/Riddlesforadultswithanswers.html"><button> Play Now </button></a>
+                        </div>
+                      </div>
+                      <div class="ads-pic">
+                          <img src="Images/Riddles for adults.jpg" class="ads-img">
+                      </div>
+                      
+                  </div>
+                  
+              </div>
+    
+                <div class="ads">
+                  <div class="ads-items">
+                      <div class="ads-text">
+                          <div class="ads-head">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 2A2.25 2.25 0 0 1 18 4.25v15.5A2.25 2.25 0 0 1 15.75 22h-7.5A2.25 2.25 0 0 1 6 19.75V4.25A2.25 2.25 0 0 1 8.25 2zm-2.5 16h-2.5a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5"/></svg>
+                                <h1>Hard Riddles</h1>
+                            </div>
+                            <p>Push your thinking to the limit with these hard riddles. Perfect for puzzle lovers looking for a real challenge and mind-bending fun!</p>
+                            <br>
+                            <br>
+                            <div class="butt">
+                                <a href="Articles/HardRiddles.html"><button> Play Now </button></a>
+                            </div>
+                        </div>
+  
+                        <div class="content-pic">
+                            <img src="Images/Hard Riddles.jpg" class="content-img">
+                        </div>
+                    </div> 
+                </div>
+<!--  
+                <div class="ads">
+                  <div class="ads-items">
+                      <div class="ads-text">
+                          <div class="ads-head">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" d="m17 22l-.3-1.5q-.3-.125-.562-.262T15.6 19.9l-1.45.45l-1-1.7l1.15-1q-.05-.3-.05-.65t.05-.65l-1.15-1l1-1.7l1.45.45q.275-.2.538-.337t.562-.263L17 12h2l.3 1.5q.3.125.563.263t.537.337l1.45-.45l1 1.7l-1.15 1q.05.3.05.65t-.05.65l1.15 1l-1 1.7l-1.45-.45q-.275.2-.537.338t-.563.262L19 22zm1-3q.825 0 1.413-.587T20 17t-.587-1.412T18 15t-1.412.588T16 17t.588 1.413T18 19M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h6l2 2h8q.825 0 1.413.588T22 8v3.275q-.875-.625-1.9-.95T17.975 10q-2.95 0-4.962 2.063T11 16.975q0 .8.175 1.55T11.7 20z"/></svg>
+                                <h1>Social Media Management</h1>
+                            </div>
+                            <p>Managing social media platforms is vital for businesses to actively engage with their audience, establish brand identity, and drive meaningful interactions.</p>
+                            <p>By curating compelling content and staying updated with trends, businesses can build a loyal community and gain valuable insights into audience preferences.</p>
+                            <p>In today's digital age, proficient social media management enhances brand visibility, fosters customer loyalty, and drives business growth.</p>
+                        </div>
+                        <div class="manage-pic">
+                            <img src="Images/social management.jpg" class="manage-img">
+                        </div>
+                    </div>
+                </div>
+-->  
+            </div>
+        </section>
+        <hr>
+
+    <!--Final page-->
+
+    <section class="sect4">
+     
+        <div class="all-end">
+            <div class="contact">
+                <span id="contact"><h1>Help Us Improve Your Experience</h1></span>
+                <div class="bottom-text">
+                    <br>
+                    <p>We're committed to providing you with the best possible puzzle-solving experience. If you encounter any technical issues, broken links, missing answers, or content that isn't displaying properly, please don't hesitate to reach out to us at ...</p>
+                    <div class="email">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="m21.433 4.861l-6 15.5a1 1 0 0 1-1.624.362l-3.382-3.235l-2.074 2.073a.5.5 0 0 1-.853-.354v-4.519L2.309 9.723a1 1 0 0 1 .442-1.691l17.5-4.5a1 1 0 0 1 1.181 1.329ZM19 6.001L8.032 13.152l1.735 1.66L19 6Z"/></g></svg>
+                      <p>digigrow.to@gmail.com</p>
+                  </div>
+                    <br>
+                    <p>Your feedback helps us maintain the quality and functionality of our platform, ensuring that every visitor can enjoy our riddles, quizzes, and brain teasers without interruption. We appreciate your assistance in keeping our website running smoothly for the entire puzzle-loving community!</p>
+                    <br>
+
+            </div>
+            
+        </div>
+    </div>
+    
+        <div class="socials">
+            <a href="https://www.facebook.com/profile.php?id=61560601285281"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><g clip-path="url(#akarIconsFacebookFill0)"><path fill="currentColor" fill-rule="evenodd" d="M0 12.067C0 18.034 4.333 22.994 10 24v-8.667H7V12h3V9.333c0-3 1.933-4.666 4.667-4.666c.866 0 1.8.133 2.666.266V8H15.8c-1.467 0-1.8.733-1.8 1.667V12h3.2l-.533 3.333H14V24c5.667-1.006 10-5.966 10-11.933C24 5.43 18.6 0 12 0S0 5.43 0 12.067" clip-rule="evenodd"/></g><defs><clipPath id="akarIconsFacebookFill0"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg></a>
+            <a href="https://www.instagram.com/dig_igrow/"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="66" stroke-dashoffset="66" d="M12 3H8C5.23858 3 3 5.23858 3 8V16C3 18.7614 5.23858 21 8 21H16C18.7614 21 21 18.7614 21 16V8C21 5.23858 18.7614 3 16 3z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="66;132"/></path><path stroke-dasharray="26" stroke-dashoffset="26" d="M12 8C14.20914 8 16 9.79086 16 12C16 14.20914 14.20914 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.4s" values="26;0"/></path></g><circle cx="17" cy="7" r="1.5" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="1.1s" dur="0.4s" values="0;1"/></circle></svg></a>
+            <a href="https://wa.me/0662811201"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><g clip-path="url(#mageWhatsappFilled0)"><path fill="currentColor" d="m13.79 2.64l-.57-.08a9.13 9.13 0 0 0-8.92 4a9.1 9.1 0 0 0-.71 9.66a1.3 1.3 0 0 1 .1 1c-.41 1.41-.79 2.83-1.19 4.32l.5-.15c1.35-.36 2.7-.72 4.05-1.05a1.45 1.45 0 0 1 .85.08a9.45 9.45 0 1 0 5.89-17.78m2.52 13.12a2.76 2.76 0 0 1-2.72.56a9.19 9.19 0 0 1-5.13-3.71a8.51 8.51 0 0 1-1.11-2.08a2.49 2.49 0 0 1 .55-2.52a1.23 1.23 0 0 1 1.32-.42c.2.05.34.34.52.56c.146.413.317.817.51 1.21a.94.94 0 0 1-.2 1.31c-.45.4-.38.73-.06 1.18a6.71 6.71 0 0 0 2.82 2.32c.32.14.56.17.77-.16c.09-.13.21-.24.31-.36c.58-.73.4-.72 1.32-.32c.293.123.577.267.85.43c.27.16.68.33.74.57a1.45 1.45 0 0 1-.49 1.43"/></g><defs><clipPath id="mageWhatsappFilled0"><path fill="#fff" d="M2.5 2.5h19v19h-19z"/></clipPath></defs></g></svg></a>
+            <a href="mailto:digigrow.to@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="m16.484 11.976l6.151-5.344v10.627zm-7.926.905l2.16 1.875c.339.288.781.462 1.264.462h.017h-.001h.014c.484 0 .926-.175 1.269-.465l-.003.002l2.16-1.875l6.566 5.639H1.995zM1.986 5.365h20.03l-9.621 8.356a.612.612 0 0 1-.38.132h-.014h.001h-.014a.61.61 0 0 1-.381-.133l.001.001zm-.621 1.266l6.15 5.344l-6.15 5.28zm21.6-2.441c-.24-.12-.522-.19-.821-.19H1.859a1.87 1.87 0 0 0-.835.197l.011-.005A1.856 1.856 0 0 0 0 5.855v12.172a1.86 1.86 0 0 0 1.858 1.858h20.283a1.86 1.86 0 0 0 1.858-1.858V5.855c0-.727-.419-1.357-1.029-1.66l-.011-.005z"/></svg></a>
+            
+        </div>
+        <div class="bottom"> 
+            <div class="copyright">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.08 10.86c.05-.33.16-.62.3-.87s.34-.46.59-.62c.24-.15.54-.22.91-.23c.23.01.44.05.63.13c.2.09.38.21.52.36s.25.33.34.53s.13.42.14.64h1.79c-.02-.47-.11-.9-.28-1.29s-.4-.73-.7-1.01s-.66-.5-1.08-.66s-.88-.23-1.39-.23c-.65 0-1.22.11-1.7.34s-.88.53-1.2.92s-.56.84-.71 1.36S8 11.29 8 11.87v.27c0 .58.08 1.12.23 1.64s.39.97.71 1.35s.72.69 1.2.91c.48.22 1.05.34 1.7.34c.47 0 .91-.08 1.32-.23s.77-.36 1.08-.63s.56-.58.74-.94s.29-.74.3-1.15h-1.79c-.01.21-.06.4-.15.58s-.21.33-.36.46s-.32.23-.52.3c-.19.07-.39.09-.6.1c-.36-.01-.66-.08-.89-.23c-.25-.16-.45-.37-.59-.62s-.25-.55-.3-.88s-.08-.67-.08-1v-.27c0-.35.03-.68.08-1.01M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8"/></svg>All rights reserved 2024.</p>
+            </div>  
+            <div class="design">
+                
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36"><path fill="#dd2e44" d="M35.885 11.833c0-5.45-4.418-9.868-9.867-9.868c-3.308 0-6.227 1.633-8.018 4.129c-1.791-2.496-4.71-4.129-8.017-4.129c-5.45 0-9.868 4.417-9.868 9.868c0 .772.098 1.52.266 2.241C1.751 22.587 11.216 31.568 18 34.034c6.783-2.466 16.249-11.447 17.617-19.959c.17-.721.268-1.469.268-2.242"/></svg>Designed by DigiGrow</p>
+            </div>
+            
+        </div> 
+        
+    </section>
+
+
+</body>
+</html>
