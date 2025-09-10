@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Questions With Answers</title>
+    <meta name="description" content="Test your knowledge with fun trivia questions with answers! Challenge friends, learn facts, and boost your IQ. Free collection covering all topics and categories.">
+    <link rel="shortcut icon" type="x-icon" href="/images/Main Logo.png">
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: 'helvetica';
+    src: url(Fonts/helvetica-rounded-bold-5871d05ead8de.otf) format('opentype');
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 1.3em 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(70px);
+    z-index: -1;
+}
+.navbar a{
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5em;
+}
+#check{
+    display: none;
+}
+.logo img{
+    height: 2.5rem;
+    width: 3rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin: none;
+
+}
+
+.nav-icon{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+.close-icon{
+    display: none;
+}
+
+hr{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+.Article-pic{
+    Width: 100%;
+    height: 35rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+
+/*---About---*/
+
+.img-about{
+    width: 20rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+/*---Why choose us---*/
+.sectwhy{
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 1.25rem;
+    box-sizing: none;
+}
+
+.sectwhy h2{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    max-width: 100%;
+    font-size: 1.4rem;
+
+}
+
+.sectwhy h3{
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    font-size: 1.2rem;
+    
+}
+
+.whytext{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    align-items: center;
+    justify-content: center;
+}
+
+.head1{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    max-width: 100%;
+
+}
+.head1 h1{
+    margin-left: 10px;
+}
+
+.text1{
+    overflow: hidden;
+    height: auto;
+}
+
+/*---Our services---*/
+
+.sect3{
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 1.25rem;
+    box-sizing: none;
+}
+
+.img-os{
+    width: 19rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ads{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ads-items{
+    align-items: center;
+    justify-content: center;
+}
+
+.ads-items h2{
+    font-size: 1.4rem;
+}
+
+.ads-pic{
+    max-width: 17em;
+    float: left;
+    
+}
+.ads-img{
+    max-width: 17em;
+    height: auto;
+    padding: 3%;
+}
+
+.ads-text{
+    float: right;
+    overflow: hidden;
+    max-width: 500px;
+    height: auto;
+    text-align: left;
+}
+.ads-text p{
+    text-align: justify;
+}
+
+.blog-text{
+    max-width: 17em;
+
+}
+
+.blog-text h2{
+    font-size: 1.1rem;
+    max-width: 17em;
+}
+
+/*--- Reveal Button ---*/
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+
+}
+
+h1 {
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+}
+
+.riddle-box {
+  margin-bottom: 30px;
+  padding: 15px;
+  border-left: 4px solid #015672;
+  border-radius: 5px;
+}
+
+.riddle {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.reveal-btn {
+  background-color: #015672;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.reveal-btn:hover {
+  background-color: #015672;
+}
+
+.answer {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+/*--- Design part ---*/
+
+
+.blogs{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-items{
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-pic{
+    position: relative;
+    overflow: hidden;
+    float: inline-start;
+}
+
+.blog-pic p{
+    padding: 3%;
+    
+}
+
+.blog-pic::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-pic img{
+    transition:  all 0.5s ease;
+}
+
+.blog-pic:hover img{
+    transform: scale(1.2);
+}
+
+.blog-pic span:first-of-type{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    background: var(--exDark);
+    color: #fff;
+    padding: 0.25rem 1rem;
+}
+
+.blog-pic span:last-of-type{
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+/*-- End--*/
+/*-- Table--*/
+
+table{
+    width: 1000px;
+    
+}
+th{
+    text-align: left;
+    padding: .5rem;
+}
+td{
+    padding: .5rem;
+}
+table, th, td{
+    border: 1px solid white;
+}
+
+/*--Final part--*/
+
+.sect4{
+    background: #015672;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.all-end{
+    display: block;
+    text-align: center;
+    padding: 30px;
+}
+.contact{
+    margin: 50px;
+}
+.socials{
+    display: flex;
+    justify-content: center;
+
+}
+.socials a{
+    padding-top: 0.25em;
+    margin: 0 1em;
+    color: #fff;
+    background: #015672;
+    height: 2em;
+    width: 2em;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+
+.socials a:hover{
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2), inset -4px -4px 6px -1px rgba(255,255,255,0.7),-0.5px -0.5px 0px rgba(255,255,255,1), 0.5px 0.5px 0px rgba(0,0,0,0.15), 0px 12px 10px -10px rgba(0,0,0,0.05);
+}
+.bottom{
+    display: flex;
+    width: 100%;
+}
+.copyright{
+    padding: 1.25em;
+    width: 50%;
+    text-align: left;
+}
+.design{
+    padding: 20px;
+    width: 50%;
+    text-align: right;
+}
+
+/*--BREAKPOINT--*/
+
+@media screen and (max-width: 64em){
+
+    .nav-icon{
+        display: inline-flex;
+    }
+    #check:checked~.nav-icon .menu-icon{
+        display: none;
+
+    }
+    .nav-icon .close-icon{
+        display: none;
+    }
+    #check:checked~.nav-icon .close-icon{
+        display: block;
+
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, 0,1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0,1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+    #check:checked~.navbar{
+        height: 17.7rem;
+
+    }
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        transition: .3s ease;
+    }
+    #check:checked~.navbar a{
+        transform: translateY(0);
+
+    }
+    .partone{
+        margin-top: 1em;
+    }
+    .sect1{
+        margin: 2em;
+  
+    }
+    .paragraph1 img{
+        width: 20rem;
+    }
+    .sect1 p{
+        font-size: 20px;
+    }
+
+    /*---.sect1 button{
+        background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+    }---*/
+    .about-text p{
+        font-size: 20px;
+        text-shadow: -1px 3px 2px #000000;
+       
+    }
+
+    .container{
+        min-width: 280px;
+
+    }
+    .user-input-box{
+        margin-bottom: 12px;
+        width: 100%;
+    }
+    .user-input-box:nth-child(2n){
+        justify-content: space-between;
+    }
+    .Article-pic{
+        height: 100%;
+        
+    }
+    
+/*---about---*/
+.img-about{
+    max-width: 10em; 
+}
+
+    .about-text p{
+        font-size: 0.8rem;
+        padding: .5em; 
+    }
+/*---why choose us---*/
+
+.whytext{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;    
+}
+.text1{
+    font-size: .8rem;
+    padding: 7%;
+}
+.text1 h2{
+    font-size: 1rem;
+}
+.text1 h3{
+    font-size: .9rem;
+}
+/*---services---*/
+    .ads{
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        
+    }
+    .ads-text{
+        font-size: .8rem;
+        padding: 7%;
+        float: none;
+    }
+    .ads-pic{
+        float: none; 
+    }
+    .ads-img{
+        padding: 10%;
+        max-width: 17em;
+        height: auto;
+    }
+    .riddle {
+        font-size: .8rem;
+    }
+    .answer{
+        font-size: .8rem;
+    }
+    
+        /*--Blog--*/
+        .blog-pic img{
+            padding: 0;
+            max-width: 19em;
+            height: auto;
+        }
+        .blog-pic{
+            font-size: .8rem;
+            padding: 7%;
+        }
+        .blog-pic span{
+            font-size: .8rem;
+            padding-top: 7%;
+        }
+
+
+    /*--Final part--*/
+
+    .bottom{
+        font-size: .5em;
+        width: 100%;
+    }
+    .copyright{
+        width: 50%;
+    }
+    .design{
+        width: 50%;
+    }
+    .bottom-text p{
+        font-size: .8rem;
+        padding: .2%;
+    }
+    .sect4 h1{
+        font-size: 1rem;
+        padding: .2%;
+    }
+
+}
+
+</style>
+
+
+
+</head>
+<body>
+    <section id="banner">
+        <div class="header">
+            <a href="#" class="logo"><img src="/Images/Main Logo.png"></a>
+
+            <input type="checkbox" id="check">
+            <label for="check" class="nav-icon">
+                <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg></span>
+                <span class="close-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg></span>
+            </label>
+            <nav class="navbar">
+              <a href="/index.html">Home</a>
+              <a href="">Shopping</a>
+              <a href="/index.html#design">Games</a>
+              <a href="/index.html#blog">Blogs</a>
+            </nav>
+        </div>
+      
+        
+    </section>
+    <hr>
+
+           <!--Why choose us-->
+
+    <section class="sectwhy">
+        <div>
+            <span id="Chooseus"><img src="Images/Blog Post.png" class="img-about"></span>
+        </div>
+        <div class="whytext">
+            <div>
+
+                <div class="text1">
+                    <div class="head1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 1200 1200"><path fill="currentColor" d="m623.974 385.737l-135.999-212.98c-7.962-15.269-4.359-33.709 8.98-42.339c15.255-8.012 32.482-4.267 41.057 8.98l135.999 214.263c7.961 15.269 4.363 33.716-8.98 42.34c-15.216 7.334-33.859 2.36-41.057-10.264m570.939 39.773c21.876 39.658-32.348 72.172-57.736 85.962q-33.356-2.575-63.509-7.057q-30.151-4.49-53.245-8.34q-26.943-5.132-50.037-10.265q-2.612 12.832-7.057 26.943q-4.515 14.112-10.905 29.509c-87.46-18.921-190.461-70.103-238.64-148.829L878.009 225.36l29.51-106.49l62.867 76.981c43.37 12.192 103.54 13.048 121.887 57.735c15.888 26.768 14.601 83.536 32.074 105.207q14.113 14.112 30.793 25.66c16.68 11.548 24.377 21.385 39.773 41.057M579.068 782.188c-38.868-.275-79.431-13.76-118.036-14.113q-33.358-3.847-24.378 29.51l53.887 216.828c-.724 34.83-19.645 61.502-47.471 66.076c-27.079 2.602-54.311-21.826-60.302-40.416l-69.283-271.998q-2.566-14.112-16.038-13.471c-13.472.641-14.754 4.918-17.321 13.471l-64.15 270.717c-8.458 25.404-28.958 42.031-53.886 42.338c-36.8-.646-62.21-34.828-55.169-66.717l78.264-320.752l6.415-193.734c-67.836-17.21-153.56-63.618-187.319-128.302c-9.523-20.909-2.621-41.189 15.396-51.32c21.296-9.732 45.384-.362 53.886 14.112c33.217 51.991 106.545 85.123 156.527 85.962h382.335c-23.654 118.655-36.891 237.314-33.357 361.809m93.66-339.998c64.765 84.222 158.1 137.001 257.885 157.81c-9.287 27.801-21.692 54.85-30.15 80.188q-5.774 17.32 3.207 50.68c24.586 94.191 51.62 194.754 75.698 282.262c9.377 73.299-92.42 71.738-107.773 26.943l-55.169-210.414c-15.224-25.84-53.295-31.871-61.585 0l-50.037 209.131c-25.894 64.572-118.281 21.158-107.771-24.377l47.47-195.018q1.284-10.267-1.282-20.527c.825-118.825 4.617-240.396 29.507-356.678"/></svg>
+                        <h1>Trivia Questions With Answers</h1>
+                    </div>
+              <br>
+  
+               
+
+              <img src="/images/Trivia Questions Main Img.jpeg" class="Article-pic">
+              ________________________________________
+            </div>
+        </div>
+        </div>
+        <hr>
+        <div class="whytext">
+        <div>
+        <div class="text1"> 
+              <h2>Introduction for Trivia Questions</h2>
+              <br>
+              <p>
+                Welcome to the ultimate collection of trivia questions that will test your knowledge across countless topics and categories! Whether you're a trivia enthusiast looking to sharpen your skills, planning a fun game night with friends, or simply curious about fascinating facts from around the world, you've come to the right place.
+              </p>
+  
+              <br>
+              <p>
+                Our diverse selection of trivia questions spans everything from history and science to pop culture, sports, geography, and beyond. These carefully curated questions are perfect for all knowledge levels - some will make you feel like a genius, while others might teach you something completely new. Challenge yourself, compete with friends, or use these questions to spark interesting conversations and discover amazing facts you never knew.
+            <br>
+            <p>
+              Each trivia question is designed to be both educational and entertaining, making learning an enjoyable experience. Test your knowledge first, think through each question carefully, and when you're ready to see how you did, simply click the "Reveal Answer" button to discover the correct response along with interesting additional details that make each fact memorable.
+            </p>
+
+              ________________________________________
+            </div>
+        </div>
+        </div>
+        <hr>
+        
+        <!---
+        <div class="whytext">
+        <div>
+        <div class="text1"> 
+              <h2>Possible Reasons Dogs Eat Grass</h2>
+              <div class="image-blog3" alt=""></div>
+              <br>
+
+              <h2>What is a Rebus Puzzle?</h2>
+              <p>
+                  Rebus puzzles are clever word games that use pictures, symbols, letters, and numbers arranged in creative ways to represent common phrases, sayings, or words. These visual brain teasers challenge solvers to decode hidden meanings by interpreting the spatial relationships, positioning, and visual clues within each puzzle. 
+              </p>
+              <p>
+                  For example, the word "STAND" written underneath the word "I" represents the phrase "I understand." Rebus puzzles have been entertaining puzzle enthusiasts for centuries and are popular in newspapers, puzzle books, educational settings, and online brain training games. They serve as excellent mental exercises that improve lateral thinking, visual processing, and problem-solving skills while providing an entertaining challenge for people of all ages.
+              </p>
+          <br>
+              <h2>How to Solve Rebus Puzzles</h2>
+              <p>
+                  Solving rebus puzzles requires a combination of creative thinking and systematic observation of visual clues and word positioning. Start by carefully examining the entire puzzle layout, noting the size, position, color, and orientation of letters, words, or symbols.
+              </p>
+              <p>
+                  Look for common rebus puzzle patterns such as words written above or below others (indicating "over" or "under"), repeated elements (suggesting "again" or multiples), backwards text (meaning "reverse"), or missing letters (implying "without"). Pay attention to spatial relationships – words inside other words might represent "within," while scattered letters could indicate "all over."
+              </p>
+              <p>
+                  Practice recognizing that rebus puzzles often represent familiar idioms, common expressions, book titles, movie names, or everyday phrases. The key to mastering rebus puzzles is thinking flexibly about how visual elements can represent sounds, meanings, and linguistic concepts rather than taking everything at face value.
+              </p>
+              ________________________________________
+            </div>
+        </div>
+        </div>
+        <hr>
+-->
+   <!--Rebus puzzles to Reveal-->
+   <div>
+
+    <div class="container">
+        <h1>All Trivia Questions!</h1>
+        <div id="riddles-container"></div>
+      </div>
+</div>
+
+<div class="whytext">
+  <div>
+  <div class="text1"> 
+        <h2>Conclusion</h2>
+        <br>
+        <p>
+          Congratulations on exploring this fantastic journey through knowledge and facts! Whether you aced most questions or discovered there's still plenty to learn, you've just engaged in one of humanity's favorite pastimes - the pursuit of interesting information. Every trivia question you attempted helped expand your understanding of the world around us.
+      </p>
+      <br>
+      <p>
+        Trivia isn't just about showing off what you know - it's about staying curious, learning continuously, and connecting with others through shared knowledge and discovery. The facts you've encountered today might pop up in future conversations, help you in academic pursuits, or simply make you a more well-rounded and interesting person.
+      </p>
+      <br>
+      <p>
+        Keep exploring, keep questioning, and keep learning! Share these trivia questions with friends and family to spread the joy of discovery. Consider starting a trivia night tradition or challenging yourself regularly with new questions. Remember, every expert was once a beginner, and every piece of knowledge you gain today contributes to a lifetime of learning and intellectual growth. The world is full of fascinating facts waiting to be discovered - keep your curiosity alive!
+      </p>
+      <br>
+        ________________________________________
+      </div>
+  </div>
+  </div>
+  <hr>
+
+    </section>
+    <hr>
+ 
+<!--Blog Posts-->
+
+<section class="sect3">
+
+
+    <div>
+        <div class="blogs">
+
+          <div class="blog-items">
+
+            <div class="blog-pic">
+                <img src="/images/Trivia Questions Cover.jpg" class="ads-img" alt="">
+                <div class="blog-text">
+                    <a href="/Articles/triviaquestionswithanswers.html"><span>13 February, 2025</span></a>
+                    
+          <h2>Trivia Questions With Answers</h2>
+          <p>Test your knowledge with fun trivia questions with answers! Challenge friends, learn facts, and boost your IQ. Free collection covering all topics and categories.</p>
+          <p>Play Now...</p>
+                </div>
+               
+            </div>
+
+
+            <div class="blog-pic">
+                <img src="/images/Riddles Cover.jpg" class="ads-img" alt="">
+                <div class="blog-text">
+                    <a href="/Articles/Rebuspuzzleswithanswers.html"><span>16 January, 2025</span></a>
+
+          <h2>Riddles For Adults With Answers</h2>
+          <p>Challenge yourself with clever riddles for adults with answers included! Brain teasers, logic puzzles, and tricky questions to sharpen your mind. Free collection!</p>
+          <p>Play Now...</p>
+                </div>
+            </div>
+
+
+            <div class="blog-pic">
+                <img src="/images/Country Flag Quiz Cover.jpg" class="ads-img" alt="">
+                <div class="blog-text">
+                    <a href="/Articles/CountryFlagQuiz.html"><span>17 January, 2025</span></a>
+
+          <h2>Country Flag Quiz</h2>
+          <p>Test your knowledge with our interactive Country Flag Quiz! Identify flags from 195+ nations, learn geography facts, and challenge yourself. Play free online now!</p>
+          <p>Play Now...</p>
+                </div>
+            </div>
+        </div> 
+
+        </div>
+    </div>
+</section>
+<hr>
+
+
+    <!--Final page-->
+
+    <section class="sect4">
+        <div class="all-end">
+                <div class="contact">
+                <span id="contact"><h1>Help Us Improve Your Experience</h1></span>
+                <div class="bottom-text">
+                    <br>
+                    <p>We're committed to providing you with the best possible puzzle-solving experience. If you encounter any technical issues, broken links, missing answers, or content that isn't displaying properly, please don't hesitate to reach out to us at ...</p>
+                    <div class="email">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="m21.433 4.861l-6 15.5a1 1 0 0 1-1.624.362l-3.382-3.235l-2.074 2.073a.5.5 0 0 1-.853-.354v-4.519L2.309 9.723a1 1 0 0 1 .442-1.691l17.5-4.5a1 1 0 0 1 1.181 1.329ZM19 6.001L8.032 13.152l1.735 1.66L19 6Z"/></g></svg>
+                      <p>digigrow.to@gmail.com</p>
+                  </div>
+                    <br>
+                    <p>Your feedback helps us maintain the quality and functionality of our platform, ensuring that every visitor can enjoy our riddles, quizzes, and brain teasers without interruption. We appreciate your assistance in keeping our website running smoothly for the entire puzzle-loving community!</p>
+                    <br>
+     
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="socials">
+            <a href="https://www.facebook.com/profile.php?id=61560601285281"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><g clip-path="url(#akarIconsFacebookFill0)"><path fill="currentColor" fill-rule="evenodd" d="M0 12.067C0 18.034 4.333 22.994 10 24v-8.667H7V12h3V9.333c0-3 1.933-4.666 4.667-4.666c.866 0 1.8.133 2.666.266V8H15.8c-1.467 0-1.8.733-1.8 1.667V12h3.2l-.533 3.333H14V24c5.667-1.006 10-5.966 10-11.933C24 5.43 18.6 0 12 0S0 5.43 0 12.067" clip-rule="evenodd"/></g><defs><clipPath id="akarIconsFacebookFill0"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg></a>
+            <a href="https://www.instagram.com/dig_igrow/"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="66" stroke-dashoffset="66" d="M12 3H8C5.23858 3 3 5.23858 3 8V16C3 18.7614 5.23858 21 8 21H16C18.7614 21 21 18.7614 21 16V8C21 5.23858 18.7614 3 16 3z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="66;132"/></path><path stroke-dasharray="26" stroke-dashoffset="26" d="M12 8C14.20914 8 16 9.79086 16 12C16 14.20914 14.20914 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.4s" values="26;0"/></path></g><circle cx="17" cy="7" r="1.5" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="1.1s" dur="0.4s" values="0;1"/></circle></svg></a>
+            <a href="https://wa.me/0662811201"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><g clip-path="url(#mageWhatsappFilled0)"><path fill="currentColor" d="m13.79 2.64l-.57-.08a9.13 9.13 0 0 0-8.92 4a9.1 9.1 0 0 0-.71 9.66a1.3 1.3 0 0 1 .1 1c-.41 1.41-.79 2.83-1.19 4.32l.5-.15c1.35-.36 2.7-.72 4.05-1.05a1.45 1.45 0 0 1 .85.08a9.45 9.45 0 1 0 5.89-17.78m2.52 13.12a2.76 2.76 0 0 1-2.72.56a9.19 9.19 0 0 1-5.13-3.71a8.51 8.51 0 0 1-1.11-2.08a2.49 2.49 0 0 1 .55-2.52a1.23 1.23 0 0 1 1.32-.42c.2.05.34.34.52.56c.146.413.317.817.51 1.21a.94.94 0 0 1-.2 1.31c-.45.4-.38.73-.06 1.18a6.71 6.71 0 0 0 2.82 2.32c.32.14.56.17.77-.16c.09-.13.21-.24.31-.36c.58-.73.4-.72 1.32-.32c.293.123.577.267.85.43c.27.16.68.33.74.57a1.45 1.45 0 0 1-.49 1.43"/></g><defs><clipPath id="mageWhatsappFilled0"><path fill="#fff" d="M2.5 2.5h19v19h-19z"/></clipPath></defs></g></svg></a>
+            <a href="mailto:digigrow.to@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="m16.484 11.976l6.151-5.344v10.627zm-7.926.905l2.16 1.875c.339.288.781.462 1.264.462h.017h-.001h.014c.484 0 .926-.175 1.269-.465l-.003.002l2.16-1.875l6.566 5.639H1.995zM1.986 5.365h20.03l-9.621 8.356a.612.612 0 0 1-.38.132h-.014h.001h-.014a.61.61 0 0 1-.381-.133l.001.001zm-.621 1.266l6.15 5.344l-6.15 5.28zm21.6-2.441c-.24-.12-.522-.19-.821-.19H1.859a1.87 1.87 0 0 0-.835.197l.011-.005A1.856 1.856 0 0 0 0 5.855v12.172a1.86 1.86 0 0 0 1.858 1.858h20.283a1.86 1.86 0 0 0 1.858-1.858V5.855c0-.727-.419-1.357-1.029-1.66l-.011-.005z"/></svg></a>
+            
+        </div>
+        <div class="bottom"> 
+            <div class="copyright">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.08 10.86c.05-.33.16-.62.3-.87s.34-.46.59-.62c.24-.15.54-.22.91-.23c.23.01.44.05.63.13c.2.09.38.21.52.36s.25.33.34.53s.13.42.14.64h1.79c-.02-.47-.11-.9-.28-1.29s-.4-.73-.7-1.01s-.66-.5-1.08-.66s-.88-.23-1.39-.23c-.65 0-1.22.11-1.7.34s-.88.53-1.2.92s-.56.84-.71 1.36S8 11.29 8 11.87v.27c0 .58.08 1.12.23 1.64s.39.97.71 1.35s.72.69 1.2.91c.48.22 1.05.34 1.7.34c.47 0 .91-.08 1.32-.23s.77-.36 1.08-.63s.56-.58.74-.94s.29-.74.3-1.15h-1.79c-.01.21-.06.4-.15.58s-.21.33-.36.46s-.32.23-.52.3c-.19.07-.39.09-.6.1c-.36-.01-.66-.08-.89-.23c-.25-.16-.45-.37-.59-.62s-.25-.55-.3-.88s-.08-.67-.08-1v-.27c0-.35.03-.68.08-1.01M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8"/></svg>All rights reserved 2024 - 2025.</p>
+            </div>  
+            <div class="design">
+                
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36"><path fill="#dd2e44" d="M35.885 11.833c0-5.45-4.418-9.868-9.867-9.868c-3.308 0-6.227 1.633-8.018 4.129c-1.791-2.496-4.71-4.129-8.017-4.129c-5.45 0-9.868 4.417-9.868 9.868c0 .772.098 1.52.266 2.241C1.751 22.587 11.216 31.568 18 34.034c6.783-2.466 16.249-11.447 17.617-19.959c.17-.721.268-1.469.268-2.242"/></svg>Designed by DigiGrow</p>
+            </div>
+            
+        </div> 
+        
+    </section>
+
+    <script>
+// Riddles array (can be expanded)
+const riddles = [
+{
+  question: "Famous Paris landmark",
+  answer: "Eiffel Tower",
+  clue1: "Made of iron",
+  clue2: "Sparkles at night"
+},
+{
+  question: "Massive structure in Asia",
+  answer: "Great Wall of China",
+  clue1: "Visible from space (myth)",
+  clue2: "Built to keep invaders out"
+},
+{
+  question: "Gift from France to the US",
+  answer: "Statue of Liberty",
+  clue1: "Holds a torch",
+  clue2: "Located in New York"
+},
+{
+  question: "White marble mausoleum",
+  answer: "Taj Mahal",
+  clue1: "Located in India",
+  clue2: "Symbol of love"
+},
+{
+  question: "World's tallest mountain",
+  answer: "Mount Everest",
+  clue1: "Located in the Himalayas",
+  clue2: "Climbers train for years"
+},
+{
+  question: "Famous London clock tower",
+  answer: "Big Ben",
+  clue1: "Attached to the Houses of Parliament",
+  clue2: "Chimes every hour"
+},
+{
+  question: "Iconic Australian building",
+  answer: "Sydney Opera House",
+  clue1: "Sail-like design",
+  clue2: "Hosts concerts and shows"
+},
+{
+  question: "Ancient Roman arena",
+  answer: "Colosseum",
+  clue1: "Used for gladiator fights",
+  clue2: "Located in Rome"
+},
+{
+  question: "Famous Egyptian tombs",
+  answer: "Pyramids of Giza",
+  clue1: "One of the Seven Wonders",
+  clue2: "Home to ancient pharaohs"
+},
+{
+  question: "Ancient city in the Andes",
+  answer: "Machu Picchu",
+  clue1: "In Peru",
+  clue2: "Built by the Incas"
+},
+{
+  question: "Waterfall on US-Canada border",
+  answer: "Niagara Falls",
+  clue1: "Famous for boat tours",
+  clue2: "Major honeymoon destination"
+},
+{
+  question: "Red bridge in San Francisco",
+  answer: "Golden Gate Bridge",
+  clue1: "Often covered in fog",
+  clue2: "Suspension bridge"
+},
+{
+  question: "Italian tower that tilts",
+  answer: "Leaning Tower of Pisa",
+  clue1: "Unintentionally slanted",
+  clue2: "Tourists pose like they're holding it"
+},
+{
+  question: "Famous statue in Brazil",
+  answer: "Christ the Redeemer",
+  clue1: "Arms wide open",
+  clue2: "Overlooks Rio de Janeiro"
+},
+{
+  question: "Prehistoric stone circle",
+  answer: "Stonehenge",
+  clue1: "Located in England",
+  clue2: "Built thousands of years ago"
+},
+{
+  question: "Theory of relativity",
+  answer: "Albert Einstein",
+  clue1: "Wild white hair",
+  clue2: "Famous physicist"
+},
+{
+  question: "First Black US president",
+  answer: "Barack Obama",
+  clue1: "Hope campaign",
+  clue2: "Married to Michelle"
+},
+{
+  question: "Pop singer with many eras",
+  answer: "Taylor Swift",
+  clue1: "Famous for break-up songs",
+  clue2: "Huge fanbase called Swifties"
+},
+{
+  question: "Tesla and SpaceX CEO",
+  answer: "Elon Musk",
+  clue1: "Owns X (formerly Twitter)",
+  clue2: "Wants to colonize Mars"
+},
+{
+  question: "Singer and performer",
+  answer: "Beyoncé",
+  clue1: "Married to Jay-Z",
+  clue2: "Album called 'Lemonade'"
+},
+{
+  question: "Famous English playwright",
+  answer: "William Shakespeare",
+  clue1: "Wrote Romeo and Juliet",
+  clue2: "Born in Stratford-upon-Avon"
+},
+{
+  question: "Renaissance artist and inventor",
+  answer: "Leonardo da Vinci",
+  clue1: "Painted the Mona Lisa",
+  clue2: "Sketched flying machines"
+},
+{
+  question: "Argentinian football legend",
+  answer: "Lionel Messi",
+  clue1: "Won World Cup in 2022",
+  clue2: "Played for Barcelona"
+},
+{
+  question: "Talk show queen",
+  answer: "Oprah Winfrey",
+  clue1: "Gives away cars",
+  clue2: "Media mogul"
+},
+{
+  question: "Anti-apartheid leader",
+  answer: "Nelson Mandela",
+  clue1: "President of South Africa",
+  clue2: "Spent 27 years in prison"
+},
+{
+  question: "King of Pop",
+  answer: "Michael Jackson",
+  clue1: "Moonwalk dance",
+  clue2: "Wore a white glove"
+},
+{
+  question: "US businessman and president",
+  answer: "Donald Trump",
+  clue1: "The Apprentice host",
+  clue2: "45th President of the USA"
+},
+{
+  question: "Boxing legend",
+  answer: "Muhammad Ali",
+  clue1: "Float like a butterfly...",
+  clue2: "...sting like a bee"
+},
+{
+  question: "Longest-reigning British monarch",
+  answer: "Queen Elizabeth",
+  clue1: "Served during WWII",
+  clue2: "Died in 2022"
+},
+{
+  question: "Apple co-founder",
+  answer: "Steve Jobs",
+  clue1: "Known for black turtlenecks",
+  clue2: "Introduced the iPhone"
+},
+{
+  question: "Epic romance set on a sinking ship",
+  answer: "Titanic",
+  clue1: "Stars Leonardo DiCaprio and Kate Winslet",
+  clue2: "Famous song 'My Heart Will Go On'"
+},
+{
+  question: "Wizard boy with a lightning scar",
+  answer: "Harry Potter",
+  clue1: "Goes to Hogwarts",
+  clue2: "Fights Lord Voldemort"
+},
+{
+  question: "Sci-fi saga with Jedi and Sith",
+  answer: "Star Wars",
+  clue1: "Features lightsabers",
+  clue2: "Iconic line: 'I am your father'"
+},
+{
+  question: "Fantasy TV series with dragons",
+  answer: "Game of Thrones",
+  clue1: "Based on books by George R.R. Martin",
+  clue2: "Famous for plot twists and battles"
+},
+{
+  question: "Animated movie about a lion cub",
+  answer: "The Lion King",
+  clue1: "Song: 'Hakuna Matata'",
+  clue2: "Character: Simba"
+},
+{
+  question: "Sitcom about six friends in NYC",
+  answer: "Friends",
+  clue1: "Central Perk café",
+  clue2: "Famous line: 'We were on a break!'"
+},
+{
+  question: "Animated show with yellow characters",
+  answer: "The Simpsons",
+  clue1: "Set in Springfield",
+  clue2: "Longest-running animated TV show"
+},
+{
+  question: "Dinosaur adventure movie",
+  answer: "Jurassic Park",
+  clue1: "Directed by Steven Spielberg",
+  clue2: "Theme park goes horribly wrong"
+},
+{
+  question: "Disney movie about ice and sisters",
+  answer: "Frozen",
+  clue1: "Song: 'Let It Go'",
+  clue2: "Characters: Elsa and Anna"
+},
+{
+  question: "Netflix show set in Hawkins",
+  answer: "Stranger Things",
+  clue1: "Features the Upside Down",
+  clue2: "Character: Eleven"
+},
+{
+  question: "Legendary British band",
+  answer: "The Beatles",
+  clue1: "Members include John and Paul",
+  clue2: "Hits like 'Hey Jude' and 'Let It Be'"
+},
+{
+  question: "K-pop supergroup",
+  answer: "BTS",
+  clue1: "Also known as Bangtan Boys",
+  clue2: "Massive international fanbase"
+},
+{
+  question: "King of Pop",
+  answer: "Michael Jackson",
+  clue1: "Famous for moonwalk",
+  clue2: "Hits include 'Thriller' and 'Beat It'"
+},
+{
+  question: "British singer with powerful vocals",
+  answer: "Adele",
+  clue1: "Albums named after her age",
+  clue2: "Hit songs like 'Hello'"
+},
+{
+  question: "Red-haired British singer-songwriter",
+  answer: "Ed Sheeran",
+  clue1: "Hit song: 'Shape of You'",
+  clue2: "Often performs solo with loop pedal"
+},
+{
+  question: "Bold performer with wild fashion",
+  answer: "Lady Gaga",
+  clue1: "Known for 'Bad Romance'",
+  clue2: "Starred in 'A Star Is Born'"
+},
+{
+  question: "Canadian rapper and singer",
+  answer: "Drake",
+  clue1: "Formerly on 'Degrassi'",
+  clue2: "Hits include 'Hotline Bling'"
+},
+{
+  question: "Rock and roll legend",
+  answer: "Elvis Presley",
+  clue1: "Known as the King",
+  clue2: "Famous for his hip-shaking moves"
+},
+{
+  question: "Barbadian pop superstar",
+  answer: "Rihanna",
+  clue1: "Hit songs like 'Umbrella'",
+  clue2: "Founder of Fenty Beauty"
+},
+{
+  question: "Pop singer with many hit eras",
+  answer: "Taylor Swift",
+  clue1: "Album titles include '1989' and 'Folklore'",
+  clue2: "Re-recorded her early albums"
+},
+
+// Food and Drinks and Animals
+
+{
+  question: "Cheesy Italian dish with toppings",
+  answer: "Pizza",
+  clue1: "Often delivered in boxes",
+  clue2: "Popular toppings include pepperoni"
+},
+{
+  question: "Japanese dish with raw fish and rice",
+  answer: "Sushi",
+  clue1: "Often served with soy sauce and wasabi",
+  clue2: "Rolled in seaweed"
+},
+{
+  question: "Beef patty in a bun",
+  answer: "Hamburger",
+  clue1: "Common fast food item",
+  clue2: "Can be topped with cheese, lettuce, and tomato"
+},
+{
+  question: "Famous fizzy soda brand",
+  answer: "Coca-Cola",
+  clue1: "Red can with white script",
+  clue2: "Often paired with fast food"
+},
+{
+  question: "Cold sweet treat in a cone or cup",
+  answer: "Ice Cream",
+  clue1: "Popular in summer",
+  clue2: "Comes in flavors like vanilla and chocolate"
+},
+{
+  question: "Mexican food with meat in a shell",
+  answer: "Tacos",
+  clue1: "Can be soft or hard shell",
+  clue2: "Often topped with salsa and cheese"
+},
+{
+  question: "Sweet treat made from cocoa",
+  answer: "Chocolate",
+  clue1: "Valentine’s Day favorite",
+  clue2: "Can be dark, milk, or white"
+},
+{
+  question: "Long pasta dish with sauce",
+  answer: "Spaghetti",
+  clue1: "Often topped with meatballs",
+  clue2: "Served with tomato or cream sauces"
+},
+{
+  question: "Crispy potato snack",
+  answer: "French Fries",
+  clue1: "Often eaten with ketchup",
+  clue2: "Popular side dish for burgers"
+},
+{
+  question: "Sweet treat with a hole in the middle",
+  answer: "Donuts",
+  clue1: "Often glazed or frosted",
+  clue2: "Eaten for breakfast or dessert"
+},
+{
+  question: "Big cat known as the king of the jungle",
+  answer: "Lion",
+  clue1: "Has a mane",
+  clue2: "Appears in 'The Lion King'"
+},
+{
+  question: "Largest land animal with a trunk",
+  answer: "Elephant",
+  clue1: "Lives in Africa and Asia",
+  clue2: "Has big ears and tusks"
+},
+{
+  question: "Black and white bear from China",
+  answer: "Panda",
+  clue1: "Eats mostly bamboo",
+  clue2: "Symbol of wildlife conservation"
+},
+{
+  question: "Common pet that barks",
+  answer: "Dog",
+  clue1: "Known as man’s best friend",
+  clue2: "Comes in many breeds"
+},
+{
+  question: "Independent pet that purrs",
+  answer: "Cat",
+  clue1: "Loves chasing mice",
+  clue2: "Often climbs and naps"
+},
+{
+  question: "Tall animal with a long neck",
+  answer: "Giraffe",
+  clue1: "Lives in Africa",
+  clue2: "Eats leaves from tall trees"
+},
+{
+  question: "Smart sea creature known for jumping",
+  answer: "Dolphin",
+  clue1: "Communicates with clicks",
+  clue2: "Often seen doing tricks at aquariums"
+},
+{
+  question: "Striped wild cat",
+  answer: "Tiger",
+  clue1: "Powerful predator",
+  clue2: "National animal of several countries"
+},
+{
+  question: "Marsupial that hops",
+  answer: "Kangaroo",
+  clue1: "Carries baby in pouch",
+  clue2: "Native to Australia"
+},
+{
+  question: "Black and white bird that can’t fly",
+  answer: "Penguin",
+  clue1: "Lives in cold climates",
+  clue2: "Waddles and swims well"
+},
+
+// Random things then sports and games
+
+{
+  question: "Device you use for calls, apps, and internet",
+  answer: "Smartphone",
+  clue1: "Often carried in pockets",
+  clue2: "Can take photos and play music"
+},
+{
+  question: "Flying vehicle for travel",
+  answer: "Airplane",
+  clue1: "Takes off from a runway",
+  clue2: "Used for long-distance journeys"
+},
+{
+  question: "Global connection of computers",
+  answer: "Internet",
+  clue1: "Used for browsing and emails",
+  clue2: "You’re probably on it right now"
+},
+{
+  question: "Colorful arc after rain",
+  answer: "Rainbow",
+  clue1: "Has seven colors",
+  clue2: "Symbol of hope and pride"
+},
+{
+  question: "Machine that can think or act like a human",
+  answer: "Robot",
+  clue1: "Often seen in sci-fi movies",
+  clue2: "Can be used in factories or homes"
+},
+{
+  question: "Erupting mountain",
+  answer: "Volcano",
+  clue1: "Lava comes out of it",
+  clue2: "Can be dormant or active"
+},
+{
+  question: "Tells you the time",
+  answer: "Clock",
+  clue1: "Can be on a wall or wrist",
+  clue2: "Has hands or numbers"
+},
+{
+  question: "Explosions of color in the sky",
+  answer: "Fireworks",
+  clue1: "Seen on New Year’s or 4th of July",
+  clue2: "Loud and bright nighttime display"
+},
+{
+  question: "Earth's satellite",
+  answer: "Moon",
+  clue1: "It has phases",
+  clue2: "Astronauts landed on it"
+},
+{
+  question: "Used to protect you from rain",
+  answer: "Umbrella",
+  clue1: "Opens above your head",
+  clue2: "Often carried on cloudy days"
+},
+{
+  question: "Sport played with a round ball and goals",
+  answer: "Soccer",
+  clue1: "Also known as football outside the US",
+  clue2: "Played in the FIFA World Cup"
+},
+{
+  question: "Sport with a hoop and dribbling",
+  answer: "Basketball",
+  clue1: "Played on a court with 5 players per team",
+  clue2: "You shoot to score points"
+},
+{
+  question: "Major international multi-sport event",
+  answer: "Olympic Games",
+  clue1: "Held every 4 years",
+  clue2: "Has summer and winter editions"
+},
+{
+  question: "Game with pawns and a checkered board",
+  answer: "Chess",
+  clue1: "Kings, queens, and rooks are involved",
+  clue2: "A game of strategy and logic"
+},
+{
+  question: "Sport played on a course with holes",
+  answer: "Golf",
+  clue1: "You use clubs to hit a ball",
+  clue2: "Scored in strokes"
+},
+{
+  question: "Bat-and-ball game popular in South Asia",
+  answer: "Cricket",
+  clue1: "Uses a wicket",
+  clue2: "Played in formats like Test and T20"
+},
+{
+  question: "Game played with rackets and a net",
+  answer: "Tennis",
+  clue1: "Played on clay, grass, or hard court",
+  clue2: "Scoring includes love, 15, 30"
+},
+{
+  question: "Board game about buying property",
+  answer: "Monopoly",
+  clue1: "Features fake money and real estate",
+  clue2: "You can go to jail in the game"
+},
+{
+  question: "Sport played with a bat and glove",
+  answer: "Baseball",
+  clue1: "Has innings and home runs",
+  clue2: "Very popular in the USA and Japan"
+},
+{
+  question: "Contact sport with an oval ball",
+  answer: "Rugby",
+  clue1: "Similar to American football",
+  clue2: "Popular in New Zealand and South Africa"
+},
+
+// Fictional characters
+
+{
+  question: "Iconic superhero from Krypton",
+  answer: "Superman",
+  clue1: "Wears a red cape and has a big 'S' on his chest",
+  clue2: "Weakness is Kryptonite"
+},
+{
+  question: "Classic Disney mascot with big ears",
+  answer: "Mickey Mouse",
+  clue1: "Created by Walt Disney",
+  clue2: "Wears red shorts and yellow shoes"
+},
+{
+  question: "British secret agent with a license to kill",
+  answer: "James Bond",
+  clue1: "Often introduced with 'the name is...'",
+  clue2: "Drives Aston Martins and drinks martinis"
+},
+{
+  question: "Teenage superhero who shoots webs",
+  answer: "Spider-Man",
+  clue1: "Alter ego is Peter Parker",
+  clue2: "Fights villains in New York City"
+},
+{
+  question: "Ice queen from Arendelle",
+  answer: "Elsa (Frozen)",
+  clue1: "Sings 'Let It Go'",
+  clue2: "Has magical freezing powers"
+},
+{
+  question: "Villain in a galaxy far, far away",
+  answer: "Darth Vader",
+  clue1: "Wears black armor and breathes heavily",
+  clue2: "Famous for saying 'I am your father'"
+},
+{
+  question: "Dark knight protector of Gotham",
+  answer: "Batman",
+  clue1: "Real identity is Bruce Wayne",
+  clue2: "Fights crime using gadgets and stealth"
+},
+{
+  question: "Yellow sponge who lives in a pineapple",
+  answer: "SpongeBob SquarePants",
+  clue1: "Works at the Krusty Krab",
+  clue2: "Best friend is Patrick Star"
+},
+{
+  question: "Famous detective known for deduction",
+  answer: "Sherlock Holmes",
+  clue1: "Often accompanied by Dr. Watson",
+  clue2: "Lives at 221B Baker Street"
+},
+{
+  question: "Wizard student at Hogwarts",
+  answer: "Harry Potter",
+  clue1: "Has a lightning-shaped scar",
+  clue2: "Best friends with Ron and Hermione"
+},
+
+// Famous songs
+
+{
+  question: "Best-selling hit by the King of Pop with a spooky music video",
+  answer: "Thriller",
+  clue1: "Released in 1982",
+  clue2: "Features zombies and iconic dance moves"
+},
+{
+  question: "Epic rock ballad with operatic sections and no chorus",
+  answer: "Bohemian Rhapsody",
+  clue1: "Released in 1975",
+  clue2: "Includes the lyric 'Is this the real life? Is this just fantasy?'"
+},
+{
+  question: "Massive streaming hit by a British pop star",
+  answer: "Shape of You",
+  clue1: "Topped global charts in 2017",
+  clue2: "Mentions 'bar' and 'relationship talk'"
+},
+{
+  question: "Powerful breakup anthem by a British soul singer",
+  answer: "Rolling in the Deep",
+  clue1: "From the album '21'",
+  clue2: "Includes the lyric 'We could have had it all'"
+},
+{
+  question: "Viral K-pop song with a horse-riding dance",
+  answer: "Gangnam Style",
+  clue1: "First YouTube video to hit 1 billion views",
+  clue2: "Released in 2012"
+},
+{
+  question: "Latin-pop song that topped charts worldwide",
+  answer: "Despacito",
+  clue1: "Features Daddy Yankee",
+  clue2: "Massive 2017 summer hit"
+},
+{
+  question: "Feel-good anthem from an animated movie",
+  answer: "Happy",
+  clue1: "From the movie 'Despicable Me 2'",
+  clue2: "Was nominated for an Academy Award"
+},
+{
+  question: "Empowering ballad from a Disney ice queen",
+  answer: "Let It Go",
+  clue1: "Sung by Idina Menzel",
+  clue2: "Won an Oscar for Best Original Song"
+},
+{
+  question: "Classic rock song with mysterious lyrics and haunting guitar",
+  answer: "Hotel California",
+  clue1: "Released in 1976",
+  clue2: "Includes the lyric 'You can check out any time you like, but you can never leave'"
+},
+{
+  question: "Funky dance-pop hit with retro vibes",
+  answer: "Uptown Funk",
+  clue1: "Topped Billboard Hot 100 for 14 weeks",
+  clue2: "Includes the lyric 'Don’t believe me just watch'"
+},
+
+// Landmarks and places and famous people
+
+{
+  question: "Iconic New York City location known for its bright lights and New Year's Eve ball drop",
+  answer: "Times Square",
+  clue1: "Located in Manhattan",
+  clue2: "Famous for digital billboards and Broadway theaters"
+},
+{
+  question: "Famous Japanese mountain known for its symmetrical cone shape",
+  answer: "Mount Fuji",
+  clue1: "An active stratovolcano",
+  clue2: "Considered a sacred symbol in Japan"
+},
+{
+  question: "Famous art museum in Paris that houses the Mona Lisa",
+  answer: "The Louvre",
+  clue1: "Glass pyramid entrance",
+  clue2: "World’s most visited museum"
+},
+{
+  question: "Largest hot desert in the world",
+  answer: "Sahara Desert",
+  clue1: "Covers much of North Africa",
+  clue2: "Known for its sand dunes and extreme temperatures"
+},
+{
+  question: "Famous landmark in Los Angeles representing the film industry",
+  answer: "Hollywood Sign",
+  clue1: "Located on Mount Lee",
+  clue2: "Originally said 'Hollywoodland'"
+},
+{
+  question: "Massive canyon carved by the Colorado River in Arizona",
+  answer: "Grand Canyon",
+  clue1: "One of the Seven Natural Wonders of the World",
+  clue2: "Can be seen from space"
+},
+{
+  question: "World’s tallest building, located in Dubai",
+  answer: "Burj Khalifa",
+  clue1: "Stands over 828 meters tall",
+  clue2: "Completed in 2010"
+},
+{
+  question: "Scottish lake said to be home to a mythical monster",
+  answer: "Loch Ness",
+  clue1: "Located in the Highlands",
+  clue2: "Associated with the legend of 'Nessie'"
+},
+{
+  question: "Vast tropical rainforest spanning several South American countries",
+  answer: "The Amazon Rainforest",
+  clue1: "Largest rainforest on Earth",
+  clue2: "Home to millions of species"
+},
+{
+  question: "Famous public square in Moscow, near the Kremlin",
+  answer: "Red Square",
+  clue1: "Home to Saint Basil’s Cathedral",
+  clue2: "Site of historical military parades"
+},
+{
+  question: "Portuguese footballer known for his goal-scoring and athleticism",
+  answer: "Cristiano Ronaldo",
+  clue1: "Has played for clubs like Manchester United and Real Madrid",
+  clue2: "Often compared to Messi"
+},
+{
+  question: "Russian political leader and former KGB officer",
+  answer: "Vladimir Putin",
+  clue1: "President of Russia",
+  clue2: "Known for his strongman image"
+},
+{
+  question: "Swedish environmental activist known for her school strike for climate",
+  answer: "Greta Thunberg",
+  clue1: "Gained international fame as a teenager",
+  clue2: "Delivered a passionate UN speech"
+},
+{
+  question: "American media personality and businesswoman known for reality TV",
+  answer: "Kim Kardashian",
+  clue1: "Famous for 'Keeping Up with the Kardashians'",
+  clue2: "Influential on social media"
+},
+{
+  question: "Youngest Nobel Prize laureate advocating for girls’ education",
+  answer: "Malala Yousafzai",
+  clue1: "Survived an attack by the Taliban",
+  clue2: "Author of 'I Am Malala'"
+},
+{
+  question: "American tennis champion with 23 Grand Slam titles",
+  answer: "Serena Williams",
+  clue1: "Known for her powerful serve",
+  clue2: "Sister of Venus Williams"
+},
+{
+  question: "Founder of Amazon and space exploration company Blue Origin",
+  answer: "Jeff Bezos",
+  clue1: "One of the richest people in the world",
+  clue2: "Stepped down as Amazon CEO in 2021"
+},
+{
+  question: "American actor known for action roles and 'Mission: Impossible'",
+  answer: "Tom Cruise",
+  clue1: "Starred in 'Top Gun'",
+  clue2: "Famous for doing his own stunts"
+},
+{
+  question: "Wrestler-turned-actor known for his charisma and physique",
+  answer: "Dwayne 'The Rock' Johnson",
+  clue1: "Starred in 'Jumanji' and 'Fast & Furious'",
+  clue2: "Former WWE champion"
+},
+{
+  question: "American singer, actress, and businesswoman nicknamed 'J.Lo'",
+  answer: "Jennifer Lopez",
+  clue1: "Starred in 'Selena' and 'Hustlers'",
+  clue2: "Known for hits like 'On the Floor'"
+},
+
+// TOys and kids stuff and food and beverages
+
+{
+  question: "Popular fashion doll brand launched in 1959",
+  answer: "Barbie",
+  clue1: "Created by Mattel",
+  clue2: "Has been adapted into movies and games"
+},
+{
+  question: "Colorful plastic construction toy loved by all ages",
+  answer: "LEGO",
+  clue1: "Interlocking brick system",
+  clue2: "Originated in Denmark"
+},
+{
+  question: "Popular video game console brand by Sony",
+  answer: "PlayStation",
+  clue1: "First launched in 1994",
+  clue2: "Known for games like 'God of War' and 'Uncharted'"
+},
+{
+  question: "Japanese media franchise involving pocket monsters",
+  answer: "Pokémon",
+  clue1: "Includes games, anime, and trading cards",
+  clue2: "Catch 'em all!"
+},
+{
+  question: "3D puzzle toy with colorful rotating squares",
+  answer: "Rubik's Cube",
+  clue1: "Invented in the 1970s",
+  clue2: "Six faces, each a different color"
+},
+{
+  question: "Miniature car toys popular since the 1960s",
+  answer: "Hot Wheels",
+  clue1: "Often used on orange tracks",
+  clue2: "Made by Mattel"
+},
+{
+  question: "Famous video game character known for his red hat and jumping skills",
+  answer: "Super Mario",
+  clue1: "Plumber from Nintendo",
+  clue2: "Often saves Princess Peach"
+},
+{
+  question: "Animated British pig loved by preschoolers",
+  answer: "Peppa Pig",
+  clue1: "Has a little brother named George",
+  clue2: "Snorts frequently"
+},
+{
+  question: "Online multiplayer battle royale game",
+  answer: "Fortnite",
+  clue1: "Known for building structures and emotes",
+  clue2: "Developed by Epic Games"
+},
+{
+  question: "Sandbox game where players build and explore blocky worlds",
+  answer: "Minecraft",
+  clue1: "Created by Mojang",
+  clue2: "Includes modes like Survival and Creative"
+},
+{
+  question: "Classic American food often eaten at barbecues or sports events",
+  answer: "Hot Dog",
+  clue1: "Sausage in a bun",
+  clue2: "Often topped with mustard or ketchup"
+},
+{
+  question: "Small baked dessert, often topped with frosting",
+  answer: "Cupcake",
+  clue1: "Mini version of a cake",
+  clue2: "Popular at birthday parties"
+},
+{
+  question: "Common movie theater snack made from heated corn kernels",
+  answer: "Popcorn",
+  clue1: "Can be buttered or caramelized",
+  clue2: "Often served in a bucket"
+},
+{
+  question: "Mexican food wrapped in a flour tortilla",
+  answer: "Burrito",
+  clue1: "Can contain beans, rice, meat, and veggies",
+  clue2: "Popular in Tex-Mex cuisine"
+},
+{
+  question: "Crispy, savory poultry dish, especially popular in the southern U.S.",
+  answer: "Fried Chicken",
+  clue1: "Often seasoned and breaded",
+  clue2: "Common fast food item"
+},
+{
+  question: "Blended fruit beverage often considered healthy",
+  answer: "Smoothie",
+  clue1: "Can include yogurt or milk",
+  clue2: "Served cold"
+},
+{
+  question: "Flaky French pastry often eaten for breakfast",
+  answer: "Croissant",
+  clue1: "Shaped like a crescent moon",
+  clue2: "Made with layers of butter and dough"
+},
+{
+  question: "Breakfast food made from grains and milk",
+  answer: "Cereal",
+  clue1: "Often served in a bowl",
+  clue2: "Comes in sweet and healthy varieties"
+},
+{
+  question: "Dairy product often served with wine or on sandwiches",
+  answer: "Cheese",
+  clue1: "Made from milk",
+  clue2: "Comes in many types: cheddar, mozzarella, brie"
+},
+{
+  question: "Hot beverage made by steeping leaves in water",
+  answer: "Tea",
+  clue1: "Popular worldwide",
+  clue2: "Varieties include green, black, and herbal"
+},
+
+// More animals things and concepts
+
+{
+  question: "Striped African animal known for its black and white pattern",
+  answer: "Zebra",
+  clue1: "Related to horses",
+  clue2: "Often found in savannas"
+},
+{
+  question: "Tree-dwelling marsupial from Australia",
+  answer: "Koala",
+  clue1: "Eats eucalyptus leaves",
+  clue2: "Often incorrectly called a bear"
+},
+{
+  question: "Largest animal on Earth",
+  answer: "Whale",
+  clue1: "Lives in the ocean",
+  clue2: "Species include blue, humpback, and orca"
+},
+{
+  question: "Reptile with tough skin and strong jaws",
+  answer: "Crocodile",
+  clue1: "Often confused with alligators",
+  clue2: "Can be found in rivers and swamps"
+},
+{
+  question: "Domesticated animal used for riding and racing",
+  answer: "Horse",
+  clue1: "Often wears a saddle",
+  clue2: "Known for galloping"
+},
+{
+  question: "Eight-armed sea creature",
+  answer: "Octopus",
+  clue1: "Can squirt ink",
+  clue2: "Highly intelligent and flexible"
+},
+{
+  question: "Slow-moving mammal from Central and South America",
+  answer: "Sloth",
+  clue1: "Known for hanging upside down",
+  clue2: "Sleeps up to 20 hours a day"
+},
+{
+  question: "Nocturnal bird known for its wisdom and silent flight",
+  answer: "Owl",
+  clue1: "Can rotate its head nearly 270 degrees",
+  clue2: "Often associated with night and magic"
+},
+{
+  question: "Large marine predator with sharp teeth",
+  answer: "Shark",
+  clue1: "Often feared by swimmers",
+  clue2: "Includes species like great white and hammerhead"
+},
+{
+  question: "Legless reptile with scales",
+  answer: "Snake",
+  clue1: "Can be venomous or non-venomous",
+  clue2: "Moves by slithering"
+},
+{
+  question: "Global network that connects computers",
+  answer: "Internet",
+  clue1: "Used for browsing, email, and streaming",
+  clue2: "Often called the web"
+},
+{
+  question: "Technology that enables machines to mimic human intelligence",
+  answer: "AI (Artificial Intelligence)",
+  clue1: "Includes machine learning and neural networks",
+  clue2: "Used in chatbots and self-driving cars"
+},
+{
+  question: "Digital platforms for connecting and sharing with others",
+  answer: "Social Media",
+  clue1: "Includes apps like Instagram and TikTok",
+  clue2: "Can be used for messaging, posting, and networking"
+},
+{
+  question: "Concept of moving backward or forward in time",
+  answer: "Time Travel",
+  clue1: "Popular in science fiction",
+  clue2: "Involves paradoxes and alternate timelines"
+},
+{
+  question: "Technology that helps you find your location",
+  answer: "GPS",
+  clue1: "Used in maps and navigation apps",
+  clue2: "Stands for Global Positioning System"
+},
+{
+  question: "Digital symbols used to express emotion or ideas",
+  answer: "Emoji",
+  clue1: "Often used in text messages",
+  clue2: "Can be faces, objects, or animals"
+},
+{
+  question: "Secret string used to access accounts",
+  answer: "Password",
+  clue1: "Should be strong and secure",
+  clue2: "Often includes letters, numbers, and symbols"
+},
+{
+  question: "Molecule that carries genetic information",
+  answer: "DNA",
+  clue1: "Double helix structure",
+  clue2: "Short for deoxyribonucleic acid"
+},
+{
+  question: "Long-term shifts in temperature and weather patterns",
+  answer: "Climate Change",
+  clue1: "Linked to global warming",
+  clue2: "Caused by human activities like fossil fuel use"
+},
+{
+  question: "Digital currency without a central bank",
+  answer: "Bitcoin",
+  clue1: "Uses blockchain technology",
+  clue2: "Created by an unknown person or group called Satoshi Nakamoto"
+},
+
+// 📱 Apps & Tech Brands	🏆 Events & Holidays
+
+{
+  question: "Photo and video sharing app with stories and reels",
+  answer: "Instagram",
+  clue1: "Owned by Meta",
+  clue2: "Known for influencers and hashtags"
+},
+{
+  question: "Short-form video app popular with Gen Z",
+  answer: "TikTok",
+  clue1: "Features music and viral trends",
+  clue2: "Known for its 'For You Page'"
+},
+{
+  question: "Social network for connecting with friends and family",
+  answer: "Facebook",
+  clue1: "Launched in 2004",
+  clue2: "Founded by Mark Zuckerberg"
+},
+{
+  question: "Video platform for creators and vloggers",
+  answer: "YouTube",
+  clue1: "Home to millions of videos",
+  clue2: "Acquired by Google"
+},
+{
+  question: "Messaging app for sending texts, calls, and media",
+  answer: "WhatsApp",
+  clue1: "Uses end-to-end encryption",
+  clue2: "Owned by Meta"
+},
+{
+  question: "Navigation app that gives directions and traffic updates",
+  answer: "Google Maps",
+  clue1: "Provides street view and satellite imagery",
+  clue2: "Helps find nearby restaurants or stores"
+},
+{
+  question: "Ride-sharing app for booking cars",
+  answer: "Uber",
+  clue1: "Also offers food delivery via Uber Eats",
+  clue2: "Can be used to schedule rides"
+},
+{
+  question: "Online shopping platform for just about anything",
+  answer: "Amazon",
+  clue1: "Founded by Jeff Bezos",
+  clue2: "Offers Prime membership"
+},
+{
+  question: "Streaming service with original shows and movies",
+  answer: "Netflix",
+  clue1: "Known for 'binge-watching'",
+  clue2: "Original content includes 'Stranger Things'"
+},
+{
+  question: "Music streaming service with playlists and podcasts",
+  answer: "Spotify",
+  clue1: "Offers both free and premium versions",
+  clue2: "Creates personalized mixes"
+},
+{
+  question: "Holiday involving costumes and candy",
+  answer: "Halloween",
+  clue1: "Celebrated on October 31",
+  clue2: "Features pumpkins and trick-or-treating"
+},
+{
+  question: "Holiday celebrated on December 25",
+  answer: "Christmas",
+  clue1: "Associated with Santa Claus",
+  clue2: "Decorating trees and exchanging gifts"
+},
+{
+  question: "Celebration of the start of a new calendar year",
+  answer: "New Year’s Eve",
+  clue1: "Takes place on December 31",
+  clue2: "Known for countdowns and fireworks"
+},
+{
+  question: "Romantic holiday celebrating love",
+  answer: "Valentine’s Day",
+  clue1: "Celebrated on February 14",
+  clue2: "Often involves chocolates and flowers"
+},
+{
+  question: "Massive retail sales day after Thanksgiving",
+  answer: "Black Friday",
+  clue1: "Known for doorbuster deals",
+  clue2: "Kicks off holiday shopping season"
+},
+{
+  question: "Day of pranks and jokes",
+  answer: "April Fool’s Day",
+  clue1: "Celebrated on April 1",
+  clue2: "Used for harmless trickery"
+},
+{
+  question: "International sporting event every four years",
+  answer: "Olympics",
+  clue1: "Has summer and winter editions",
+  clue2: "Features athletes from around the world"
+},
+{
+  question: "Global football (soccer) tournament held every four years",
+  answer: "World Cup",
+  clue1: "Organized by FIFA",
+  clue2: "Most-watched sporting event worldwide"
+},
+{
+  question: "Championship game of American football",
+  answer: "Super Bowl",
+  clue1: "Includes halftime show and commercials",
+  clue2: "Held annually in the U.S."
+},
+{
+  question: "Day promoting environmental awareness",
+  answer: "Earth Day",
+  clue1: "Celebrated on April 22",
+  clue2: "Focuses on protecting the planet"
+},
+
+// 🎭 Characters & Pop Culture Icons (New)
+
+{
+  question: "Yellow animated father in a long-running TV show",
+  answer: "Homer Simpson",
+  clue1: "Lives in Springfield",
+  clue2: "Famous for 'D'oh!'"
+},
+{
+  question: "Superheroine from DC Comics with a magic lasso",
+  answer: "Wonder Woman",
+  clue1: "Amazonian warrior princess",
+  clue2: "Also known as Diana Prince"
+},
+{
+  question: "Marvel superhero known as Tony Stark",
+  answer: "Iron Man",
+  clue1: "Wears a high-tech armored suit",
+  clue2: "Founder of the Avengers"
+},
+{
+  question: "Electric mouse Pokémon",
+  answer: "Pikachu",
+  clue1: "Ash's main companion",
+  clue2: "Known for its lightning bolt tail"
+},
+{
+  question: "Fictional archaeologist and adventurer in video games",
+  answer: "Lara Croft",
+  clue1: "Star of the Tomb Raider series",
+  clue2: "Known for her dual pistols"
+},
+{
+  question: "Friendly snowman from a Disney movie",
+  answer: "Olaf (Frozen)",
+  clue1: "Likes warm hugs",
+  clue2: "Appears in 'Frozen'"
+},
+{
+  question: "Iconic doll and character known worldwide",
+  answer: "Barbie (character)",
+  clue1: "Fashion model doll",
+  clue2: "Has many careers and styles"
+},
+{
+  question: "Wise Jedi Master from Star Wars",
+  answer: "Yoda",
+  clue1: "Known for his unique speech pattern",
+  clue2: "Trains Luke Skywalker"
+},
+{
+  question: "Friendly bear who loves honey",
+  answer: "Winnie the Pooh",
+  clue1: "Lives in the Hundred Acre Wood",
+  clue2: "Created by A.A. Milne"
+},
+{
+  question: "Marvel antihero with a sarcastic sense of humor",
+  answer: "Deadpool",
+  clue1: "Known as the 'Merc with a Mouth'",
+  clue2: "Wears a red and black costume"
+}
+];
+
+// Function to render riddles
+function displayRiddles() {
+  const container = document.getElementById('riddles-container');
+
+  riddles.forEach((riddle, index) => {
+    const riddleBox = document.createElement('div');
+    riddleBox.className = 'riddle-box';
+
+    const riddleQuestion = document.createElement('p');
+    riddleQuestion.className = 'riddle';
+    riddleQuestion.textContent = riddle.question;
+
+    const revealButton = document.createElement('button');
+    revealButton.className = 'reveal-btn';
+    revealButton.textContent = 'Show Answer';
+
+    const answerText = document.createElement('p');
+    answerText.className = 'answer hidden';
+    answerText.textContent = riddle.answer;
+
+    // Button click logic
+    revealButton.addEventListener('click', () => {
+      const isHidden = answerText.classList.contains('hidden');
+      answerText.classList.toggle('hidden');
+      revealButton.textContent = isHidden ? 'Hide Answer' : 'Show Answer';
+    });
+
+    riddleBox.appendChild(riddleQuestion);
+    riddleBox.appendChild(revealButton);
+    riddleBox.appendChild(answerText);
+    container.appendChild(riddleBox);
+  });
+}
+
+
+
+// Call on page load
+displayRiddles();
+
+      </script>
+</body>
+</html>

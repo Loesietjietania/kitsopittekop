@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hard Riddles With Answers</title>
+    <meta name="description" content="Solve challenging hard riddles with answers included! Brain-bending puzzles, logic problems, and tricky questions to test your wit. Free collection with solutions.">
+    <link rel="shortcut icon" type="x-icon" href="/images/Main Logo.png">
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: 'helvetica';
+    src: url(Fonts/helvetica-rounded-bold-5871d05ead8de.otf) format('opentype');
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    height: 100vh;
+    background: url(/Images/test\ BG.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 1.3em 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0,1);
+    backdrop-filter: blur(70px);
+    z-index: -1;
+}
+.navbar a{
+    font-size: 1.15rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5em;
+}
+#check{
+    display: none;
+}
+.logo img{
+    height: 2.5rem;
+    width: 3rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin: none;
+
+}
+
+.nav-icon{
+    position: absolute;
+    right: 5%;
+    font-size: 2.8rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+.close-icon{
+    display: none;
+}
+
+hr{
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+.Article-pic{
+    Width: 100%;
+    height: 35rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+
+/*---About---*/
+
+.img-about{
+    width: 20rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+/*---Why choose us---*/
+.sectwhy{
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 1.25rem;
+    box-sizing: none;
+}
+
+.sectwhy h2{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    max-width: 100%;
+    font-size: 1.4rem;
+
+}
+
+.sectwhy h3{
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    font-size: 1.2rem;
+    
+}
+
+.whytext{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    align-items: center;
+    justify-content: center;
+}
+
+.head1{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    max-width: 100%;
+
+}
+.head1 h1{
+    margin-left: 10px;
+}
+
+.text1{
+    overflow: hidden;
+    height: auto;
+}
+
+/*---Our services---*/
+
+.sect3{
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 1.25rem;
+    box-sizing: none;
+}
+
+.img-os{
+    width: 19rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ads{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ads-items{
+    align-items: center;
+    justify-content: center;
+}
+
+.ads-items h2{
+    font-size: 1.4rem;
+}
+
+.ads-pic{
+    max-width: 17em;
+    float: left;
+    
+}
+.ads-img{
+    max-width: 17em;
+    height: auto;
+    padding: 3%;
+}
+
+.ads-text{
+    float: right;
+    overflow: hidden;
+    max-width: 500px;
+    height: auto;
+    text-align: left;
+}
+.ads-text p{
+    text-align: justify;
+}
+
+.blog-text{
+    max-width: 17em;
+
+}
+
+.blog-text h2{
+    font-size: 1.1rem;
+    max-width: 17em;
+}
+
+/*--- Reveal Button ---*/
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+
+}
+
+h1 {
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+}
+
+.riddle-box {
+  margin-bottom: 30px;
+  padding: 15px;
+  border-left: 4px solid #015672;
+  border-radius: 5px;
+}
+
+.riddle {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.reveal-btn {
+  background-color: #015672;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95em;
+}
+
+.reveal-btn:hover {
+  background-color: #015672;
+}
+
+.answer {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+/*--- Design part ---*/
+
+
+.blogs{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0,37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-items{
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-pic{
+    position: relative;
+    overflow: hidden;
+    float: inline-start;
+}
+
+.blog-pic p{
+    padding: 3%;
+    
+}
+
+.blog-pic::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-pic img{
+    transition:  all 0.5s ease;
+}
+
+.blog-pic:hover img{
+    transform: scale(1.2);
+}
+
+.blog-pic span:first-of-type{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    background: var(--exDark);
+    color: #fff;
+    padding: 0.25rem 1rem;
+}
+
+.blog-pic span:last-of-type{
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+/*-- End--*/
+/*-- Table--*/
+
+table{
+    width: 1000px;
+    
+}
+th{
+    text-align: left;
+    padding: .5rem;
+}
+td{
+    padding: .5rem;
+}
+table, th, td{
+    border: 1px solid white;
+}
+
+/*--Final part--*/
+
+.sect4{
+    background: #015672;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    align-items: center;
+    color: #fff;
+    text-shadow: -1px 3px 2px #000000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.all-end{
+    display: block;
+    text-align: center;
+    padding: 30px;
+}
+.contact{
+    margin: 50px;
+}
+.socials{
+    display: flex;
+    justify-content: center;
+
+}
+.socials a{
+    padding-top: 0.25em;
+    margin: 0 1em;
+    color: #fff;
+    background: #015672;
+    height: 2em;
+    width: 2em;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+
+.socials a:hover{
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2), inset -4px -4px 6px -1px rgba(255,255,255,0.7),-0.5px -0.5px 0px rgba(255,255,255,1), 0.5px 0.5px 0px rgba(0,0,0,0.15), 0px 12px 10px -10px rgba(0,0,0,0.05);
+}
+.bottom{
+    display: flex;
+    width: 100%;
+}
+.copyright{
+    padding: 1.25em;
+    width: 50%;
+    text-align: left;
+}
+.design{
+    padding: 20px;
+    width: 50%;
+    text-align: right;
+}
+
+/*--BREAKPOINT--*/
+
+@media screen and (max-width: 64em){
+
+    .nav-icon{
+        display: inline-flex;
+    }
+    #check:checked~.nav-icon .menu-icon{
+        display: none;
+
+    }
+    .nav-icon .close-icon{
+        display: none;
+    }
+    #check:checked~.nav-icon .close-icon{
+        display: block;
+
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(0, 0, 0, 0,1);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0,1);
+        overflow: hidden;
+        transition: .3s ease;
+    }
+    #check:checked~.navbar{
+        height: 17.7rem;
+
+    }
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        transition: .3s ease;
+    }
+    #check:checked~.navbar a{
+        transform: translateY(0);
+
+    }
+    .partone{
+        margin-top: 1em;
+    }
+    .sect1{
+        margin: 2em;
+  
+    }
+    .paragraph1 img{
+        width: 20rem;
+    }
+    .sect1 p{
+        font-size: 20px;
+    }
+
+    /*---.sect1 button{
+        background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+    }---*/
+    .about-text p{
+        font-size: 20px;
+        text-shadow: -1px 3px 2px #000000;
+       
+    }
+
+    .container{
+        min-width: 280px;
+
+    }
+    .user-input-box{
+        margin-bottom: 12px;
+        width: 100%;
+    }
+    .user-input-box:nth-child(2n){
+        justify-content: space-between;
+    }
+    .Article-pic{
+        height: 100%;
+        
+    }
+    
+/*---about---*/
+.img-about{
+    max-width: 10em; 
+}
+
+    .about-text p{
+        font-size: 0.8rem;
+        padding: .5em; 
+    }
+/*---why choose us---*/
+
+.whytext{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;    
+}
+.text1{
+    font-size: .8rem;
+    padding: 7%;
+}
+.text1 h2{
+    font-size: 1rem;
+}
+.text1 h3{
+    font-size: .9rem;
+}
+/*---services---*/
+    .ads{
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        
+    }
+    .ads-text{
+        font-size: .8rem;
+        padding: 7%;
+        float: none;
+    }
+    .ads-pic{
+        float: none; 
+    }
+    .ads-img{
+        padding: 10%;
+        max-width: 17em;
+        height: auto;
+    }
+    .riddle {
+        font-size: .8rem;
+    }
+    .answer{
+        font-size: .8rem;
+    }
+    
+        /*--Blog--*/
+        .blog-pic img{
+            padding: 0;
+            max-width: 19em;
+            height: auto;
+        }
+        .blog-pic{
+            font-size: .8rem;
+            padding: 7%;
+        }
+        .blog-pic span{
+            font-size: .8rem;
+            padding-top: 7%;
+        }
+
+
+    /*--Final part--*/
+
+    .bottom{
+        font-size: .5em;
+        width: 100%;
+    }
+    .copyright{
+        width: 50%;
+    }
+    .design{
+        width: 50%;
+    }
+    .bottom-text p{
+        font-size: .8rem;
+        padding: .2%;
+    }
+    .sect4 h1{
+        font-size: 1rem;
+        padding: .2%;
+    }
+
+}
+
+</style>
+
+
+
+</head>
+<body>
+    <section id="banner">
+        <div class="header">
+            <a href="#" class="logo"><img src="/Images/Main Logo.png"></a>
+
+            <input type="checkbox" id="check">
+            <label for="check" class="nav-icon">
+                <span class="menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="currentColor" d="M19 17H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2m0-7H5c-1.103 0-2 .897-2 2s.897 2 2 2h14c1.103 0 2-.897 2-2s-.897-2-2-2"/></svg></span>
+                <span class="close-icon"><svg xmlns="http://www.w3.org/2000/svg" width=".6em" height=".6em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg></span>
+            </label>
+            <nav class="navbar">
+              <a href="/index.html">Home</a>
+              <a href="">Shopping</a>
+              <a href="/index.html#design">Games</a>
+              <a href="/index.html#blog">Blogs</a>
+            </nav>
+        </div>
+      
+        
+    </section>
+    <hr>
+
+           <!--Why choose us-->
+
+    <section class="sectwhy">
+        <div>
+            <span id="Chooseus"><img src="Images/Blog Post.png" class="img-about"></span>
+        </div>
+        <div class="whytext">
+            <div>
+
+                <div class="text1">
+                    <div class="head1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 1200 1200"><path fill="currentColor" d="m623.974 385.737l-135.999-212.98c-7.962-15.269-4.359-33.709 8.98-42.339c15.255-8.012 32.482-4.267 41.057 8.98l135.999 214.263c7.961 15.269 4.363 33.716-8.98 42.34c-15.216 7.334-33.859 2.36-41.057-10.264m570.939 39.773c21.876 39.658-32.348 72.172-57.736 85.962q-33.356-2.575-63.509-7.057q-30.151-4.49-53.245-8.34q-26.943-5.132-50.037-10.265q-2.612 12.832-7.057 26.943q-4.515 14.112-10.905 29.509c-87.46-18.921-190.461-70.103-238.64-148.829L878.009 225.36l29.51-106.49l62.867 76.981c43.37 12.192 103.54 13.048 121.887 57.735c15.888 26.768 14.601 83.536 32.074 105.207q14.113 14.112 30.793 25.66c16.68 11.548 24.377 21.385 39.773 41.057M579.068 782.188c-38.868-.275-79.431-13.76-118.036-14.113q-33.358-3.847-24.378 29.51l53.887 216.828c-.724 34.83-19.645 61.502-47.471 66.076c-27.079 2.602-54.311-21.826-60.302-40.416l-69.283-271.998q-2.566-14.112-16.038-13.471c-13.472.641-14.754 4.918-17.321 13.471l-64.15 270.717c-8.458 25.404-28.958 42.031-53.886 42.338c-36.8-.646-62.21-34.828-55.169-66.717l78.264-320.752l6.415-193.734c-67.836-17.21-153.56-63.618-187.319-128.302c-9.523-20.909-2.621-41.189 15.396-51.32c21.296-9.732 45.384-.362 53.886 14.112c33.217 51.991 106.545 85.123 156.527 85.962h382.335c-23.654 118.655-36.891 237.314-33.357 361.809m93.66-339.998c64.765 84.222 158.1 137.001 257.885 157.81c-9.287 27.801-21.692 54.85-30.15 80.188q-5.774 17.32 3.207 50.68c24.586 94.191 51.62 194.754 75.698 282.262c9.377 73.299-92.42 71.738-107.773 26.943l-55.169-210.414c-15.224-25.84-53.295-31.871-61.585 0l-50.037 209.131c-25.894 64.572-118.281 21.158-107.771-24.377l47.47-195.018q1.284-10.267-1.282-20.527c.825-118.825 4.617-240.396 29.507-356.678"/></svg>
+                        <h1>Hard Riddles With Answers</h1>
+                    </div>
+              <br>
+  
+               
+
+              <img src="/images/Hard Riddles Main Img.jpg" class="Article-pic">
+              ________________________________________
+            </div>
+        </div>
+        </div>
+        <hr>
+        <div class="whytext">
+        <div>
+        <div class="text1"> 
+              <h2>Introducing Hard Riddles with Answers</h2>
+              <br>
+              <p>
+                Ready to put your problem-solving skills to the ultimate test? Our collection of hard riddles with answers will challenge even the sharpest minds and push your logical thinking to its limits. These brain-bending puzzles are designed for those who crave mental stimulation and aren't afraid of a real challenge.
+            </p>
+            <br>
+            <p>
+              Each riddle has been carefully selected for its complexity, requiring creative thinking, lateral reasoning, and sometimes a completely different perspective to solve. Whether you're looking to sharpen your mind, impress friends with your puzzle-solving prowess, or simply enjoy the satisfaction of cracking a tough mental challenge, these hard riddles deliver exactly what you need.
+            </p>
+            <br>
+            <p>
+              The best part? Every answer is just a click away. When you're ready to check your solution or need a hint to get unstuck, simply hit the "Reveal Answer" button below each riddle. This way, you can test yourself thoroughly before seeing the solution, making the experience both challenging and rewarding.
+            </p>
+              ________________________________________
+            </div>
+        </div>
+        </div>
+        <hr>
+
+        <!---
+        <div class="whytext">
+        <div>
+        <div class="text1"> 
+              <h2>Possible Reasons Dogs Eat Grass</h2>
+              <div class="image-blog3" alt=""></div>
+              <br>
+
+              <h2>What is a Rebus Puzzle?</h2>
+              <p>
+                  Rebus puzzles are clever word games that use pictures, symbols, letters, and numbers arranged in creative ways to represent common phrases, sayings, or words. These visual brain teasers challenge solvers to decode hidden meanings by interpreting the spatial relationships, positioning, and visual clues within each puzzle. 
+              </p>
+              <p>
+                  For example, the word "STAND" written underneath the word "I" represents the phrase "I understand." Rebus puzzles have been entertaining puzzle enthusiasts for centuries and are popular in newspapers, puzzle books, educational settings, and online brain training games. They serve as excellent mental exercises that improve lateral thinking, visual processing, and problem-solving skills while providing an entertaining challenge for people of all ages.
+              </p>
+          <br>
+              <h2>How to Solve Rebus Puzzles</h2>
+              <p>
+                  Solving rebus puzzles requires a combination of creative thinking and systematic observation of visual clues and word positioning. Start by carefully examining the entire puzzle layout, noting the size, position, color, and orientation of letters, words, or symbols.
+              </p>
+              <p>
+                  Look for common rebus puzzle patterns such as words written above or below others (indicating "over" or "under"), repeated elements (suggesting "again" or multiples), backwards text (meaning "reverse"), or missing letters (implying "without"). Pay attention to spatial relationships – words inside other words might represent "within," while scattered letters could indicate "all over."
+              </p>
+              <p>
+                  Practice recognizing that rebus puzzles often represent familiar idioms, common expressions, book titles, movie names, or everyday phrases. The key to mastering rebus puzzles is thinking flexibly about how visual elements can represent sounds, meanings, and linguistic concepts rather than taking everything at face value.
+              </p>
+              ________________________________________
+            </div>
+        </div>
+        </div>
+        <hr>
+-->
+   <!--Rebus puzzles to Reveal-->
+   <div>
+
+    <div class="container">
+        <h1>Riddle Me This!</h1>
+        <div id="riddles-container"></div>
+      </div>
+
+
+
+</div>
+
+<div class="whytext">
+  <div>
+  <div class="text1"> 
+        <h2>Conclustion</h2>
+        <br>
+        <p>
+          Congratulations on tackling some of the most challenging riddles available! Whether you solved them all on your first try or needed to reveal a few answers along the way, you've just given your brain an excellent workout. These hard riddles aren't just puzzles - they're mental gymnastics that strengthen your analytical thinking, creativity, and problem-solving abilities.
+      </p>
+      <br>
+      <p>
+        Remember, the journey of solving a difficult riddle is often more valuable than reaching the answer quickly. Each time you wrestled with a puzzle before clicking "Reveal Answer," you were building cognitive skills that extend far beyond riddle-solving. Don't worry if some stumped you completely - that's exactly what makes them "hard" riddles!
+      </p>
+      <br>
+      <p>
+        Keep challenging yourself with these brain teasers regularly. Share your favorites with friends and family to spread the joy of mental challenges. The more you practice with difficult puzzles like these, the sharper your thinking becomes. Ready for another round? Scroll back up and test yourself again – you might be surprised by how differently you approach them the second time around!
+      </p>
+      <br>
+        ________________________________________
+      </div>
+  </div>
+  </div>
+  <hr>
+
+    </section>
+    <hr>
+ 
+
+<!--Blog Posts-->
+
+<section class="sect3">
+
+
+    <div>
+        <div class="blogs">
+
+          <div class="blog-items">
+
+            <div class="blog-pic">
+                <img src="/images/Trivia Questions Cover.jpg" class="ads-img" alt="">
+                <div class="blog-text">
+                    <a href="/Articles/triviaquestionswithanswers.html"><span>13 February, 2025</span></a>
+                    
+          <h2>Trivia Questions With Answers</h2>
+          <p>Test your knowledge with fun trivia questions with answers! Challenge friends, learn facts, and boost your IQ. Free collection covering all topics and categories.</p>
+          <p>Play Now...</p>
+                </div>
+               
+            </div>
+
+
+            <div class="blog-pic">
+                <img src="/images/Rebus Puzzles Cover.jpg" class="ads-img" alt="">
+                <div class="blog-text">
+                    <a href="/Articles/Rebuspuzzleswithanswers.html"><span>16 January, 2025</span></a>
+
+          <h2>Rebus Puzzles With Answers</h2>
+          <p>Solve fun rebus puzzles with answers provided! Brain teasers using pictures, words, and symbols. Test your logic skills with our free collection and solutions.</p>
+          <p>Play Now...</p>
+                </div>
+            </div>
+
+
+            <div class="blog-pic">
+                <img src="/images/Country Flag Quiz Cover.jpg" class="ads-img" alt="">
+                <div class="blog-text">
+                    <a href="/Articles/CountryFlagQuiz.html"><span>17 January, 2025</span></a>
+
+          <h2>Country Flag Quiz</h2>
+          <p>Test your knowledge with our interactive Country Flag Quiz! Identify flags from 195+ nations, learn geography facts, and challenge yourself. Play free online now!</p>
+          <p>Play Now...</p>
+                </div>
+            </div>
+        </div>  
+
+
+        </div>
+    </div>
+</section>
+<hr>
+
+
+    <!--Final page-->
+
+    <section class="sect4">
+        <div class="all-end">
+                <div class="contact">
+                  <span id="contact"><h1>Help Us Improve Your Experience</h1></span>
+                  <div class="bottom-text">
+                      <br>
+                      <p>We're committed to providing you with the best possible puzzle-solving experience. If you encounter any technical issues, broken links, missing answers, or content that isn't displaying properly, please don't hesitate to reach out to us at ...</p>
+                      <div class="email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="m21.433 4.861l-6 15.5a1 1 0 0 1-1.624.362l-3.382-3.235l-2.074 2.073a.5.5 0 0 1-.853-.354v-4.519L2.309 9.723a1 1 0 0 1 .442-1.691l17.5-4.5a1 1 0 0 1 1.181 1.329ZM19 6.001L8.032 13.152l1.735 1.66L19 6Z"/></g></svg>
+                        <p>digigrow.to@gmail.com</p>
+                    </div>
+                      <br>
+                      <p>Your feedback helps us maintain the quality and functionality of our platform, ensuring that every visitor can enjoy our riddles, quizzes, and brain teasers without interruption. We appreciate your assistance in keeping our website running smoothly for the entire puzzle-loving community!</p>
+                      <br>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="socials">
+            <a href="https://www.facebook.com/profile.php?id=61560601285281"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><g clip-path="url(#akarIconsFacebookFill0)"><path fill="currentColor" fill-rule="evenodd" d="M0 12.067C0 18.034 4.333 22.994 10 24v-8.667H7V12h3V9.333c0-3 1.933-4.666 4.667-4.666c.866 0 1.8.133 2.666.266V8H15.8c-1.467 0-1.8.733-1.8 1.667V12h3.2l-.533 3.333H14V24c5.667-1.006 10-5.966 10-11.933C24 5.43 18.6 0 12 0S0 5.43 0 12.067" clip-rule="evenodd"/></g><defs><clipPath id="akarIconsFacebookFill0"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></g></svg></a>
+            <a href="https://www.instagram.com/dig_igrow/"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="66" stroke-dashoffset="66" d="M12 3H8C5.23858 3 3 5.23858 3 8V16C3 18.7614 5.23858 21 8 21H16C18.7614 21 21 18.7614 21 16V8C21 5.23858 18.7614 3 16 3z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="66;132"/></path><path stroke-dasharray="26" stroke-dashoffset="26" d="M12 8C14.20914 8 16 9.79086 16 12C16 14.20914 14.20914 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.4s" values="26;0"/></path></g><circle cx="17" cy="7" r="1.5" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="1.1s" dur="0.4s" values="0;1"/></circle></svg></a>
+            <a href="https://wa.me/0662811201"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><g fill="none"><g clip-path="url(#mageWhatsappFilled0)"><path fill="currentColor" d="m13.79 2.64l-.57-.08a9.13 9.13 0 0 0-8.92 4a9.1 9.1 0 0 0-.71 9.66a1.3 1.3 0 0 1 .1 1c-.41 1.41-.79 2.83-1.19 4.32l.5-.15c1.35-.36 2.7-.72 4.05-1.05a1.45 1.45 0 0 1 .85.08a9.45 9.45 0 1 0 5.89-17.78m2.52 13.12a2.76 2.76 0 0 1-2.72.56a9.19 9.19 0 0 1-5.13-3.71a8.51 8.51 0 0 1-1.11-2.08a2.49 2.49 0 0 1 .55-2.52a1.23 1.23 0 0 1 1.32-.42c.2.05.34.34.52.56c.146.413.317.817.51 1.21a.94.94 0 0 1-.2 1.31c-.45.4-.38.73-.06 1.18a6.71 6.71 0 0 0 2.82 2.32c.32.14.56.17.77-.16c.09-.13.21-.24.31-.36c.58-.73.4-.72 1.32-.32c.293.123.577.267.85.43c.27.16.68.33.74.57a1.45 1.45 0 0 1-.49 1.43"/></g><defs><clipPath id="mageWhatsappFilled0"><path fill="#fff" d="M2.5 2.5h19v19h-19z"/></clipPath></defs></g></svg></a>
+            <a href="mailto:digigrow.to@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="m16.484 11.976l6.151-5.344v10.627zm-7.926.905l2.16 1.875c.339.288.781.462 1.264.462h.017h-.001h.014c.484 0 .926-.175 1.269-.465l-.003.002l2.16-1.875l6.566 5.639H1.995zM1.986 5.365h20.03l-9.621 8.356a.612.612 0 0 1-.38.132h-.014h.001h-.014a.61.61 0 0 1-.381-.133l.001.001zm-.621 1.266l6.15 5.344l-6.15 5.28zm21.6-2.441c-.24-.12-.522-.19-.821-.19H1.859a1.87 1.87 0 0 0-.835.197l.011-.005A1.856 1.856 0 0 0 0 5.855v12.172a1.86 1.86 0 0 0 1.858 1.858h20.283a1.86 1.86 0 0 0 1.858-1.858V5.855c0-.727-.419-1.357-1.029-1.66l-.011-.005z"/></svg></a>
+            
+        </div>
+        <div class="bottom"> 
+            <div class="copyright">
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.08 10.86c.05-.33.16-.62.3-.87s.34-.46.59-.62c.24-.15.54-.22.91-.23c.23.01.44.05.63.13c.2.09.38.21.52.36s.25.33.34.53s.13.42.14.64h1.79c-.02-.47-.11-.9-.28-1.29s-.4-.73-.7-1.01s-.66-.5-1.08-.66s-.88-.23-1.39-.23c-.65 0-1.22.11-1.7.34s-.88.53-1.2.92s-.56.84-.71 1.36S8 11.29 8 11.87v.27c0 .58.08 1.12.23 1.64s.39.97.71 1.35s.72.69 1.2.91c.48.22 1.05.34 1.7.34c.47 0 .91-.08 1.32-.23s.77-.36 1.08-.63s.56-.58.74-.94s.29-.74.3-1.15h-1.79c-.01.21-.06.4-.15.58s-.21.33-.36.46s-.32.23-.52.3c-.19.07-.39.09-.6.1c-.36-.01-.66-.08-.89-.23c-.25-.16-.45-.37-.59-.62s-.25-.55-.3-.88s-.08-.67-.08-1v-.27c0-.35.03-.68.08-1.01M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8"/></svg>All rights reserved 2024 - 2025.</p>
+            </div>  
+            <div class="design">
+                
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36"><path fill="#dd2e44" d="M35.885 11.833c0-5.45-4.418-9.868-9.867-9.868c-3.308 0-6.227 1.633-8.018 4.129c-1.791-2.496-4.71-4.129-8.017-4.129c-5.45 0-9.868 4.417-9.868 9.868c0 .772.098 1.52.266 2.241C1.751 22.587 11.216 31.568 18 34.034c6.783-2.466 16.249-11.447 17.617-19.959c.17-.721.268-1.469.268-2.242"/></svg>Designed by DigiGrow</p>
+            </div>
+            
+        </div> 
+        
+    </section>
+
+    <script>
+// Riddles array (can be expanded)
+const riddles = [
+// Hard Riddles
+{
+    question: "The more you take, the more you leave behind. What am I?",
+    answer: "Footsteps",
+    clue1: "You make them while walking",
+    clue2: "They disappear over time"
+  },
+  {
+    question: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?",
+    answer: "An echo",
+    clue1: "Heard in mountains",
+    clue2: "Repeats what you say"
+  },
+  {
+    question: "I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?",
+    answer: "A map",
+    clue1: "Used for directions",
+    clue2: "Found in atlases"
+  },
+  {
+    question: "What can run but never walks, has a bed but never sleeps, and has a mouth but never eats?",
+    answer: "A river",
+    clue1: "Flows constantly",
+    clue2: "Often has a current"
+  },
+  {
+    question: "What disappears as soon as you say its name?",
+    answer: "Silence",
+    clue1: "You break it by speaking",
+    clue2: "It's very quiet"
+  },
+  {
+    question: "I’m not alive, but I grow. I don’t have lungs, but I need air. I don’t have a mouth, but water kills me. What am I?",
+    answer: "Fire",
+    clue1: "Dangerous if uncontrolled",
+    clue2: "Used for heat or cooking"
+  },
+  {
+    question: "What comes once in a minute, twice in a moment, but never in a thousand years?",
+    answer: "The letter M",
+    clue1: "Alphabet riddle",
+    clue2: "It’s not about time"
+  },
+  {
+    question: "Forward I am heavy, but backward I am not. What am I?",
+    answer: "Ton",
+    clue1: "A unit of weight",
+    clue2: "Spelled backwards means 'not'"
+  },
+  {
+    question: "What has keys but can’t open locks?",
+    answer: "A piano",
+    clue1: "Used to make music",
+    clue2: "Black and white keys"
+  },
+  {
+    question: "What can fill a room but takes up no space?",
+    answer: "Light",
+    clue1: "Comes from a bulb or sun",
+    clue2: "Enables sight"
+  },
+  {
+    question: "What is so fragile that saying its name breaks it?",
+    answer: "Silence",
+    clue1: "You hear it when no one talks",
+    clue2: "Breaks with a whisper"
+  },
+  {
+    question: "What gets sharper the more you use it?",
+    answer: "Your brain",
+    clue1: "Part of your body",
+    clue2: "Improves with thinking"
+  },
+  {
+    question: "What has a head, a tail, is brown, and has no legs?",
+    answer: "A penny",
+    clue1: "It’s money",
+    clue2: "Copper colored"
+  },
+  {
+    question: "The more you take away from me, the bigger I get. What am I?",
+    answer: "A hole",
+    clue1: "Often dug in the ground",
+    clue2: "Empty space"
+  },
+  {
+    question: "You see me once in June, twice in November, and not at all in May. What am I?",
+    answer: "The letter E",
+    clue1: "Look at the spelling",
+    clue2: "It's all about letters"
+  },
+  {
+    question: "What has to be broken before you can use it?",
+    answer: "An egg",
+    clue1: "Found in the fridge",
+    clue2: "Used for baking"
+  },
+  {
+    question: "What begins with T, ends with T, and has T in it?",
+    answer: "A teapot",
+    clue1: "Used in the kitchen",
+    clue2: "Holds something hot"
+  },
+  {
+    question: "I have branches, but no fruit, trunk, or leaves. What am I?",
+    answer: "A bank",
+    clue1: "Handles money",
+    clue2: "Has locations called branches"
+  },
+  {
+    question: "What can’t talk but will reply when spoken to?",
+    answer: "An echo",
+    clue1: "Heard in caves or mountains",
+    clue2: "Repeats you"
+  },
+  {
+    question: "The more of me you take, the more you leave behind. What am I?",
+    answer: "Footsteps",
+    clue1: "You leave them as you walk",
+    clue2: "Disappear in sand or snow"
+  },
+  {
+    question: "What building has the most stories?",
+    answer: "A library",
+    clue1: "Filled with books",
+    clue2: "Silent environment"
+  },
+  {
+    question: "What has many teeth but cannot bite?",
+    answer: "A comb",
+    clue1: "Used on hair",
+    clue2: "Has rows of plastic or metal"
+  },
+  {
+    question: "I go in hard, come out soft, and am never the same. What am I?",
+    answer: "Chewing gum",
+    clue1: "Comes in colorful wrappers",
+    clue2: "Found in your mouth"
+  },
+  {
+    question: "I have keys but no locks, space but no room, you can enter but not go outside. What am I?",
+    answer: "A keyboard",
+    clue1: "Used with computers",
+    clue2: "Has letters and numbers"
+  },
+  {
+    question: "If two’s company and three’s a crowd, what are four and five?",
+    answer: "Nine",
+    clue1: "Think math",
+    clue2: "Simple addition"
+  },
+  {
+    question: "What comes once in a year, twice in a week, but never in a day?",
+    answer: "The letter E",
+    clue1: "Think spelling",
+    clue2: "Not about time"
+  },
+  {
+    question: "I’m always in front of you, but can’t be seen. What am I?",
+    answer: "The future",
+    clue1: "It’s not the present",
+    clue2: "You can only imagine it"
+  },
+  {
+    question: "What can you break, even if you never pick it up or touch it?",
+    answer: "A promise",
+    clue1: "Often made and broken",
+    clue2: "Involves trust"
+  },
+  {
+    question: "I shave every day, but my beard stays the same. What am I?",
+    answer: "A barber",
+    clue1: "Cuts other people’s hair",
+    clue2: "Works with razors"
+  },
+  {
+    question: "What can you hold without touching it at all?",
+    answer: "Your breath",
+    clue1: "Involves lungs",
+    clue2: "Try during swimming"
+  },
+  {
+    question: "If you drop me I’m sure to crack, but give me a smile and I’ll always smile back. What am I?",
+    answer: "A mirror",
+    clue1: "Reflects you",
+    clue2: "Found in bathrooms"
+  },
+  {
+    question: "What goes up but never comes down?",
+    answer: "Your age",
+    clue1: "It increases over time",
+    clue2: "Birthday-related"
+  },
+  {
+    question: "What invention lets you look right through a wall?",
+    answer: "A window",
+    clue1: "Made of glass",
+    clue2: "Common in buildings"
+  },
+  {
+    question: "I have one eye but can’t see. What am I?",
+    answer: "A needle",
+    clue1: "Used in sewing",
+    clue2: "Very sharp"
+  },
+  {
+    question: "What is always in front of you but can’t be seen?",
+    answer: "The future",
+    clue1: "It’s coming",
+    clue2: "You can’t touch it"
+  },
+  {
+    question: "What can travel around the world while staying in the same corner?",
+    answer: "A stamp",
+    clue1: "Found on envelopes",
+    clue2: "Used in mailing"
+  },
+  {
+    question: "What goes around and around a house but never moves?",
+    answer: "A fence",
+    clue1: "Marks property lines",
+    clue2: "Usually made of wood or metal"
+  },
+  {
+    question: "I am taken from a mine, and shut in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?",
+    answer: "Pencil lead (graphite)",
+    clue1: "Used for writing",
+    clue2: "Inside a pencil"
+  },
+  {
+    question: "What has 13 hearts, but no other organs?",
+    answer: "A deck of cards",
+    clue1: "Used in games",
+    clue2: "Includes spades and diamonds"
+  },
+  {
+    question: "What word is spelled incorrectly in every dictionary?",
+    answer: "Incorrectly",
+    clue1: "It's not a mistake",
+    clue2: "Literal wordplay"
+  },
+  {
+    question: "What is always running but never moves?",
+    answer: "A clock",
+    clue1: "Tells time",
+    clue2: "Has hands"
+  },
+  {
+    question: "I can fill a room, yet I take up no space. What am I?",
+    answer: "Light",
+    clue1: "Bulbs produce it",
+    clue2: "You can’t touch it"
+  },
+  {
+    question: "What can’t be seen but can make you lose everything?",
+    answer: "Time",
+    clue1: "It flies",
+    clue2: "You can run out of it"
+  },
+  {
+    question: "What comes down but never goes up?",
+    answer: "Rain",
+    clue1: "Falls from clouds",
+    clue2: "Can be light or heavy"
+  },
+  {
+    question: "What kind of coat can only be put on when wet?",
+    answer: "A coat of paint",
+    clue1: "Used on walls",
+    clue2: "Needs to dry"
+  },
+  {
+    question: "What flies without wings and cries without eyes?",
+    answer: "Clouds",
+    clue1: "Found in the sky",
+    clue2: "Produce rain"
+  },
+  {
+    question: "What gets more wet as it dries?",
+    answer: "A towel",
+    clue1: "Used after showers",
+    clue2: "Made of fabric"
+  },
+  {
+    question: "The person who makes it, sells it. The person who buys it, never uses it. The person who uses it never knows they’re using it. What is it?",
+    answer: "A coffin",
+    clue1: "Used after death",
+    clue2: "Wooden box"
+  },
+
+
+
+// More Hard Riddles
+
+{
+    question: "What has no beginning, end, or middle?",
+    answer: "A doughnut",
+    clue1: "It’s circular",
+    clue2: "Often eaten for breakfast"
+  },
+  {
+    question: "I am taken from a mine and shut in a box. You use me to write. What am I?",
+    answer: "Pencil lead",
+    clue1: "Found inside a pencil",
+    clue2: "Also called graphite"
+  },
+  {
+    question: "The more you take from me, the bigger I get. What am I?",
+    answer: "A hole",
+    clue1: "Often found in the ground",
+    clue2: "Made by digging"
+  },
+  {
+    question: "What gets bigger the more you take away?",
+    answer: "A hole",
+    clue1: "It's empty",
+    clue2: "Created by removal"
+  },
+  {
+    question: "What has many keys but can't open a single lock?",
+    answer: "A piano",
+    clue1: "Used to make music",
+    clue2: "Has black and white parts"
+  },
+  {
+    question: "What comes before thunder?",
+    answer: "Lightning",
+    clue1: "Bright and fast",
+    clue2: "Strikes from clouds"
+  },
+  {
+    question: "What begins and ends with an E, but only has one letter?",
+    answer: "An envelope",
+    clue1: "Used for mailing",
+    clue2: "Holds letters"
+  },
+  {
+    question: "What can't talk but will reply when spoken to?",
+    answer: "An echo",
+    clue1: "Heard in empty places",
+    clue2: "Repeats your voice"
+  },
+  {
+    question: "What has one head, one foot, and four legs?",
+    answer: "A bed",
+    clue1: "You sleep on it",
+    clue2: "Furniture"
+  },
+  {
+    question: "What comes once in a second, once in a minute, and twice in a decade?",
+    answer: "The letter E",
+    clue1: "It's a letter",
+    clue2: "Look at the words"
+  },
+  {
+    question: "What has four eyes but can't see?",
+    answer: "Mississippi",
+    clue1: "A river",
+    clue2: "It's a U.S. state too"
+  },
+  {
+    question: "What invention lets people see through walls?",
+    answer: "Windows",
+    clue1: "Made of glass",
+    clue2: "Not high-tech"
+  },
+  {
+    question: "What’s greater than God, more evil than the devil, rich people need it, poor people have it, and if you eat it, you’ll die?",
+    answer: "Nothing",
+    clue1: "A paradox",
+    clue2: "Literally 'zero'"
+  },
+  {
+    question: "What gets smaller every time you take a piece of it?",
+    answer: "A bar of soap",
+    clue1: "Used to clean",
+    clue2: "It lathers"
+  },
+  {
+    question: "What can be cracked, made, told, and played?",
+    answer: "A joke",
+    clue1: "Makes people laugh",
+    clue2: "Comedians use it"
+  },
+  {
+    question: "I’m light as a feather, yet even the world’s strongest man couldn’t hold me for much longer than a minute. What am I?",
+    answer: "Your breath",
+    clue1: "Involves lungs",
+    clue2: "Held underwater"
+  },
+  {
+    question: "If you have one, you want to share it. Once you share it, you don’t have it. What is it?",
+    answer: "A secret",
+    clue1: "Meant to be kept",
+    clue2: "Often whispered"
+  },
+  {
+    question: "What has to be kept after it is given?",
+    answer: "A promise",
+    clue1: "Involves trust",
+    clue2: "Often made between friends"
+  },
+  {
+    question: "What gets louder the more you silence it?",
+    answer: "An alarm",
+    clue1: "Wakes you up",
+    clue2: "Keeps ringing"
+  },
+  {
+    question: "What is made of water but if you put it into water it dies?",
+    answer: "An ice cube",
+    clue1: "It's frozen",
+    clue2: "Melts in heat"
+  },
+  {
+    question: "If you throw a red stone into the blue sea, what will it become?",
+    answer: "Wet",
+    clue1: "Simple logic",
+    clue2: "Think practically"
+  },
+  {
+    question: "You see a boat filled with people, yet there isn’t a single person on board. How?",
+    answer: "They are all married",
+    clue1: "Wordplay on 'single'",
+    clue2: "Not about counting"
+  },
+  {
+    question: "What English word retains the same pronunciation, even after you take away four of its five letters?",
+    answer: "Queue",
+    clue1: "Starts with 'Q'",
+    clue2: "Line of people"
+  },
+  {
+    question: "I am an odd number. Take away one letter and I become even. What am I?",
+    answer: "Seven",
+    clue1: "Math-based",
+    clue2: "Remove the 's'"
+  },
+  {
+    question: "What has 6 faces but does not wear makeup, and 21 eyes but cannot see?",
+    answer: "A die (dice)",
+    clue1: "Used in games",
+    clue2: "Has dots"
+  },
+  {
+    question: "What room do ghosts avoid?",
+    answer: "The living room",
+    clue1: "They’re not alive",
+    clue2: "Pun on 'living'"
+  },
+  {
+    question: "If you drop me, I’m sure to crack. But give me a smile and I’ll smile back. What am I?",
+    answer: "A mirror",
+    clue1: "Reflects your face",
+    clue2: "Breakable"
+  },
+  {
+    question: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
+    answer: "A candle",
+    clue1: "Used in blackout",
+    clue2: "Melts with time"
+  },
+  {
+    question: "I have hands but no arms. I can move without legs. What am I?",
+    answer: "A clock",
+    clue1: "Tells time",
+    clue2: "Tick-tock"
+  },
+  {
+    question: "What can go up and down without moving?",
+    answer: "Temperature",
+    clue1: "Measured in degrees",
+    clue2: "Weather-related"
+  },
+  {
+    question: "What kind of tree can you carry in your hand?",
+    answer: "A palm",
+    clue1: "Also a body part",
+    clue2: "Found in tropical areas"
+  },
+  {
+    question: "I’m full of holes but still hold water. What am I?",
+    answer: "A sponge",
+    clue1: "Used in the kitchen or bath",
+    clue2: "Absorbs liquid"
+  },
+  {
+    question: "What flies when it’s born, lies when it’s alive, and runs when it’s dead?",
+    answer: "A snowflake",
+    clue1: "Melts quickly",
+    clue2: "Seen in winter"
+  },
+  {
+    question: "What comes in a minute, twice in a moment, but never in a thousand years?",
+    answer: "The letter M",
+    clue1: "Think letters",
+    clue2: "Not time-related"
+  },
+  {
+    question: "What can’t be put in a saucepan?",
+    answer: "Its lid",
+    clue1: "It covers the pan",
+    clue2: "Physically impossible"
+  },
+  {
+    question: "What kind of band never plays music?",
+    answer: "A rubber band",
+    clue1: "Holds things together",
+    clue2: "Stretchy"
+  },
+  {
+    question: "What starts with a P, ends with an E, and has thousands of letters?",
+    answer: "The Post Office",
+    clue1: "Delivers mail",
+    clue2: "Not digital"
+  },
+  {
+    question: "What goes through cities and fields but never moves?",
+    answer: "A road",
+    clue1: "Used by vehicles",
+    clue2: "Laid on land"
+  },
+  {
+    question: "What kind of room has no doors or windows?",
+    answer: "A mushroom",
+    clue1: "It's a fungus",
+    clue2: "Found in forests"
+  },
+  {
+    question: "What do you find at the end of everything?",
+    answer: "The letter G",
+    clue1: "Not a real 'thing'",
+    clue2: "Spelling puzzle"
+  },
+  {
+    question: "What has hands but no arms and a face but no eyes?",
+    answer: "A clock",
+    clue1: "Found on the wall",
+    clue2: "Tells time"
+  }
+];
+
+// Function to render riddles
+function displayRiddles() {
+  const container = document.getElementById('riddles-container');
+
+  riddles.forEach((riddle, index) => {
+    const riddleBox = document.createElement('div');
+    riddleBox.className = 'riddle-box';
+
+    const riddleQuestion = document.createElement('p');
+    riddleQuestion.className = 'riddle';
+    riddleQuestion.textContent = riddle.question;
+
+    const revealButton = document.createElement('button');
+    revealButton.className = 'reveal-btn';
+    revealButton.textContent = 'Show Answer';
+
+    const answerText = document.createElement('p');
+    answerText.className = 'answer hidden';
+    answerText.textContent = riddle.answer;
+
+    // Button click logic
+    revealButton.addEventListener('click', () => {
+      const isHidden = answerText.classList.contains('hidden');
+      answerText.classList.toggle('hidden');
+      revealButton.textContent = isHidden ? 'Hide Answer' : 'Show Answer';
+    });
+
+    riddleBox.appendChild(riddleQuestion);
+    riddleBox.appendChild(revealButton);
+    riddleBox.appendChild(answerText);
+    container.appendChild(riddleBox);
+  });
+}
+
+
+
+// Call on page load
+displayRiddles();
+
+      </script>
+</body>
+</html>
