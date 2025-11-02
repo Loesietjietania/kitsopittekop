@@ -439,6 +439,8 @@ footer{
     .design-content{
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
 @media (max-width:900px) {
     .services-cards{
         flex-direction: column;
@@ -449,4 +451,3 @@ footer{
             width: 90%;}
 }
 
-}
