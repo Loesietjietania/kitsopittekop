@@ -331,6 +331,38 @@ header{
     border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
+.services2{
+    flex-direction: column;
+    background: #f9f9f9;
+    gap: 50px;
+    padding: 4.5rem 0;
+}
+.service-card3{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    background-color: white;
+    padding: 3%;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+.service-card3:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.service-card4{
+    width: 30%;
+    background-color: white;
+    padding: 3%;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+.service-card4:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 /* about */
 .about{
     padding: 4.5rem 0;
@@ -449,5 +481,10 @@ footer{
         width: 90%;}
     .service-card2{
             width: 90%;}
+    .service-card3{
+        width: 90%;}
+    .service-card4{
+        width: 90%;}
 }
+
 
