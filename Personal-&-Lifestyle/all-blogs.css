@@ -584,9 +584,7 @@ table, th, td{
             font-size: .8rem;
             padding-top: 7%;
         }
-.head1 h1{
-    font-size: 2rem;
-}
+
     /*-- Table--*/
 
 table{
@@ -653,4 +651,5 @@ table, th, td{
 
 
 }
+
 
