@@ -498,6 +498,9 @@ table, th, td{
     font-size: .8rem;
     padding: 7%;
 }
+.text1 h1{
+    font-size: 1.1rem;
+}
 .text1 h2{
     font-size: 1rem;
 }
@@ -650,3 +653,4 @@ table, th, td{
 
 
 }
+
